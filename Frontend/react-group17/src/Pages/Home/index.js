@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { fetchUserData } from "../services/AuthenticationService";
-import { Navigate } from 'react-router-dom'
+import { fetchUserData } from "../../services/AuthenticationService";
 
 const Home = () => {
     const [userName, setUserName] = useState('');
