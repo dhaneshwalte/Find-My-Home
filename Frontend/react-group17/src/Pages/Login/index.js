@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { userLogin } from "../../services/AuthenticationService";
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate();
 
     const submit = (e) => {
         e.preventDefault();
@@ -14,13 +14,9 @@ const Login = () => {
             .then((response)=>{
                 console.log(response);
                 localStorage.setItem('USER_KEY',response.data.token);
-                setRedirect(true);
+                navigate("/user-preference");
             })
             .catch(err => console.log(err));
-    }
-
-    if (redirect) {
-        return <Navigate to="/"/>;
     }
 
   return (

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const getToken=()=>{
+export const getToken=()=>{
     return localStorage.getItem('USER_KEY');
 }
 
