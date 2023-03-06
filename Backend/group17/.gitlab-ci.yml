@@ -1,0 +1,22 @@
+stages:
+  - front-end
+  - back-end
+  
+
+build:
+  stage: back-end
+  image: maven:3-jdk-17
+  script: 
+    - mvn clean
+  tags:
+    - ugrad
+
+build:
+  stage: front-end
+  script: 
+    - npm install react
+    - npm install antd
+    - npm start
+  tags:
+    - ugrad
+
