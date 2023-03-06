@@ -21,7 +21,7 @@ frontend-build:
     - cd Frontend/react-group17
     - ls  
     - npm install
-    - npm start
+    - npm run build 
   tags:
     - ugrad
 
