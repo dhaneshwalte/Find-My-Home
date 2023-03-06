@@ -3,7 +3,7 @@ stages:
   - back-end
   
 
-build:
+backend-build:
   stage: back-end
   image: maven:3-jdk-17
 
@@ -15,12 +15,13 @@ build:
   only:
     - ci
 
-# build:
-#   stage: front-end
-#   script: 
-#     - npm install react
-#     - npm install antd
-#     - npm start
-#   tags:
-#     - ugrad
+frontend-build:
+  stage: front-end
+  script:
+    - cd Frontend/react-group17 
+    - npm install react
+    - npm install antd
+    - npm start
+  tags:
+    - ugrad
 
