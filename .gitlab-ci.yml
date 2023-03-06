@@ -6,9 +6,9 @@ stages:
 build:
   stage: back-end
   image: maven:3-jdk-17
-  paths:
-    - Backend/group17/
+
   script: 
+    - cd Backend/group17
     - mvn clean
   tags:
     - ugrad
