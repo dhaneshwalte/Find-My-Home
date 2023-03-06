@@ -12,8 +12,8 @@ backend-build:
     - mvn clean
   tags:
     - ugrad
-  only:
-    - ci
+  # only:
+  #   - ci
 
 frontend-build:
   stage: front-end
