@@ -36,6 +36,9 @@ const UserPreference = () => {
           </Form.Item>
         );
       }
+      else{
+        return null;
+      }
     });
   };
 
