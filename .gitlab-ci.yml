@@ -19,8 +19,7 @@ frontend-build:
   stage: front-end
   script:
     - cd Frontend/react-group17 
-    - npm install react
-    - npm install antd
+    - npm install react react-dom antd
     - npm start
   tags:
     - ugrad
