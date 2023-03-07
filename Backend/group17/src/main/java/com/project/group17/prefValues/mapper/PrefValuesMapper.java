@@ -1,6 +1,6 @@
 package com.project.group17.prefValues.mapper;
 
-import com.project.group17.prefNames.entity.prefNamesEntity;
+import com.project.group17.prefNames.entity.PrefNamesEntity;
 import com.project.group17.prefOptions.entity.PrefOptionsEntity;
 import com.project.group17.prefValues.entity.PrefValuesEntity;
 import com.project.group17.prefValues.model.PrefValueSaveReq;
@@ -14,7 +14,7 @@ public class PrefValuesMapper {
         user.setId(userId);
         prefValuesEntity.setUser(user);
 
-        prefNamesEntity prefNames = new prefNamesEntity();
+        PrefNamesEntity prefNames = new PrefNamesEntity();
         prefNames.setPrefId(prefValueSaveReq.getPrefNameId());
         prefValuesEntity.setPrefName(prefNames);
 

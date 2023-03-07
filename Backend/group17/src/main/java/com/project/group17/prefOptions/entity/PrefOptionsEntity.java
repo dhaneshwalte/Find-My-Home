@@ -1,23 +1,23 @@
 package com.project.group17.prefOptions.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.project.group17.prefNames.entity.prefNamesEntity;
+import com.project.group17.prefNames.entity.PrefNamesEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pref_options")public class PrefOptionsEntity {
+@Table(name = "pref_options")
+public class PrefOptionsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "`id`")
+    @Column(name = "id")
     private Long prefId;
 
     @ManyToOne()
     @JoinColumn(name = "pref_name_id", nullable = false)
-    private prefNamesEntity prefName;
+    private PrefNamesEntity prefName;
 
     @Column(nullable = false)
-    private String option;
+    private String option_name;
 
     public Long getPrefId() {
         return prefId;
@@ -28,19 +28,19 @@ import jakarta.persistence.*;
     }
 
     @JsonBackReference
-    public prefNamesEntity getPrefName() {
+    public PrefNamesEntity getPrefName() {
         return prefName;
     }
 
-    public void setPrefName(prefNamesEntity prefName) {
+    public void setPrefName(PrefNamesEntity prefName) {
         this.prefName = prefName;
     }
 
     public String getOption() {
-        return option;
+        return option_name;
     }
 
     public void setOption(String option) {
-        this.option = option;
+        this.option_name = option;
     }
 }

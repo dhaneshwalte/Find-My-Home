@@ -1,14 +1,12 @@
 package com.project.group17.prefValues.entity;
 
-import com.project.group17.prefNames.entity.prefNamesEntity;
+import com.project.group17.prefNames.entity.PrefNamesEntity;
 import com.project.group17.prefOptions.entity.PrefOptionsEntity;
 import com.project.group17.user.entity.User;
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "prefValue")
+@Table(name = "pref_value")
 public class PrefValuesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +23,7 @@ public class PrefValuesEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pref_name_id", nullable = false)
-    private prefNamesEntity prefName;
+    private PrefNamesEntity prefName;
 
     public Long getPrefValueId() {
         return prefValueId;
@@ -51,11 +49,11 @@ public class PrefValuesEntity {
         this.prefOption = prefOption;
     }
 
-    public prefNamesEntity getPrefName() {
+    public PrefNamesEntity getPrefName() {
         return prefName;
     }
 
-    public void setPrefName(prefNamesEntity prefName) {
+    public void setPrefName(PrefNamesEntity prefName) {
         this.prefName = prefName;
     }
 }
