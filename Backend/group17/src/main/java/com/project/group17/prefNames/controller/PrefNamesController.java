@@ -1,6 +1,6 @@
 package com.project.group17.prefNames.controller;
 
-import com.project.group17.prefNames.entity.prefNamesEntity;
+import com.project.group17.prefNames.entity.PrefNamesEntity;
 import com.project.group17.prefNames.service.PrefNamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class PrefNamesController {
     PrefNamesService service;
     @CrossOrigin
     @GetMapping("/all")
-    public ResponseEntity<List<prefNamesEntity>> getAllPrefOptions(){
+    public ResponseEntity<List<PrefNamesEntity>> getAllPrefOptions(){
         return ResponseEntity.ok(service.getAllPrefOptions());
     }
 

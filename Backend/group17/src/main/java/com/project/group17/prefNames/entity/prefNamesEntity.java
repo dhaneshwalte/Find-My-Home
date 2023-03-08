@@ -1,6 +1,5 @@
 package com.project.group17.prefNames.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.group17.prefOptions.entity.PrefOptionsEntity;
 import jakarta.persistence.*;
@@ -8,11 +7,11 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "prefNames")
-public class prefNamesEntity {
+@Table(name = "pref_names")
+public class PrefNamesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "`id`")
+    @Column(name = "id")
     private Long prefId;
 
     private String name;
