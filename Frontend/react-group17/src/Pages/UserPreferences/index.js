@@ -16,7 +16,7 @@ const UserPreference = () => {
 
   const filterLoopOptions = (options) => {
     return options.map((option) => {
-      return { value: option.prefId, label: option.option };
+      return { value: option.prefId, label: option.optionName };
     });
   }
 
