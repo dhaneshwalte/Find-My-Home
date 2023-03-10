@@ -2,7 +2,7 @@ package com.project.group17.prefOptions.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.project.group17.prefNames.entity.prefNamesEntity;
+import com.project.group17.prefNames.entity.PrefNamesEntity;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,7 +14,7 @@ import jakarta.persistence.*;
 
     @ManyToOne()
     @JoinColumn(name = "pref_name_id", nullable = false)
-    private prefNamesEntity prefName;
+    private PrefNamesEntity prefName;
 
     @Column(nullable = false)
     private String optionName;
@@ -28,11 +28,11 @@ import jakarta.persistence.*;
     }
 
     @JsonBackReference
-    public prefNamesEntity getPrefName() {
+    public PrefNamesEntity getPrefName() {
         return prefName;
     }
 
-    public void setPrefName(prefNamesEntity prefName) {
+    public void setPrefName(PrefNamesEntity prefName) {
         this.prefName = prefName;
     }
 
