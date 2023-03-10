@@ -23,4 +23,8 @@ public class PrefValuesService {
         repository.saveAll(prefValuesEntities);
         return "Success";
     }
+
+    public List<PrefValuesEntity> findAll(){
+        return repository.findAll();
+    }
 }
