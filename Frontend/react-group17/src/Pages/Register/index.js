@@ -1,73 +1,219 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { userRegister } from '../../services/AuthenticationService';
 import { Navigate } from 'react-router-dom'
 import './style.css';
+import CircleUpload from '../../components/CircleUpload';
+
+import {
+    Button,
+    Card,
+    Form,
+    Input,
+    InputNumber,
+    Select,
+} from 'antd';
+
+const { Option } = Select;
+
+const formItemLayout = {
+    labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 },
+    },
+    wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 },
+    },
+};
+
+const tailFormItemLayout = {
+    wrapperCol: {
+        xs: {
+            span: 24,
+            offset: 0,
+        },
+        sm: {
+            span: 16,
+            offset: 8,
+        },
+    },
+};
 
 const Register = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [form] = Form.useForm();
+    const [profilePicBase64, setProfilePicBase64] = useState('');
     const [redirect, setRedirect] = useState(false);
 
-    const submit = (e) => {
-        e.preventDefault();
-
-        const userData = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email,
-            "password": password
-        };
-        console.log(userData);
-        userRegister(userData).then(
-            (response)=>{
-                console.log(response);
-                localStorage.setItem('USER_KEY',response.data.token);
-                setRedirect(true);
-            }
-        )
-        .catch(err=>console.log(err));
-
-    }
-
     if (redirect) {
-        return <Navigate to="/login"/>;
+        return <Navigate to="/login" />;
     }
-    return(
-        <div className="form">
-            <h2>Find My Home</h2>
-            <div className="form-body">
-                <div className="username">
-                    <label className="form__label" for="firstName">First Name </label>
-                    <input className="form__input" type="text" id="firstName" placeholder="First Name"
-                            onChange={e => setFirstName(e.target.value)}/>
-                </div>
-                <div className="lastname">
-                    <label className="form__label" for="lastName">Last Name </label>
-                    <input  type="text" name="" id="lastName"  className="form__input"placeholder="LastName"
-                            onChange={e => setLastName(e.target.value)}/>
-                </div>
-                <div className="email">
-                    <label className="form__label" for="email">Email </label>
-                    <input  type="email" id="email" className="form__input" placeholder="Email"
-                            onChange={e => setEmail(e.target.value)}/>
-                </div>
-                <div className="password">
-                    <label className="form__label" for="password">Password </label>
-                    <input className="form__input" type="password"  id="password" placeholder="Password"
-                            onChange={e => setPassword(e.target.value)}/>
-                </div>
-                <div className="confirm-password">
-                    <label className="form__label" for="confirmPassword">Confirm Password </label>
-                    <input className="form__input" type="password" id="confirmPassword" placeholder="Confirm Password"/>
-                </div>
-            </div>
-            <div class="footer">
-                <button type="submit" className="btn" onClick={submit}>Register</button>
-            </div>
-        </div>      
-      )
+
+    const onFinish = (values) => {
+        values.profilePicBase64 = profilePicBase64;
+        console.log('Received values of form: ', values);
+        userRegister(values)
+            .then(
+                (response) => {
+                    console.log(response);
+                    localStorage.setItem('USER_KEY', response.data.token);
+                    setRedirect(true);
+                }
+            )
+            .catch(err => console.log(err));
+    };
+
+    const handleBase64 = (data) => {
+        //console.log(data);
+        setProfilePicBase64(data);
+    }
+
+    return (
+        <Card
+            title="User Registration"
+            bordered={false}
+        >
+
+            <Form
+                {...formItemLayout}
+                form={form}
+                name="register"
+                onFinish={onFinish}
+                style={{ maxWidth: 600 }}
+                scrollToFirstError
+            >
+                <Form.Item
+                    name="firstName"
+                    label="First Name"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your first name!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="lastName"
+                    label="Last Name"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your last name!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="email"
+                    label="E-mail"
+                    rules={[
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
+                            required: true,
+                            message: 'Please input your E-mail!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="password"
+                    label="Password"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your password!',
+                        },
+                    ]}
+                    hasFeedback
+                >
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item
+                    name="confirm"
+                    label="Confirm Password"
+                    dependencies={['password']}
+                    hasFeedback
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please confirm your password!',
+                        },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                            },
+                        }),
+                    ]}
+                >
+                    <Input.Password />
+                </Form.Item>
+
+
+                <Form.Item
+                    name="phoneNumber"
+                    label="Phone Number"
+                    rules={[{ required: true, message: 'Please input your phone number!' }]}
+                >
+                    <InputNumber style={{ width: '100%' }} />
+                </Form.Item>
+
+                <Form.Item
+                    name="age"
+                    label="Age"
+                    rules={[{ required: true, message: 'Please enter age!' }]}
+                >
+                    <InputNumber style={{ width: '100%' }} />
+                </Form.Item>
+
+                <Form.Item
+                    name="address"
+                    label="Address"
+                    rules={[{ required: true, message: 'Please input Address' }]}
+                >
+                    <Input.TextArea showCount maxLength={100} />
+                </Form.Item>
+
+                <Form.Item
+                    name="gender"
+                    label="Gender"
+                    rules={[{ required: true, message: 'Please select gender!' }]}
+                >
+                    <Select placeholder="select your gender">
+                        <Option value="male">Male</Option>
+                        <Option value="female">Female</Option>
+                        <Option value="other">Other</Option>
+                    </Select>
+                </Form.Item>
+
+                <Form.Item
+                    name="profilePicBase64"
+                    label="Profile Picture"
+                >
+                    <CircleUpload handleBase64={handleBase64}></CircleUpload>
+                </Form.Item>
+
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit">
+                        Register
+                    </Button>
+                </Form.Item>
+
+            </Form>
+        </Card>
+    );
 };
 
 export default Register;

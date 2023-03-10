@@ -1,6 +1,7 @@
 import { Form, Select, Divider, Button } from "antd";
 import { useEffect, useState } from "react";
 import { getUserPrefrenceOptions, saveUserPrefrences } from "../../services/UserPrefrenceService";
+import './style.css'
 
 const UserPreference = () => {
   const [preferencesOptions, setPreferencesOption] = useState([]);
@@ -16,7 +17,7 @@ const UserPreference = () => {
 
   const filterLoopOptions = (options) => {
     return options.map((option) => {
-      return { value: option.prefId, label: option.option };
+      return { value: option.prefId, label: option.optionName };
     });
   }
 

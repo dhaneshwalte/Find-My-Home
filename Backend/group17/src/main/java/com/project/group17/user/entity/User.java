@@ -26,6 +26,15 @@ public class User implements UserDetails {
     private String email;
     //private String userName;
     private String password;
+    private String age;
+    private String address;
+    // @Column(name = "file64", columnDefinition = "VARCHAR(MAX)") use this def if longblob not working
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "file64", columnDefinition = "LONGBLOB")
+    private String profilePicBase64;
+    private String gender;
+    private String phoneNumber;
 
     @Enumerated(EnumType.ORDINAL)
     private Role role;
@@ -108,4 +117,53 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProfilePicBase64() {
+        return profilePicBase64;
+    }
+
+    public void setProfilePicBase64(String profilePicBase64) {
+        this.profilePicBase64 = profilePicBase64;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return firstname + " " + lastname;
+    }
+
+    
 }
