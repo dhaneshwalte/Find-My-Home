@@ -75,7 +75,7 @@ const Register = () => {
             form={form}
             name="register"
             onFinish={onFinish}
-            style={{ maxWidth: 600 }}
+            style={{ maxWidth: 600, margin: "20px auto" }}
             scrollToFirstError
         >
             <Card
@@ -180,9 +180,35 @@ const Register = () => {
                 </Form.Item>
 
                 <Form.Item
-                    name="address"
-                    label="Address"
-                    rules={[{ required: true, message: 'Please input Address' }]}
+                    name="city"
+                    label="City"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your city!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="province"
+                    label="Province"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your province!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="streetAddress"
+                    label="Street Address"
+                    rules={[{ required: true, message: 'Please input Street Address' }]}
                 >
                     <Input.TextArea showCount maxLength={100} />
                 </Form.Item>
