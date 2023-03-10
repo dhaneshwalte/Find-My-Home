@@ -68,18 +68,19 @@ const Register = () => {
     }
 
     return (
-        <Card
-            title="User Registration"
-            bordered={false}
-        >
 
-            <Form
-                {...formItemLayout}
-                form={form}
-                name="register"
-                onFinish={onFinish}
-                style={{ maxWidth: 600 }}
-                scrollToFirstError
+
+        <Form
+            {...formItemLayout}
+            form={form}
+            name="register"
+            onFinish={onFinish}
+            style={{ maxWidth: 600 }}
+            scrollToFirstError
+        >
+            <Card
+                title="User Registration"
+                bordered={false}
             >
                 <Form.Item
                     name="firstName"
@@ -210,9 +211,8 @@ const Register = () => {
                         Register
                     </Button>
                 </Form.Item>
-
-            </Form>
-        </Card>
+            </Card>
+        </Form>
     );
 };
 
