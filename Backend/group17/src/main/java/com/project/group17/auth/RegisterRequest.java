@@ -6,19 +6,23 @@ public class RegisterRequest {
     private String email;
     private String password;
     private String age;
-    private String address;
+    private String city;
+    private String province;
+    private String streetAddress;
     private String profilePicBase64;
     private String gender;
     private String phoneNumber;
 
-    public RegisterRequest(String firstName, String lastName, String email, String password, String age, String address,
-    String profilePicBase64, String gender, String phoneNumber) {
+    public RegisterRequest(String firstName, String lastName, String email, String password, String age, String city,
+            String province, String streetAddress, String profilePicBase64, String gender, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.age = age;
-        this.address = address;
+        this.city = city;
+        this.province = province;
+        this.streetAddress = streetAddress;
         this.profilePicBase64 = profilePicBase64;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
@@ -64,12 +68,28 @@ public class RegisterRequest {
         this.age = age;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCity() {
+        return city;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
     public String getProfilePicBase64() {

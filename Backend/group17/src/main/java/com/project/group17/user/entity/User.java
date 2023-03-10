@@ -27,7 +27,9 @@ public class User implements UserDetails {
     //private String userName;
     private String password;
     private String age;
-    private String address;
+    private String city;
+    private String province;
+    private String streetAddress;
     // @Column(name = "file64", columnDefinition = "VARCHAR(MAX)") use this def if longblob not working
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -128,12 +130,12 @@ public class User implements UserDetails {
         this.age = age;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreetAddress(String address) {
+        this.streetAddress = address;
     }
 
     public String getProfilePicBase64() {
@@ -158,6 +160,22 @@ public class User implements UserDetails {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     @Override
