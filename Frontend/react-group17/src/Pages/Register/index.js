@@ -44,27 +44,6 @@ const Register = () => {
     const [profilePicBase64, setProfilePicBase64] = useState('');
     const [redirect, setRedirect] = useState(false);
 
-    // const submit = (e) => {
-    //     e.preventDefault();
-
-    //     const userData = {
-    //         "firstName": firstName,
-    //         "lastName": lastName,
-    //         "email": email,
-    //         "password": password
-    //     };
-    //     console.log(userData);
-    //     userRegister(userData)
-    //         .then(
-    //             (response) => {
-    //                 console.log(response);
-    //                 localStorage.setItem('USER_KEY', response.data.token);
-    //                 setRedirect(true);
-    //             }
-    //         )
-    //         .catch(err => console.log(err));
-    // }
-
     if (redirect) {
         return <Navigate to="/login" />;
     }
@@ -72,10 +51,19 @@ const Register = () => {
     const onFinish = (values) => {
         values.profilePicBase64 = profilePicBase64;
         console.log('Received values of form: ', values);
+        userRegister(values)
+            .then(
+                (response) => {
+                    console.log(response);
+                    localStorage.setItem('USER_KEY', response.data.token);
+                    setRedirect(true);
+                }
+            )
+            .catch(err => console.log(err));
     };
 
     const handleBase64 = (data) => {
-        console.log(data);
+        //console.log(data);
         setProfilePicBase64(data);
     }
 
