@@ -76,7 +76,7 @@ const editClick = () => {
 
 const saveClick = () => {
   /* save user deyails in the backend */
-  // saveUserDetails
+  saveUserDetails()
   setEditFlag(false);
 }
 
@@ -292,7 +292,7 @@ const renderprofilePage = () => {
                     <MDBCardText>Province</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText 
+                    <MDBCardText
                               className="text-muted" 
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
