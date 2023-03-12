@@ -19,7 +19,8 @@ frontend-build:
   stage: front-end
   script:
     - cd Frontend/react-group17
-    - ls  
+    - ls
+    - npm cache clean --force  
     - npm install
     - npm run build 
   tags:
