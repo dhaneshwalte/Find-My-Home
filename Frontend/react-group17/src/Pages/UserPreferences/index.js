@@ -12,7 +12,7 @@ const UserPreference = () => {
 
   const fetchUserPrefenceOptions = async () => {
     const response = await getUserPrefrenceOptions();
-    setPreferencesOption(response.data);
+    // setPreferencesOption(response.data);
   };
 
   const filterLoopOptions = (options) => {
