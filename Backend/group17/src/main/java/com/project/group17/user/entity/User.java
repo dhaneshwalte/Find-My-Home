@@ -182,10 +182,5 @@ public class User implements UserDetails {
         this.province = province;
     }
 
-    @Override
-    public String toString() {
-        return firstname + " " + lastname;
-    }
-
     
 }

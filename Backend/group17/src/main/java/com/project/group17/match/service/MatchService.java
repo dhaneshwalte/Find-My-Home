@@ -1,5 +1,6 @@
 package com.project.group17.match.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +48,7 @@ public class MatchService {
         return userPreferences;
     }
 
-    public Map<User, Map<String, String>> getRoommateList(User user){
+    public List<Map<String, String>> getRoommateList(User user){
         Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
         Map<User, Map<String, String>> userPrefsExludePrincipal = new HashMap<>();
         Map<String, String> principalPrefs = null;
@@ -65,11 +66,19 @@ public class MatchService {
             entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
         }
         System.out.println(principalPrefs);
-        //locationService.addDefaultLocations();
+        List<Map<String, String>> userInfoAndPreferences = new ArrayList<>();
         for(Map.Entry<User, Map<String, String>> entry: userPrefsExludePrincipal.entrySet()){
+            User u = entry.getKey();
             entry.getValue().put("SimilarityScore", ""+getSimilarityScore(principalPrefs, entry.getValue()));
+            entry.getValue().put("id", u.getId()+"");
+            entry.getValue().put("firstName", u.getFirstname());
+            entry.getValue().put("lastName", u.getLastname());
+            entry.getValue().put("city", u.getCity());
+            entry.getValue().put("province", u.getProvince());
+            entry.getValue().put("profilePicBase64", u.getProfilePicBase64());
+            userInfoAndPreferences.add(entry.getValue());
         }
-        return userPrefsExludePrincipal;
+        return userInfoAndPreferences;
     }
 
     public double getSimilarityScore(Map<String, String> User1, Map<String, String> User2){
