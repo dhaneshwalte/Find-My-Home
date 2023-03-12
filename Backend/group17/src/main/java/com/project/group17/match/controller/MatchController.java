@@ -5,10 +5,14 @@ import com.project.group17.match.entity.MatchPojo;
 import com.project.group17.match.repository.MatchRepository;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
+import com.project.group17.match.service.MatchService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,10 @@ public class MatchController {
     GroupService groupService;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    private MatchService matchService;
+
+    @CrossOrigin
     @RequestMapping(value = "/match", method= RequestMethod.POST)
     public @ResponseBody void getUserId(@RequestBody MatchPojo user2) {
         MatchEntity entity = new MatchEntity();
@@ -42,6 +50,13 @@ public class MatchController {
                 break;
             }
         }
+    }
+
+    @CrossOrigin
+    @GetMapping("/get-all-matches")
+    public ResponseEntity<List<Map<String, String>>> register(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(matchService.getRoommateList(user));
     }
 
 }
