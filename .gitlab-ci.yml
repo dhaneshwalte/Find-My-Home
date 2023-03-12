@@ -20,7 +20,7 @@ frontend-build:
   script:
     - cd Frontend/react-group17
     - ls
-    - npm cache clean  
+    # - npm cache clean  
     - npm install
     - npm run build 
   tags:
