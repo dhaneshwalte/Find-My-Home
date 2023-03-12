@@ -11,13 +11,13 @@ export const getUserDetails=()=>{
     })
 }
 
-export const saveUserDetails=(userDetails)=>{
-    // return axios({
-    //     // 'method':'POST',
-    //     // 'url':`${process.env.hostUrl||'http://localhost:8080'}/api/`,
-    //     // 'data':editedUserDetails,
-    //     // headers:{
-    //     //     'Authorization':'Bearer '+getToken()
-    //     }
-    // })
+export const saveUserDetails=(editedUserDetails)=>{
+    return axios({
+        'method':'POST',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/profilepage/save`,
+        'data':editedUserDetails,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
 }

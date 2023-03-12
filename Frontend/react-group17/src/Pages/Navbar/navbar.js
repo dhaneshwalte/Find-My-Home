@@ -1,12 +1,26 @@
 import { Layout, Menu, theme } from 'antd';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import {checkUserLogin} from '../../services/AuthenticationService';
 const { Header, Content, Footer } = Layout;
-const App = () => {
+const Navbar = () => {
+  console.log(window.location.pathname);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  return (
-    <Layout>
+ const [loading, setloading] = useState(true);
+  useEffect(() => {
+    checkUserLogin()
+    .then(response => {
+        setloading(false);
+    })
+    .catch(reponse => {
+    })
+  })
+  const navbar = () => {
+    return(
+        <Layout>
       <Header
         style={{
           position: 'sticky',
@@ -59,5 +73,17 @@ const App = () => {
       </Header>
     </Layout>
   );
+  }
+
+  const checkRoutes = ["/","/login","/register"];
+  const result = window.location.pathname;
+  console.log(checkRoutes.includes(result));
+  return (
+    <div>
+        {
+            checkRoutes.includes(result) ? null : navbar()
+        }
+    </div>
+  )
 };
-export default App;
+export default Navbar;

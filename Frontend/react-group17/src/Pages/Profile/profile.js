@@ -18,7 +18,7 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import { getUserDetails, saveUserDetails } from '../../services/UserProfilePageService';
-import { Button } from 'antd';
+import { Button, InputNumber } from 'antd';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 
@@ -64,11 +64,11 @@ const fullPrefListButton = () =>{
 }
 
 const [editFlag, setEditFlag] = useState(false);
-const [editUserDetails, setEditedUserDetails] = useState({
+const [editUserDetails, setEditUserDetails] = useState(getUserDetails);
 
-
-
-});
+const handleEditedUserDetails = (e) => {
+    setEditUserDetails(e.target.value);
+  }
 
 const editClick = () => {
   setEditFlag(true);
@@ -76,6 +76,7 @@ const editClick = () => {
 
 const saveClick = () => {
   /* save user deyails in the backend */
+  // saveUserDetails
   setEditFlag(false);
 }
 
@@ -84,7 +85,7 @@ const cancelClick = () => {
 }
 
 
-
+const renderprofilePage = () => {
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
@@ -92,7 +93,7 @@ const cancelClick = () => {
           <MDBCol>
             <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
               <MDBBreadcrumbItem>
-                <a>ProfilePage</a>
+                <p>ProfilePage</p>
               </MDBBreadcrumbItem>
             </MDBBreadcrumb>
           </MDBCol>
@@ -109,7 +110,7 @@ const cancelClick = () => {
                   style={{ width: '150px' }}
                   fluid />
                 <p className="text-muted mb-4">{userDetails.firstname}</p>
-                <p className="text-muted mb-4">{userDetails.addresss}</p>
+                <p className="text-muted mb-4">{userDetails.city}, {userDetails.province}</p>
                 <div className="d-flex justify-content-center mb-2">
                   <Button >edit</Button>
                 </div>
@@ -120,7 +121,8 @@ const cancelClick = () => {
               <MDBCardBody className="text-center">
                 <p className="text-muted mb-4">{userDetails.username} Preferences</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Button>show Preferences</Button>
+                  <Button onClick={groupsPrefButton}
+                  >show Preferences</Button>
                 </div>
               </MDBCardBody>
             </MDBCard>
@@ -165,10 +167,10 @@ const cancelClick = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted"
-                              // contentEditable={true}
-                              // onInput={HandleEditedUserDetails}
-                              // onBlur={saveUserDetails}
-                              // suppressContentEditableWarning={true}
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}
                     >{userDetails.firstname}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -178,7 +180,12 @@ const cancelClick = () => {
                     <MDBCardText>Last Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"> {userDetails.lastname}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}
+                    > {userDetails.lastname}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -187,7 +194,12 @@ const cancelClick = () => {
                     <MDBCardText>User Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"> {userDetails.username}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    > {userDetails.username}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr/>
@@ -196,7 +208,12 @@ const cancelClick = () => {
                     <MDBCardText>Age</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{ userDetails.age}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    >{ userDetails.age}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -205,7 +222,12 @@ const cancelClick = () => {
                     <MDBCardText>Gender</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{ userDetails.gender}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    >{ userDetails.gender}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -214,7 +236,12 @@ const cancelClick = () => {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userDetails.email}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    >{userDetails.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -223,16 +250,55 @@ const cancelClick = () => {
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{ userDetails.phoneNumber}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onInput={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    >{ userDetails.phoneNumber}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
+                    <MDBCardText>Street Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userDetails.address}</MDBCardText>
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onClick={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    >{userDetails.streetAddress}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>City</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted"
+                              contentEditable={editFlag}
+                              onClick={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    >{userDetails.city}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Province</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText 
+                              className="text-muted" 
+                              contentEditable={editFlag}
+                              onClick={handleEditedUserDetails}
+                              onBlur={saveUserDetails}
+                              suppressContentEditableWarning={true}                    
+                    > {userDetails.province}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr/>
@@ -256,78 +322,6 @@ const cancelClick = () => {
             </MDBCardBody>
             </MDBCard>
             </MDBCol>
-          {/* <MDBCol md="6">
-            <MDBCard className="mb-4 mb-md-0">
-              <MDBCardBody>
-
-              <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Property</span> Preferences</MDBCardText>
-               <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Location </MDBCardText> 
-              <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Location</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userDetails.firstname}</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Last Name</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted"> {userDetails.lastname}</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>User Name</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted"> {userDetails.username}</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr/>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Gender</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Male</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userDetails.email}</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">userData.phoneNo</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">userData.address</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
-                </MDBCol> */}
-        
 
             <MDBRow>
               <MDBCol md="6">
@@ -522,6 +516,15 @@ const cancelClick = () => {
       </MDBContainer>
     </section>
   );
+}
+
+return(
+  <div>
+  {
+   userDetails[0] === null ? null : renderprofilePage()
+  }
+  </div>
+)
               
 }
 

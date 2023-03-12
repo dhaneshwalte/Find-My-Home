@@ -18,3 +18,17 @@ public class ProfileController {
     }
     
 }
+
+
+
+// @RestController
+// @RequestMapping("/api/preferences")public class PrefValuesController {
+//     @Autowired
+//     PrefValuesService service;
+//     @CrossOrigin
+//     @PostMapping("/save")
+//     public ResponseEntity<String> saveUserPreferences(@RequestBody List<PrefValueSaveReq> userPref){
+//         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//         return ResponseEntity.ok(service.saveUserPreferences(user.getId(), userPref));
+//     }
+// }
