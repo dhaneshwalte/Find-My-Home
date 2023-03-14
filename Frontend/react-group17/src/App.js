@@ -14,7 +14,8 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" exact element={<Register/>}/>
         <Route path="/user-preference" element={<UserPreference/>}/>
-        </Routes>
+        <Route path="/edit-user-preference" element={<UserPreference/>}/>
+      </Routes>
       </BrowserRouter>
     </div>
   );
