@@ -1,4 +1,4 @@
-import { Form, Select, Divider, Button } from "antd";
+import { Form, Select, Divider, Button, message } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -69,15 +69,11 @@ const UserPreference = () => {
 
   const onFormFinish = (values) => {
     const reqData = [];
-    for (const property in values) {
-      reqData.push({ prefNameId: property, prefOptionId: values[property] || null });
-      // reqData.push({prefName:{prefNameId:property},prefOption:{prefOptionId:values[property]}})
+    for (const key in values) {
+      reqData.push({ prefNameId: key, prefOptionId: values[key] || null });
     }
-    // if(id){
-    //   // update
-    // }else{
     saveUserPrefrences(reqData);
-    // }
+    message.success("Preferences saved successfully");
   };
 
   const renderForm = () => (
@@ -87,7 +83,6 @@ const UserPreference = () => {
       wrapperCol={{ span: 16 }}
       onFinish={onFormFinish}
       initialValues={storedUserPref ? storedUserPref : undefined}
-      // initialValues={"Pass data here"}
     >
       <Divider orientation="left" plain>
         Properety Preferences
