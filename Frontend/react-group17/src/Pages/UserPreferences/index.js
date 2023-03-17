@@ -6,7 +6,7 @@ import {
   getUserPrefrenceOptions,
   saveUserPrefrences,
 } from "../../services/UserPrefrenceService";
-import './style.css'
+import "./style.css";
 
 const UserPreference = () => {
   const [preferencesOptions, setPreferencesOption] = useState([]);
@@ -17,7 +17,7 @@ const UserPreference = () => {
     fetchUserPrefenceOptions();
     if (location.pathname === "/edit-user-preference") {
       fetchMyUserPrefences();
-    }
+    } // eslint-disable-next-line
   }, []);
 
   const fetchMyUserPrefences = async () => {
@@ -63,8 +63,7 @@ const UserPreference = () => {
             ></Select>
           </Form.Item>
         );
-      }
-      else{
+      } else {
         return null;
       }
     });
