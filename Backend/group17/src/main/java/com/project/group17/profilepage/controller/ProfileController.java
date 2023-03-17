@@ -36,5 +36,5 @@ public class ProfileController {
         userService.saveEditUserDetails(updatedUser, principleUser);
         return "SUCCESS";
     }
-    
+
 }

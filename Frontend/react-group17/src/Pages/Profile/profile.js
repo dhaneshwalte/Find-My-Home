@@ -1,4 +1,4 @@
-import React, { useState, useEffect, onClick, setContent, content} from 'react';
+import React, { useState, useEffect, setRedirect, onClick, setContent, content} from 'react';
 
 import {
   MDBCol,
@@ -11,15 +11,13 @@ import {
   MDBBtn,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
   MDBIcon,
   MDBListGroup,
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import { getUserDetails, saveUserDetails } from '../../services/UserProfilePageService';
 import { Button, InputNumber } from 'antd';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, redirect, Route, Routes, useNavigate } from 'react-router-dom';
 
 
 const UserDetails = () => {
@@ -32,7 +30,7 @@ const UserDetails = () => {
           setUserDetails(response.data);
       })
       .catch(err => console.log(err));
-});
+}, []);
 
 const navigate = useNavigate();
 const roommatePrefButton = () =>{
@@ -67,7 +65,7 @@ const [editFlag, setEditFlag] = useState(false);
 const [editUserDetails, setEditUserDetails] = useState(getUserDetails);
 
 const handleEditedUserDetails = (e) => {
-    setEditUserDetails(e.target.value);
+  console.log("handle function called");
   }
 
 const editClick = () => {
@@ -75,9 +73,19 @@ const editClick = () => {
 }
 
 const saveClick = () => {
-  /* save user deyails in the backend */
-  saveUserDetails()
-  setEditFlag(false);
+  setEditUserDetails ({
+    "firstname" : document.getElementById("firstname").textContent,
+    "lastname" : document.getElementById("lastname").textContent,
+    "age" : document.getElementById("age").textContent,
+    "gender" : document.getElementById("gender").textContent,
+    "email" : document.getElementById("email").textContent,
+    "phoneNumber" : document.getElementById("phone").textContent,
+    "streetAddress" : document.getElementById("streetAddress").textContent,
+    "city" : document.getElementById("city").textContent,
+    "province" : document.getElementById("province").textContent
+  }
+  )
+  saveUserDetails(editUserDetails)
 }
 
 const cancelClick = () => {
@@ -109,7 +117,7 @@ const renderprofilePage = () => {
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
-                <p className="text-muted mb-4">{userDetails.firstname}</p>
+                <p className="text-muted mb-4">{userDetails.firstName}</p>
                 <p className="text-muted mb-4">{userDetails.city}, {userDetails.province}</p>
                 <div className="d-flex justify-content-center mb-2">
                   <Button >edit</Button>
@@ -166,12 +174,13 @@ const renderprofilePage = () => {
                     <MDBCardText>First Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id='firstname'
+                              className="text-muted"
                               contentEditable={editFlag}
-                              onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onInput={handleEditedUserDetails}
+                              onChange={handleEditedUserDetails}
                               suppressContentEditableWarning={true}
-                    >{userDetails.firstname}</MDBCardText>
+                    >{userDetails.firstName}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -180,40 +189,43 @@ const renderprofilePage = () => {
                     <MDBCardText>Last Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id='lastname'
+                              className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}
-                    > {userDetails.lastname}</MDBCardText>
+                    > {userDetails.lastName}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
-                <hr />
+                {/* <hr />
                 <MDBRow>
                   <MDBCol sm="3">
                     <MDBCardText>User Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id=
+                              className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
-                              suppressContentEditableWarning={true}                    
-                    > {userDetails.username}</MDBCardText>
+                              onChange={saveUserDetails}
+                              suppressContentEditableWarning={true}
+                    > {userDetails.email}</MDBCardText>
                   </MDBCol>
-                </MDBRow>
+                </MDBRow> */}
                 <hr/>
                 <MDBRow>
                   <MDBCol sm="3">
                     <MDBCardText>Age</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id = "age"
+                              className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
-                    >{ userDetails.age}</MDBCardText>
+                    >22</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -222,12 +234,13 @@ const renderprofilePage = () => {
                     <MDBCardText>Gender</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id="gender"
+                              className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
-                    >{ userDetails.gender}</MDBCardText>
+                    >{ userDetails.Gender}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -236,10 +249,11 @@ const renderprofilePage = () => {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id= "email"
+                              className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
                     >{userDetails.email}</MDBCardText>
                   </MDBCol>
@@ -250,12 +264,13 @@ const renderprofilePage = () => {
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id = "phone"
+                              className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
-                    >{ userDetails.phoneNumber}</MDBCardText>
+                    >9029941286</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -264,12 +279,13 @@ const renderprofilePage = () => {
                     <MDBCardText>Street Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id = "streetAddress"
+                              className="text-muted"
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
-                    >{userDetails.streetAddress}</MDBCardText>
+                    >1920, Gaston Road</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -278,10 +294,11 @@ const renderprofilePage = () => {
                     <MDBCardText>City</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted"
+                    <MDBCardText id = "city"
+                              className="text-muted"
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
                     >{userDetails.city}</MDBCardText>
                   </MDBCol>
@@ -292,11 +309,11 @@ const renderprofilePage = () => {
                     <MDBCardText>Province</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText
+                    <MDBCardText id = "province"
                               className="text-muted" 
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
-                              onBlur={saveUserDetails}
+                              // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
                     > {userDetails.province}</MDBCardText>
                   </MDBCol>
@@ -317,7 +334,7 @@ const renderprofilePage = () => {
             <MDBCol sm="14">
             <MDBCard className="mb-2">
             <MDBCardBody>
-                <MDBCardText  style={{"text-align" : "center"}}><span className="text-primary font-bold me-1">{userDetails.firstname} Preferences</span></MDBCardText>
+                <MDBCardText  style={{"text-align" : "center"}}><span className="text-primary font-bold me-1">{userDetails.firstName} Preferences</span></MDBCardText>
                 <MDBCardText className="text-muted"></MDBCardText>
             </MDBCardBody>
             </MDBCard>
@@ -521,7 +538,7 @@ const renderprofilePage = () => {
 return(
   <div>
   {
-   userDetails[0] === null ? null : renderprofilePage()
+   userDetails[0] === "null" ? null : renderprofilePage()
   }
   </div>
 )

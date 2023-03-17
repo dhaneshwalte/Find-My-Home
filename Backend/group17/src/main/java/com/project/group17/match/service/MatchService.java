@@ -31,6 +31,7 @@ public class MatchService {
         for (PrefValuesEntity prefValueEntity : prefValuesEntities) {
             String prefName = prefValueEntity.getPrefName().getName();
             String prefValue = prefValueEntity.getPrefOption().getOptionName();
+            System.out.println(prefValue);
             User user = prefValueEntity.getUser();
             if (userPreferences.containsKey(user)) {
                 userPreferences.get(user).put(prefName, prefValue);

@@ -12,9 +12,10 @@ export const getUserDetails=()=>{
 }
 
 export const saveUserDetails=(editedUserDetails)=>{
+    console.log(editedUserDetails)
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/profilepage/save`,
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/save`,
         'data':editedUserDetails,
         headers:{
             'Authorization':'Bearer '+getToken()
