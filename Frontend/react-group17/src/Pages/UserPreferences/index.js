@@ -15,7 +15,6 @@ const UserPreference = () => {
 
   useEffect(() => {
     fetchUserPrefenceOptions();
-    console.log(location.pathname);
     if (location.pathname === "/edit-user-preference") {
       fetchMyUserPrefences();
     }
