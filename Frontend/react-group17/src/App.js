@@ -4,6 +4,7 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import UserPreference from './Pages/UserPreferences';
+import Match from './Pages/Match/Match';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/register" exact element={<Register/>}/>
         <Route path="/user-preference" element={<UserPreference/>}/>
         <Route path="/edit-user-preference" element={<UserPreference/>}/>
-      </Routes>
+        <Route path="/match" element={<Match/>}/>
+        </Routes>
       </BrowserRouter>
     </div>
   );

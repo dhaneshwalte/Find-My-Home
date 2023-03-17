@@ -30,6 +30,13 @@ public class AuthenticationService {
                 .lastname(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .age(request.getAge())
+                .gender(request.getGender())
+                .city(request.getCity())
+                .province(request.getProvince())
+                .streetAddress(request.getStreetAddress())
+                .profilePicBase64(request.getProfilePicBase64())
+                .phoneNumber(request.getPhoneNumber())
                 .role(Role.USER)
                 .build();
         repository.save(user);

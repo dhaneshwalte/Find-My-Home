@@ -6,6 +6,7 @@ import {
   getUserPrefrenceOptions,
   saveUserPrefrences,
 } from "../../services/UserPrefrenceService";
+import './style.css'
 
 const UserPreference = () => {
   const [preferencesOptions, setPreferencesOption] = useState([]);
@@ -63,6 +64,9 @@ const UserPreference = () => {
             ></Select>
           </Form.Item>
         );
+      }
+      else{
+        return null;
       }
     });
   };

@@ -1,0 +1,27 @@
+stages:
+  - front-end
+  - back-end
+  
+
+backend-build:
+  stage: back-end
+  image: maven:3-jdk-17
+
+  script: 
+    - cd Backend/group17
+    - mvn clean
+  tags:
+    - ugrad
+  # only:
+  #   - ci
+
+frontend-build:
+  stage: front-end
+  script:
+    - cd Frontend/react-group17
+    - ls  
+    - npm install
+    - npm run build 
+  tags:
+    - ugrad
+

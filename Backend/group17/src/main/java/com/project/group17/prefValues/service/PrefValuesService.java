@@ -31,22 +31,25 @@ public class PrefValuesService {
         return "Success";
     }
 
-    public List<PrefValueSaveReq> getUserPrefValuesById(int userId){
-        try{
+    public List<PrefValueSaveReq> getUserPrefValuesById(int userId) {
+        try {
             List<PrefValueSaveReq> prefRes = new ArrayList<>();
             List<Optional<PrefValuesEntity>> prefDB = repository.getAllByUserId(userId);
-            if(!prefDB.isEmpty())
-                for(Optional<PrefValuesEntity> pref: prefDB){
-                    if(pref.isPresent())
+            if (!prefDB.isEmpty())
+                for (Optional<PrefValuesEntity> pref : prefDB) {
+                    if (pref.isPresent())
                         prefRes.add(PrefValuesMapper.entittyToGetPrefCRes(pref.get()));
-            }
+                }
             System.out.println("prefRes" + prefRes);
             return prefRes;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
             return new ArrayList<>();
         }
+    }
 
+    public List<PrefValuesEntity> findAll(){
+        return repository.findAll();
     }
 }

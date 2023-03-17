@@ -26,6 +26,17 @@ public class User implements UserDetails {
     private String email;
     //private String userName;
     private String password;
+    private String age;
+    private String city;
+    private String province;
+    private String streetAddress;
+    // @Column(name = "file64", columnDefinition = "VARCHAR(MAX)") use this def if longblob not working
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "file64", columnDefinition = "LONGBLOB")
+    private String profilePicBase64;
+    private String gender;
+    private String phoneNumber;
 
     @Enumerated(EnumType.ORDINAL)
     private Role role;
@@ -97,15 +108,79 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-//    public String getUserName() {
-//        return userName;
-//    }
-//
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
+    
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String address) {
+        this.streetAddress = address;
+    }
+
+    public String getProfilePicBase64() {
+        return profilePicBase64;
+    }
+
+    public void setProfilePicBase64(String profilePicBase64) {
+        this.profilePicBase64 = profilePicBase64;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    
 }
