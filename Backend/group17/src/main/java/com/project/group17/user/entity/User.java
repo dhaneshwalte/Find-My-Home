@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -46,6 +48,7 @@ public class User implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return password;
@@ -116,6 +119,12 @@ public class User implements UserDetails {
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", age='" + age + '\'' +
+                ", city='" + city + '\'' +
+                ", province='" + province + '\'' +
+                ", streetAddress='" + streetAddress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", role=" + role +
                 '}';
     }
@@ -181,6 +190,4 @@ public class User implements UserDetails {
     public void setProvince(String province) {
         this.province = province;
     }
-
-    
 }

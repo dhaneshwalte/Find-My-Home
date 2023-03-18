@@ -1,6 +1,6 @@
 package com.project.group17.prefValues.service;
 
-import com.project.group17.prefValues.repository.PrefValuesRepository;
+import com.project.group17.prefValues.Repository.PrefValuesRepository;
 import com.project.group17.prefValues.entity.PrefValuesEntity;
 import com.project.group17.prefValues.mapper.PrefValuesMapper;
 import com.project.group17.prefValues.model.PrefValueSaveReq;

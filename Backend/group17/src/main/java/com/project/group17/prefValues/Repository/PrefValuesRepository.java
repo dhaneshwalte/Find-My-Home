@@ -1,4 +1,4 @@
-package com.project.group17.prefValues.repository;
+package com.project.group17.prefValues.Repository;
 
 import com.project.group17.prefValues.entity.PrefValuesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
