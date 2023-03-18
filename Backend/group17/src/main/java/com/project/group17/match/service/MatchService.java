@@ -31,7 +31,6 @@ public class MatchService {
         for (PrefValuesEntity prefValueEntity : prefValuesEntities) {
             String prefName = prefValueEntity.getPrefName().getName();
             String prefValue = prefValueEntity.getPrefOption().getOptionName();
-            System.out.println(prefValue);
             User user = prefValueEntity.getUser();
             if (userPreferences.containsKey(user)) {
                 userPreferences.get(user).put(prefName, prefValue);
@@ -65,13 +64,16 @@ public class MatchService {
         principalPrefs.put("firstName", user.getFirstname());
         principalPrefs.put("lastName", user.getLastname());
         principalPrefs.put("email", user.getEmail());
+        principalPrefs.put("gender", user.getGender());
+        principalPrefs.put("age", user.getAge());
+        principalPrefs.put("phoneNumber", user.getPhoneNumber());
+        principalPrefs.put("streetAddress", user.getStreetAddress());
         principalPrefs.put("city", user.getCity());
         principalPrefs.put("province", user.getProvince());
         principalPrefs.put("profilePicBase64", user.getProfilePicBase64());
         return principalPrefs;
     }
-
-    public Map<User, Map<String, String>> getRoommateList(User user) {
+    public List<Map<String, String>> getRoommateList(User user){
         Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
         Map<User, Map<String, String>> userPrefsExludePrincipal = new HashMap<>();
         Map<String, String> principalPrefs = null;

@@ -16,8 +16,14 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import { getUserDetails, saveUserDetails } from '../../services/UserProfilePageService';
+<<<<<<< Updated upstream
 import { Button, InputNumber } from 'antd';
 import { BrowserRouter, redirect, Route, Routes, useNavigate } from 'react-router-dom';
+=======
+import { Button, Input, InputNumber } from 'antd';
+import { BrowserRouter, redirect, Route, Routes, useNavigate } from 'react-router-dom';
+import "./profile.css";
+>>>>>>> Stashed changes
 
 
 const UserDetails = () => {
@@ -62,11 +68,20 @@ const fullPrefListButton = () =>{
 }
 
 const [editFlag, setEditFlag] = useState(false);
+<<<<<<< Updated upstream
 const [editUserDetails, setEditUserDetails] = useState(getUserDetails);
 
 const handleEditedUserDetails = (e) => {
   console.log("handle function called");
   }
+=======
+const [editUserDetails, setEditUserDetails] = useState({});
+
+
+const handleEditedUserDetails = (e) => {
+  console.log("handle function called");
+}
+>>>>>>> Stashed changes
 
 const editClick = () => {
   setEditFlag(true);
@@ -85,8 +100,19 @@ const saveClick = () => {
     "province" : document.getElementById("province").textContent
   }
   )
+<<<<<<< Updated upstream
   saveUserDetails(editUserDetails)
 }
+=======
+}
+useEffect( ()=>{
+  console.log(editUserDetails);
+  if(Object.keys(editUserDetails).length !== 0){
+    saveUserDetails(editUserDetails);
+    console.log(editUserDetails);
+  }
+} ,[editUserDetails]);
+>>>>>>> Stashed changes
 
 const cancelClick = () => {
   setEditFlag(false);
@@ -177,7 +203,10 @@ const renderprofilePage = () => {
                     <MDBCardText id='firstname'
                               className="text-muted"
                               contentEditable={editFlag}
+<<<<<<< Updated upstream
                               // onInput={handleEditedUserDetails}
+=======
+>>>>>>> Stashed changes
                               onChange={handleEditedUserDetails}
                               suppressContentEditableWarning={true}
                     >{userDetails.firstName}</MDBCardText>
@@ -190,6 +219,7 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id='lastname'
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
@@ -213,6 +243,15 @@ const renderprofilePage = () => {
                     > {userDetails.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow> */}
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}
+                    > {userDetails.lastName}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+>>>>>>> Stashed changes
                 <hr/>
                 <MDBRow>
                   <MDBCol sm="3">
@@ -220,12 +259,20 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id = "age"
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
                     >22</MDBCardText>
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}                
+                    >{userDetails.age}</MDBCardText>
+>>>>>>> Stashed changes
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -235,11 +282,18 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id="gender"
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}                      
+>>>>>>> Stashed changes
                     >{ userDetails.Gender}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -250,11 +304,18 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id= "email"
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}                     
+>>>>>>> Stashed changes
                     >{userDetails.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -265,12 +326,20 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id = "phone"
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onInput={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
                     >9029941286</MDBCardText>
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}                   
+                    >{userDetails.phoneNumber}</MDBCardText>
+>>>>>>> Stashed changes
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -280,12 +349,20 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id = "streetAddress"
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
                     >1920, Gaston Road</MDBCardText>
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}                      
+                    >{userDetails.streetAddress}</MDBCardText>
+>>>>>>> Stashed changes
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -295,11 +372,18 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id = "city"
+<<<<<<< Updated upstream
                               className="text-muted"
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
+=======
+                                className="text-muted"
+                                contentEditable={editFlag}
+                                onChange={handleEditedUserDetails}
+                                suppressContentEditableWarning={true}                    
+>>>>>>> Stashed changes
                     >{userDetails.city}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -310,11 +394,18 @@ const renderprofilePage = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText id = "province"
+<<<<<<< Updated upstream
                               className="text-muted" 
                               contentEditable={editFlag}
                               onClick={handleEditedUserDetails}
                               // onBlur={saveUserDetails}
                               suppressContentEditableWarning={true}                    
+=======
+                                  className="text-muted"
+                                  contentEditable={editFlag}
+                                  onChange={handleEditedUserDetails}
+                                  suppressContentEditableWarning={true}                    
+>>>>>>> Stashed changes
                     > {userDetails.province}</MDBCardText>
                   </MDBCol>
                 </MDBRow>

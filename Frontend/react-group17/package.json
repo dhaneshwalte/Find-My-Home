@@ -13,6 +13,7 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
+    "bulma": "0.7.2",
     "mdb-react-ui-kit": "5.1.0"
   },
   "scripts": {

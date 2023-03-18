@@ -67,6 +67,18 @@ public class UserUpdateRequest {
         return phoneNumber;
     }
 
-
-    
+    @Override
+    public String toString() {
+        return "UserUpdateRequest{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", province='" + province + '\'' +
+                ", streetAddress='" + streetAddress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age='" + age + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

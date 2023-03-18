@@ -3,6 +3,8 @@ package com.project.group17.profilepage.controller;
 
 import com.fasterxml.jackson.databind.deser.std.MapEntryDeserializer;
 import com.project.group17.match.service.MatchService;
+
+import com.project.group17.profilepage.service.ProfileService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.service.UserService;
 
@@ -28,12 +30,12 @@ public class ProfileController {
     }
 
     @Autowired
-    private UserService userService;
+    private ProfileService profileService;
     @CrossOrigin
     @PostMapping("/save")
     public String saveEditUserDetails(@RequestBody UserUpdateRequest updatedUser){
         User principleUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userService.saveEditUserDetails(updatedUser, principleUser);
+        profileService.saveEditUserDetails(updatedUser, principleUser);
         return "SUCCESS";
     }
 
