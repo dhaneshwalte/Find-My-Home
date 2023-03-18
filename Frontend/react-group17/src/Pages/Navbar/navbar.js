@@ -1,23 +1,23 @@
-import { Layout, Menu, theme } from 'antd';
-import { useEffect, useState } from 'react';
+import { Layout, Menu } from 'antd';
+// import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import {checkUserLogin} from '../../services/AuthenticationService';
-const { Header, Content, Footer } = Layout;
+// import {checkUserLogin} from '../../services/AuthenticationService';
+const { Header } = Layout;
 const Navbar = () => {
   console.log(window.location.pathname);
 
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
- const [loading, setloading] = useState(true);
-  useEffect(() => {
-    checkUserLogin()
-    .then(response => {
-        setloading(false);
-    })
-    .catch(reponse => {
-    })
-  })
+  // const {
+  //   token: { colorBgContainer },
+  // } = theme.useToken();
+//  const [loading, setloading] = useState(true);
+  // useEffect(() => {
+  //   checkUserLogin()
+  //   .then(response => {
+  //       setloading(false);
+  //   })
+  //   .catch(reponse => {
+  //   })
+  // })
   const navbar = () => {
     return(
         <Layout>
