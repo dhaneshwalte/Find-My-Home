@@ -1,4 +1,4 @@
-import React, { useState, useEffect, setRedirect, onClick, setContent, content} from 'react';
+import React, { useState, useEffect} from 'react';
 
 import {
   MDBCol,
@@ -11,13 +11,10 @@ import {
   MDBBtn,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import { getUserDetails, saveUserDetails } from '../../services/UserProfilePageService';
-import { Button, Input, InputNumber } from 'antd';
-import { BrowserRouter, redirect, Route, Routes, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import "./profile.css";
 
 
@@ -38,13 +35,13 @@ const roommatePrefButton = () =>{
     navigate('/user-preference');
 }
 
-const propertyPrefButton = () =>{
-  navigate('/user-preference');
-}
+// const propertyPrefButton = () =>{
+//   navigate('/user-preference');
+// }
 
-const userDetailsPrefButton = () =>{
-  navigate('/user-preference');
-}
+// const userDetailsPrefButton = () =>{
+//   navigate('/user-preference');
+// }
 
 const housesPrefButton = () =>{
   navigate('/user-preference');
@@ -138,7 +135,7 @@ const renderprofilePage = () => {
               <MDBCardBody className="text-center">
                 <p className="text-muted mb-4">{userDetails.username} Preferences</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Button onClick={groupsPrefButton}
+                  <Button onClick={fullPrefListButton}
                   >show Preferences</Button>
                 </div>
               </MDBCardBody>
