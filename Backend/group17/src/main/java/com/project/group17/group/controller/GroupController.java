@@ -4,6 +4,7 @@ import com.project.group17.group.repository.GroupRepository;
 import com.project.group17.match.service.MatchService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,7 +30,12 @@ public class GroupController {
     @GetMapping("/my-group")
     public ResponseEntity<List<Map<String, String>>> getGroupMembers(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Integer> groupMembers = groupRepository.getUsersByGroupId(groupRepository.getGroupId(user.getId()));
+        List<Integer> groupMembers = null;
+        try{
+            groupMembers = groupRepository.getUsersByGroupId(groupRepository.getGroupId(user.getId()));
+        }catch (AopInvocationException aopInvocationException){
+            return null;
+        }
         groupMembers.remove(user.getId());
         List<User> myGroupMembers = new ArrayList<>();
         for(int i = 0; i<groupMembers.size(); i++){
