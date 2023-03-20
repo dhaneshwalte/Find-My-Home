@@ -60,8 +60,20 @@ public class MatchController {
         return ResponseEntity.ok(matchService.getRoommateList(user));
     }
 
+    // @GetMapping("/likes")
+    // public ResponseEntity<List<User>> likes() {
+    //     User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    //     List<MatchEntity> entities = null;
+    //     entities = matchRepository.findByUser1(currentUser);
+    //     List<User> likes = new ArrayList<>();
+    //     for (int i = 0; i < entities.size(); i++) {
+    //         likes.add(entities.get(i).getUser2());
+    //     }
+    //     return ResponseEntity.ok(likes);
+    // }
+
     @GetMapping("/likes")
-    public ResponseEntity<List<User>> likes() {
+    public ResponseEntity<List<Map<String, String>>> likes() {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<MatchEntity> entities = null;
         entities = matchRepository.findByUser1(currentUser);
@@ -69,7 +81,10 @@ public class MatchController {
         for (int i = 0; i < entities.size(); i++) {
             likes.add(entities.get(i).getUser2());
         }
-        return ResponseEntity.ok(likes);
+        for(User u: likes){
+            System.out.println(u);
+        }
+        return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(likes));
     }
 
 }
