@@ -12,7 +12,7 @@ import {
   MDBBreadcrumbItem,
 } from 'mdb-react-ui-kit';
 import { getUserDetails, saveUserDetails } from '../../services/UserProfilePageService';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import "./profile.css";
 
@@ -31,12 +31,12 @@ const UserDetails = () => {
 
 const navigate = useNavigate();
 const roommatePrefButton = () =>{
-    navigate('/user-preference');
+    navigate('/edit-user-preference');
 }
 
-// const propertyPrefButton = () =>{
-//   navigate('/user-preference');
-// }
+const propertyPrefButton = () =>{
+  navigate('/edit-user-preference');
+}
 
 // const userDetailsPrefButton = () =>{
 //   navigate('/user-preference');
@@ -91,6 +91,8 @@ useEffect( ()=>{
   if(Object.keys(editUserDetails).length !== 0){
     saveUserDetails(editUserDetails);
     console.log(editUserDetails);
+    message.success("Preferences saved successfully");
+    setEditFlag(false);
   }
 } ,[editUserDetails]);
 
@@ -125,7 +127,7 @@ const renderprofilePage = () => {
                 <p className="text-muted mb-4">{userDetails.firstName}</p>
                 <p className="text-muted mb-4">{userDetails.city}, {userDetails.province}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Button >edit</Button>
+                  {/* <Button >edit</Button> */}
                 </div>
               </MDBCardBody>
             </MDBCard>
@@ -333,7 +335,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Property Type: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>appartment</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Property Type"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -343,7 +345,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Location: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>location</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Location}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -354,7 +356,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Fursnished: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>Semi</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Furnished}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -362,10 +364,10 @@ const renderprofilePage = () => {
                     <hr />
                     <MDBRow>
                       <MDBCol sm="5">
-                        <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Lease Length: </MDBCardText>
+                        <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Lease Type: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>1 year</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Lease Type"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -376,17 +378,17 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Move in Date: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>ASAP</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Move-in Date"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
                     <hr />
                     <MDBRow>
                       <MDBCol sm="5">
-                        <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Budget: </MDBCardText>
+                        <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Over All Rent: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>2000$</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Overall Rent"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -396,7 +398,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>BedRooms: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>2</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Number of Rooms"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -406,11 +408,11 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Bathrooms: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>1</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Number of Bathrooms"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <hr/>
-                    <Button>edit</Button>
+                    <Button onClick={propertyPrefButton}>edit</Button>
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -426,7 +428,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Gender: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>Male</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Gender}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -436,7 +438,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Pets: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>No</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Pets Policy"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -447,7 +449,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Meal: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>Non Veg</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Meal}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -455,10 +457,10 @@ const renderprofilePage = () => {
                     <hr />
                     <MDBRow>
                       <MDBCol sm="5">
-                        <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Rent Budget: </MDBCardText>
+                        <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Rent Contribution: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>1000$</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Rent Contribution"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -469,7 +471,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Max Roommates: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>4</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails["Max Roommates"]}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -479,7 +481,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Drinking: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>No</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Drinker}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -489,7 +491,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Smoker: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>No</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Smoker}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
 
@@ -499,7 +501,7 @@ const renderprofilePage = () => {
                         <MDBCardText className="mb-1" style={{ fontSize: '.85rem' }}>Occupation: </MDBCardText>
                       </MDBCol>
                       <MDBCol sm="6">
-                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>Student</MDBCardText>
+                        <MDBCardText className="text-muted" style={{ fontSize: '.85rem' }}>{userDetails.Occupation}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <hr/>
