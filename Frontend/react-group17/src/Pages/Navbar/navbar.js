@@ -46,7 +46,7 @@ const Navbar = () => {
           style={{
             gap: '50px'}}
         >
-            <NavLink to="">
+            <NavLink to="/profilepage">
                 Home
             </NavLink>
 
@@ -62,12 +62,16 @@ const Navbar = () => {
                 Groups
             </NavLink>
 
-            <NavLink to="/user-preference">
+            <NavLink to="/edit-user-preference">
                 Preferences
             </NavLink>
 
             <NavLink to="/profilepage">
                 Profile
+            </NavLink>
+            
+            <NavLink to="/profilepage">
+                Sign Out
             </NavLink>
         </Menu>
       </Header>
