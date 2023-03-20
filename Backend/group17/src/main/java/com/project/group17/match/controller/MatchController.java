@@ -72,6 +72,7 @@ public class MatchController {
     //     return ResponseEntity.ok(likes);
     // }
 
+    @CrossOrigin
     @GetMapping("/likes")
     public ResponseEntity<List<Map<String, String>>> likes() {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
