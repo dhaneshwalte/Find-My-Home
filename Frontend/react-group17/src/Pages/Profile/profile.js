@@ -93,6 +93,7 @@ useEffect( ()=>{
     console.log(editUserDetails);
     message.success("Preferences saved successfully");
     setEditFlag(false);
+    window.location.reload();
   }
 } ,[editUserDetails]);
 
