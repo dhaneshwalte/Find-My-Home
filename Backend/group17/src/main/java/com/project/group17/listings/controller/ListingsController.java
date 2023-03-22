@@ -12,11 +12,12 @@ import com.project.group17.listings.entity.ListingsEntity;
 import com.project.group17.listings.service.ListingsService;
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+
 public class ListingsController {
     @Autowired
     private ListingsService listingsService;
-
+    
+    @CrossOrigin
     @PostMapping("/listing")
     public String add(@RequestBody ListingsEntity listing)
     {
@@ -24,6 +25,7 @@ public class ListingsController {
         return "New listing is added";
 
     }
+    @CrossOrigin
     @GetMapping("/getAll")
     public List<ListingsEntity> list()
     {
