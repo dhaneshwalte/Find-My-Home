@@ -2,6 +2,9 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { saveListing } from "../../services/ListingsService";
 import { fetchUserData } from "../../services/AuthenticationService";
+import CircleUpload from '../../components/CircleUpload';
+import CircleUploadListing from '../../components/CircleUploadListing';
+
 import {
   Button,
   Form,
@@ -47,12 +50,9 @@ const Listing = () => {
     const[utilities,setUtilities] = useState('[]');
     const[rent,setRent] = useState('');
     const[otherDetails, setOtherDetails] = useState('');  
+    const[pic1Base64, setPic1Base64] = useState('');
+    const[pic2Base64, setPic2Base64] = useState('');
     
-
-    // useEffect(() => {
-    //     fetchListingDetails();
-    //   }, []);
-   // const [form] = Form.useForm(); 
 
     function handleCheck (e) { 
       const value = e.target.value;
@@ -67,16 +67,25 @@ const Listing = () => {
       }
     }
 
+    const handleBase64 = (data) => {
+        console.log(data);
+        setPic1Base64(data);
+        
+    }
+
+    const handle2Base64 = (data) => {
+        console.log(data);
+        setPic2Base64(data);
+        
+    }
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        const listing = { type, address, utilities, rent, otherDetails};
-
-        saveListing({"type": type, "address": address, "utilities": utilities, "rent": rent, "otherDetails": otherDetails})
+    //    const listing = { type, address, rent, otherDetails, pic1Base64};
+        e.pic1Base64 = pic1Base64;
+        saveListing({"type": type, "address": address, "rent": rent, "otherDetails": otherDetails, "profilePicBase64":pic1Base64, "secondProfilePicBase64":pic2Base64})
         .then((response)=>{
             console.log(response);
-            localStorage.setItem('USER_KEY',response.data.token);
-           // setRedirect(true);
-            //saveListing(response.data)
         })
         .catch(err => console.log(err));
   };
@@ -123,7 +132,7 @@ const Listing = () => {
         </Form.Item>
 
 
-        <Form.Item 
+        {/* <Form.Item 
         name = "Utilities"
         label ="Utilities">
             <input type = "checkbox" value = "Hydro" name = "Utilities" onChange={handleCheck}/> <span> Hydro </span> <br/>
@@ -131,7 +140,7 @@ const Listing = () => {
             <input type = "checkbox" value = "Water" name = "Utilities" onChange={handleCheck}/> <span> Water </span> <br/>
             <input type = "checkbox" value = "Parking" name = "Utilities" onChange={handleCheck}/> <span> Parking </span> <br/>
             <input type = "checkbox" value = "Internet" name = "Utilities" onChange={handleCheck}/> <span> Internet </span> <br/>
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
             onChange={(e) => setRent(e.target.value)}
@@ -151,6 +160,21 @@ const Listing = () => {
         >
             <Input />
         </Form.Item>
+
+        <Form.Item
+                    name="Pic1Base64"
+                    label="Listing Picture 1"
+                >
+                    <CircleUpload handleBase64={handleBase64}></CircleUpload>
+        </Form.Item>
+
+        <Form.Item
+                    name="Pic2Base64"
+                    label="Listing Picture 2"
+                >
+                    <CircleUploadListing handle2Base64={handle2Base64}></CircleUploadListing>
+        </Form.Item>
+
 
         <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit"  onClick = {onSubmitHandler}>

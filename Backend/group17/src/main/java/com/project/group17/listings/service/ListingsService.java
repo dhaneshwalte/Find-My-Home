@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 public interface ListingsService {
     public ListingsEntity saveListings(ListingsEntity listing);
-
-
     public List<ListingsEntity> getAllListings();
 
 }
