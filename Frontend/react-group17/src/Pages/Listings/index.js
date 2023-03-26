@@ -47,7 +47,7 @@ const tailFormItemLayout = {
 const Listing = () => {
     const[type,setType] = useState('');
     const[address,setAddress] = useState('');
-    const[utilities,setUtilities] = useState('[]');
+    const[utilities,setUtilities] = useState([]);
     const[rent,setRent] = useState('');
     const[otherDetails, setOtherDetails] = useState('');  
     const[pic1Base64, setPic1Base64] = useState('');
@@ -65,6 +65,8 @@ const Listing = () => {
       } else {
         setUtilities(utilities.filter( (e) => (e !== value) ))
       }
+
+      console.log(utilities);
     }
 
     const handleBase64 = (data) => {
@@ -83,7 +85,7 @@ const Listing = () => {
         e.preventDefault();
     //    const listing = { type, address, rent, otherDetails, pic1Base64};
         e.pic1Base64 = pic1Base64;
-        saveListing({"type": type, "address": address, "rent": rent, "otherDetails": otherDetails, "profilePicBase64":pic1Base64, "secondProfilePicBase64":pic2Base64})
+        saveListing({"type": type, "address": address, "utilities": JSON.stringify(utilities), "rent": rent, "details": otherDetails, "profilePicBase64":pic1Base64, "secondProfilePicBase64":pic2Base64})
         .then((response)=>{
             console.log(response);
         })
@@ -132,15 +134,15 @@ const Listing = () => {
         </Form.Item>
 
 
-        {/* <Form.Item 
-        name = "Utilities"
+        <Form.Item 
+        name = "utilities"
         label ="Utilities">
-            <input type = "checkbox" value = "Hydro" name = "Utilities" onChange={handleCheck}/> <span> Hydro </span> <br/>
-            <input type = "checkbox" value = "Heat" name = "Utilities" onChange={handleCheck}/> <span> Heat </span> <br/>
-            <input type = "checkbox" value = "Water" name = "Utilities" onChange={handleCheck}/> <span> Water </span> <br/>
-            <input type = "checkbox" value = "Parking" name = "Utilities" onChange={handleCheck}/> <span> Parking </span> <br/>
-            <input type = "checkbox" value = "Internet" name = "Utilities" onChange={handleCheck}/> <span> Internet </span> <br/>
-        </Form.Item> */}
+            <input type = "checkbox" value = "Hydro" name = "utilities" onChange={handleCheck} /> <span> Hydro </span> <br/>
+            <input type = "checkbox" value = "Heat" name = "utilities" onChange={handleCheck}/> <span> Heat </span> <br/>
+            <input type = "checkbox" value = "Water" name = "utilities" onChange={handleCheck}/> <span> Water </span> <br/>
+            <input type = "checkbox" value = "Parking" name = "utilities" onChange={handleCheck}/> <span> Parking </span> <br/>
+            <input type = "checkbox" value = "Internet" name = "utilities" onChange={handleCheck}/> <span> Internet </span> <br/>
+        </Form.Item>
 
         <Form.Item
             onChange={(e) => setRent(e.target.value)}
@@ -182,7 +184,6 @@ const Listing = () => {
                 </Button>
         </Form.Item>       
         </Card>
-   
     </Form>
 );
 }

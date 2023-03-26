@@ -49,7 +49,7 @@ function ListingDetails() {
                   <th scope="col">Rent</th>
                   <th scope="col">OtherDetails</th>
                   <th scope="col">Image1</th>
-                  <th scope="col">Image1</th>
+                  <th scope="col">Image2</th>
                 </tr>
               </thead>
               
@@ -62,14 +62,13 @@ function ListingDetails() {
                     <td>{listi.listingId}</td>
                     <td>{listi.type}</td>
                     <td>{listi.address}</td>
-                    <td>{listi.utilities}</td>
+                    <td>{JSON.parse(listi.utilities)? JSON.parse(listi.utilities)?.join(', '):null}</td>
                     <td>{listi.rent}</td>
                     <td>{listi.details}</td>
-                    <td><img src={listi.profilePicBase64} alt="image1" style={{width: "150px", height: "150px"} }/>
-                    </td>
-                    <td><img src={listi.secondProfilePicBase64} alt="image2" style={{width: "150px", height: "150px"} }/></td>
+                    <td>{listi.profilePicBase64 && (<img src={listi.profilePicBase64} alt="image1" style={{width: "150px", height: "150px"}}/>)}</td>
+                    <td>{listi.secondProfilePicBase64 && (<img src={listi.secondProfilePicBase64} alt="image1" style={{width: "150px", height: "150px"}}/>)}</td>
                     <td>
-                    <button onClick={() => handleClick(listi.listingId)}>more</button>
+                    <button onClick={() => handleClick(listi.listingId)}>like</button>
                     </td>
                     </tr>
                 ))}
