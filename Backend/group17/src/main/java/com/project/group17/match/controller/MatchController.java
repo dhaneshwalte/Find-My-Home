@@ -45,7 +45,6 @@ public class MatchController {
         List<MatchEntity> matches = null;
         matches = matchRepository.findByUser1(likee);
         for (int i = 0; i < matches.size(); i++) {
-            System.out.println(matches.get(i));
             if (matches.get(i).getUser2().getId().equals(liker.getId())){
                 groupService.saveGroup(liker, likee);
                 break;

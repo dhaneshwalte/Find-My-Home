@@ -31,7 +31,10 @@ public class MatchService {
         Map<User, Map<String, String>> userPreferences = new HashMap<>();
         for (PrefValuesEntity prefValueEntity : prefValuesEntities) {
             String prefName = prefValueEntity.getPrefName().getName();
-            String prefValue = prefValueEntity.getPrefOption().getOption();
+            String prefValue = "";
+            if (prefValueEntity.getPrefOption() != null){
+            prefValue = prefValueEntity.getPrefOption().getOption();
+            }
             User user = prefValueEntity.getUser();
             if (userPreferences.containsKey(user)) {
                 userPreferences.get(user).put(prefName, prefValue);

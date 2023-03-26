@@ -14,4 +14,5 @@ public interface PrefValuesRepository extends JpaRepository<PrefValuesEntity, Lo
     Optional<PrefValuesEntity> findByUserAndPrefName(Integer userId, Long prefNameId);
 
     List<Optional<PrefValuesEntity>> getAllByUserId(Integer userId);
+
 }

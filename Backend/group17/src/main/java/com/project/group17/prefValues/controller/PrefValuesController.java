@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/preferences")public class PrefValuesController {
+@RequestMapping("/api/preferences")
+public class PrefValuesController {
     @Autowired
     PrefValuesService service;
     @CrossOrigin

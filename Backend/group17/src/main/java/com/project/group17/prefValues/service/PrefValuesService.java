@@ -40,7 +40,6 @@ public class PrefValuesService {
                     if (pref.isPresent())
                         prefRes.add(PrefValuesMapper.entittyToGetPrefCRes(pref.get()));
                 }
-            System.out.println("prefRes" + prefRes);
             return prefRes;
         } catch (Exception e) {
             System.out.println(e.getMessage());
