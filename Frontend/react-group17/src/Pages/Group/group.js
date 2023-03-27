@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
-import { getRoommateList } from "../../services/MatchService";
+// import { useState } from "react";
+// import { getRoommateList } from "../../services/MatchService";
 import GroupMatchEntry from "../../components/GroupMatchEntry/GroupMatchEntry";
 import './group.css'
 
