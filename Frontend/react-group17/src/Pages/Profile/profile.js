@@ -29,6 +29,8 @@ const UserDetails = () => {
       .catch(err => console.log(err));
 }, []);
 
+console.log(userDetails);
+
 const navigate = useNavigate();
 const roommatePrefButton = () =>{
     navigate('/edit-user-preference');
@@ -87,14 +89,15 @@ const saveClick = () => {
 }
 
 useEffect( ()=>{
-  console.log(editUserDetails);
+  //console.log(editUserDetails);
   if(Object.keys(editUserDetails).length !== 0){
     saveUserDetails(editUserDetails);
-    console.log(editUserDetails);
     message.success("Preferences saved successfully");
+    setUserDetails({...userDetails , ...editUserDetails});
+    //console.log(userDetails);
     setEditFlag(false);
-    window.location.reload();
   }
+// eslint-disable-next-line
 } ,[editUserDetails]);
 
 const cancelClick = () => {
