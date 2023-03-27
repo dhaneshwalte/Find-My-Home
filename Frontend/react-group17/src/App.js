@@ -6,6 +6,7 @@ import Register from './Pages/Register';
 import UserPreference from './Pages/UserPreferences';
 import Match from './Pages/Match/Match';
 import { MyLikes } from './Pages/MyLikes/MyLikes';
+import { MyGroup } from './Pages/MyGroup/MyGroup';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/user-preference" element={<UserPreference />} />
           <Route path="/match" element={<Match />} />
           <Route path="/my-likes" element={<MyLikes />} />
+          <Route path="/my-group" element={<MyGroup />} />
         </Routes>
       </BrowserRouter>
     </div>

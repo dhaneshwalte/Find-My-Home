@@ -35,3 +35,13 @@ export const getMyLikes=()=>{
         }
     })
 }
+
+export const getMyGroupMembers=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-my-group`,
+        'headers':{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
