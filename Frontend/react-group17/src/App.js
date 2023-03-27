@@ -8,8 +8,7 @@ import Match from './Pages/Match/Match';
 import { MyLikes } from './Pages/MyLikes/MyLikes';
 import { MyGroup } from './Pages/MyGroup/MyGroup';
 import ProfilePage from './Pages/Profile/profile';
-import Match from './Pages/Match/Match'
-import Navbar from './Pages/Navbar/navbar'
+import Navbar from './Pages/Navbar/navbar';
 import GroupMatch from './Pages/Group/group';
 
 function App() {
