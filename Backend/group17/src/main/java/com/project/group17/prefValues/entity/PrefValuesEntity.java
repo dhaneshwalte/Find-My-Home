@@ -17,8 +17,8 @@ public class PrefValuesEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pref_option_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "pref_option_id", nullable = true)
     private PrefOptionsEntity prefOption;
 
     @ManyToOne(fetch = FetchType.LAZY)

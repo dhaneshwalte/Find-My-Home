@@ -18,8 +18,19 @@ public class PrefNamesEntity {
 
     private String type;
 
+    private Boolean isRequired;
+
     @OneToMany(mappedBy = "prefName")
     private List<PrefOptionsEntity> options;
+
+
+    public Boolean getIs_required() {
+        return isRequired;
+    }
+
+    public void setIs_required(Boolean is_required) {
+        this.isRequired = is_required;
+    }
 
     public Long getPrefId() {
         return prefId;

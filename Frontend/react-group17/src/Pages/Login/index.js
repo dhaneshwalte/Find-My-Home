@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { userLogin } from "../../services/AuthenticationService";
 import { useNavigate } from 'react-router-dom'
+import { fetchUserPrefences } from "../../services/UserPrefrenceService";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,10 +12,17 @@ const Login = () => {
     const submit = (e) => {
         e.preventDefault();
         userLogin({"email": email, "password": password})
-            .then((response)=>{
-                console.log(response);
+            .then(async (response) =>{
                 localStorage.setItem('USER_KEY',response.data.token);
-                navigate("/user-preference");
+                const res = await fetchUserPrefences()
+                
+                if(res.data.length === 0){
+                    navigate("/user-preference");
+                }
+                else{
+                    navigate("/");
+                }
+                
             })
             .catch(err => console.log(err));
     }

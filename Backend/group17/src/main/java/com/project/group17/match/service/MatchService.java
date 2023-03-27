@@ -33,7 +33,7 @@ public class MatchService {
             String prefName = prefValueEntity.getPrefName().getName();
             String prefValue = "";
             if (prefValueEntity.getPrefOption() != null){
-                prefValue = prefValueEntity.getPrefOption().getOptionName();
+                prefValue = prefValueEntity.getPrefOption().getOption();
             }
             User user = prefValueEntity.getUser();
             if (userPreferences.containsKey(user)) {
@@ -51,7 +51,34 @@ public class MatchService {
         return userPreferences;
     }
 
-    public List<Map<String, String>> getRoommateList(User user) {
+    public Map<String, String> getUserInfoAndPreferences(User user) {
+        Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
+        Map<String, String> principalPrefs = null;
+        for (Map.Entry<User, Map<String, String>> entry : userPrefs.entrySet()) {
+            // .equals() wont work for custom objects, using ID comparison
+            if (user.getId().equals(entry.getKey().getId())) {
+                principalPrefs = entry.getValue();
+            }
+        }
+        if (principalPrefs == null) {
+            System.out.println("User not found");
+            return null;
+        }
+        principalPrefs.put("id", user.getId() + "");
+        principalPrefs.put("firstName", user.getFirstname());
+        principalPrefs.put("lastName", user.getLastname());
+        principalPrefs.put("email", user.getEmail());
+        principalPrefs.put("gender", user.getGender());
+        principalPrefs.put("age", user.getAge());
+        principalPrefs.put("phoneNumber", user.getPhoneNumber());
+        principalPrefs.put("streetAddress", user.getStreetAddress());
+        principalPrefs.put("city", user.getCity());
+        principalPrefs.put("province", user.getProvince());
+        principalPrefs.put("profilePicBase64", user.getProfilePicBase64());
+        return principalPrefs;
+    }
+    
+    public List<Map<String, String>> getRoommateList(User user){
         Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
         Map<User, Map<String, String>> userPrefsExludePrincipal = new HashMap<>();
         Map<String, String> principalPrefs = null;

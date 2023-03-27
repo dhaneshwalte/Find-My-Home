@@ -5,6 +5,11 @@ import com.project.group17.match.service.MatchService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
 import org.springframework.aop.AopInvocationException;
+
+import com.project.group17.group.entity.GroupEntity;
+import com.project.group17.group.entity.GroupPojo;
+import com.project.group17.group.service.GroupService;
+import com.project.group17.prefValues.service.PrefValuesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +32,8 @@ public class GroupController {
     UserRepository userRepository;
     @Autowired
     MatchService matchService;
+    @Autowired
+    GroupService service;
     @GetMapping("/my-group")
     public ResponseEntity<List<Map<String, String>>> getGroupMembers(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -43,5 +50,11 @@ public class GroupController {
             optionalUser.ifPresent(myGroupMembers::add);
         }
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(myGroupMembers));
+    }
+
+    @GetMapping("/get-all-groups")
+    public ResponseEntity<List<GroupPojo>> getGroups() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(service.getAllGroups(user));
     }
 }

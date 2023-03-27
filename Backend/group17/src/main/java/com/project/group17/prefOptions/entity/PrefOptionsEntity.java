@@ -6,10 +6,11 @@ import com.project.group17.prefNames.entity.PrefNamesEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pref_options")public class PrefOptionsEntity {
+@Table(name = "pref_options")
+public class PrefOptionsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "`id`")
+    @Column(name = "id")
     private Long prefId;
 
     @ManyToOne()
@@ -17,7 +18,7 @@ import jakarta.persistence.*;
     private PrefNamesEntity prefName;
 
     @Column(nullable = false)
-    private String optionName;
+    private String option_name;
 
     public Long getPrefId() {
         return prefId;
@@ -36,11 +37,11 @@ import jakarta.persistence.*;
         this.prefName = prefName;
     }
 
-    public String getOptionName() {
-        return optionName;
+    public String getOption() {
+        return option_name;
     }
 
-    public void setOptionName(String optionName) {
-        this.optionName = optionName;
+    public void setOption(String option) {
+        this.option_name = option;
     }
 }
