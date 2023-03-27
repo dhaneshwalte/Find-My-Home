@@ -19,7 +19,7 @@ export const getToken=()=>{
 export const getGroupsList=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-all-matches`,
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/`,
         'headers':{
             'Authorization':'Bearer '+getToken()
         }
