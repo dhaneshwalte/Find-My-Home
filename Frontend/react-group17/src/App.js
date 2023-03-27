@@ -6,6 +6,7 @@ import Register from './Pages/Register';
 import UserPreference from './Pages/UserPreferences';
 import Match from './Pages/Match/Match';
 import { MyLikes } from './Pages/MyLikes/MyLikes';
+import RoommateRequests from './Pages/RoommateRequests/RoommateRequests';
 import { MyGroup } from './Pages/MyGroup/MyGroup';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/user-preference" element={<UserPreference />} />
           <Route path="/match" element={<Match />} />
           <Route path="/my-likes" element={<MyLikes />} />
+          <Route path="/roommate-requests" element={<RoommateRequests />} />
           <Route path="/my-group" element={<MyGroup />} />
         </Routes>
       </BrowserRouter>
