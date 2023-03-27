@@ -8,6 +8,7 @@ import ProfilePage from './Pages/Profile/profile';
 import Match from './Pages/Match/Match'
 import Navbar from './Pages/Navbar/navbar'
 import GroupMatch from './Pages/Group/group';
+import GroupPref from './Pages/GroupPref/GroupPref';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/match" element={<Match/>}/>
         <Route path="/profilepage" element={<ProfilePage/>}/>
         <Route path="/groups" element={<GroupMatch />}/>
+        <Route path="/groupuserspref" element={<GroupPref />}/>
 
         </Routes>
       </BrowserRouter>

@@ -17,14 +17,18 @@ const GroupMatchEntry = (props) => {
     const likeButtonHandler = () => {
         likeTextHandler("Processing..")
         const matchObject = {
+            "groupId": props.group.groupID
         }
         likeUser(matchObject)
             .then(response => {
                 console.log(response);
+                props.onDelete(props.group.groupID);
             }
             )
             .catch(err => {
                 likeTextHandler("Error");
+
+                console.log(props.group.groupID);
                 console.log(err);
             });
     }
