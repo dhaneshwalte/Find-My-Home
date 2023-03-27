@@ -33,7 +33,7 @@ public class MatchService {
             String prefName = prefValueEntity.getPrefName().getName();
             String prefValue = "";
             if (prefValueEntity.getPrefOption() != null){
-            prefValue = prefValueEntity.getPrefOption().getOption();
+                prefValue = prefValueEntity.getPrefOption().getOption();
             }
             User user = prefValueEntity.getUser();
             if (userPreferences.containsKey(user)) {
@@ -50,6 +50,7 @@ public class MatchService {
         }
         return userPreferences;
     }
+
     public Map<String, String> getUserInfoAndPreferences(User user) {
         Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
         Map<String, String> principalPrefs = null;
@@ -82,24 +83,24 @@ public class MatchService {
         Map<User, Map<String, String>> userPrefsExludePrincipal = new HashMap<>();
         Map<String, String> principalPrefs = null;
         System.out.println("-----------------------------");
-        for(Map.Entry<User, Map<String, String>> entry: userPrefs.entrySet()){
-            //.equals() wont work for custom objects, using ID comparison
-            if (user.getId().equals(entry.getKey().getId())){
+        for (Map.Entry<User, Map<String, String>> entry : userPrefs.entrySet()) {
+            // .equals() wont work for custom objects, using ID comparison
+            if (user.getId().equals(entry.getKey().getId())) {
                 principalPrefs = entry.getValue();
             } else {
                 userPrefsExludePrincipal.put(entry.getKey(), entry.getValue());
             }
         }
-        for(Map.Entry<User, Map<String, String>> entry: userPrefsExludePrincipal.entrySet()){
+        for (Map.Entry<User, Map<String, String>> entry : userPrefsExludePrincipal.entrySet()) {
             System.out.println(entry.getKey().getFirstname() + " " + entry.getKey().getId());
             entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
         }
         System.out.println(principalPrefs);
         List<Map<String, String>> userInfoAndPreferences = new ArrayList<>();
-        for(Map.Entry<User, Map<String, String>> entry: userPrefsExludePrincipal.entrySet()){
+        for (Map.Entry<User, Map<String, String>> entry : userPrefsExludePrincipal.entrySet()) {
             User u = entry.getKey();
-            entry.getValue().put("SimilarityScore", ""+getSimilarityScore(principalPrefs, entry.getValue()));
-            entry.getValue().put("id", u.getId()+"");
+            entry.getValue().put("SimilarityScore", "" + getSimilarityScore(principalPrefs, entry.getValue()));
+            entry.getValue().put("id", u.getId() + "");
             entry.getValue().put("firstName", u.getFirstname());
             entry.getValue().put("lastName", u.getLastname());
             entry.getValue().put("city", u.getCity());
@@ -108,6 +109,38 @@ public class MatchService {
             userInfoAndPreferences.add(entry.getValue());
         }
         return userInfoAndPreferences;
+    }
+
+    public Map<String, String> getUserInfoAndPreferences(User user) {
+        Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
+        Map<String, String> principalPrefs = null;
+        for (Map.Entry<User, Map<String, String>> entry : userPrefs.entrySet()) {
+            if (user.getId().equals(entry.getKey().getId())) {
+                principalPrefs = entry.getValue();
+            }
+        }
+        if (principalPrefs == null) {
+            System.out.println("User not found");
+            return null;
+        }
+        principalPrefs.put("id", user.getId() + "");
+        principalPrefs.put("firstName", user.getFirstname());
+        principalPrefs.put("lastName", user.getLastname());
+        principalPrefs.put("city", user.getCity());
+        principalPrefs.put("province", user.getProvince());
+        principalPrefs.put("profilePicBase64", user.getProfilePicBase64());
+        return principalPrefs;
+    }
+
+    public List<Map<String, String>> getAllUserInfoAndPreferences(List<User> users) {
+        List<Map<String, String>> allUserInfoAndPreferences = new ArrayList<>();
+        for(User user: users){
+            Map<String, String> userInfoAndPref = getUserInfoAndPreferences(user);
+            if (userInfoAndPref != null){
+                allUserInfoAndPreferences.add(userInfoAndPref);
+            }
+        }
+        return allUserInfoAndPreferences;
     }
 
     public double getSimilarityScore(Map<String, String> User1, Map<String, String> User2) {
