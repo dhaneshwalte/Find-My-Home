@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-// import { useEffect, useState } from 'react';
+import { location, localStorage } from 'react';
 import { NavLink } from 'react-router-dom';
 // import {checkUserLogin} from '../../services/AuthenticationService';
 const { Header } = Layout;
@@ -21,6 +21,7 @@ const Navbar = () => {
   const navbar = () => {
     const handleSignOut = () => {
       localStorage.removeItem("USER_KEY");
+      location.reload()
     }
     return(
         <Layout>
@@ -82,7 +83,7 @@ const Navbar = () => {
   );
   }
 
-  const checkRoutes = ["/","/login","/register"];
+  const checkRoutes = ["/login","/register"];
   const result = window.location.pathname;
   console.log(checkRoutes.includes(result));
   return (

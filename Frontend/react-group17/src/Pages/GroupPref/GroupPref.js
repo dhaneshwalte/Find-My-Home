@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GroupPrefEntry from "../../components/GroupPrefEntry/GroupPrefEntry";
 import { getGroupUserList } from "../../services/GroupService";
 
