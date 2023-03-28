@@ -13,6 +13,7 @@ public interface GroupRepository extends JpaRepository<GroupEntity, Long> {
 
     List<GroupEntity> findByUserId(Long userID);
 
+
     @Query(value = "SELECT max(total_groups) FROM groups", nativeQuery = true)
     int getMaxGroupCount();
 

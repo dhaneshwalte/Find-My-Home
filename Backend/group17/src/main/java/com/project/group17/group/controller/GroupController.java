@@ -60,7 +60,6 @@ public class GroupController {
             try{
                 matches = matchRepository.findByUser2(user);
                 for(int i = 0; i<matches.size();i++){
-                    System.out.println(matches.get(i).getUser1().getId());
                     myLikers.add(matches.get(i).getUser1());
                 }
             }catch (NullPointerException e){
