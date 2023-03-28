@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../MatchEntry/MatchEntry.css';
 import "bulma/css/bulma.css";
-import { likeUser } from "../../services/MatchService";
+import { likeGroup } from "../../services/GroupService";
 import { GroupMatchEntryItem } from "../GroupMatchEntryItem/GroupMatchEntryItem";
 
 const GroupMatchEntry = (props) => {
@@ -19,7 +19,7 @@ const GroupMatchEntry = (props) => {
         const matchObject = {
             "groupId": props.group.groupID
         }
-        likeUser(matchObject)
+        likeGroup(matchObject)
             .then(response => {
                 console.log(response);
                 props.onDelete(props.group.groupID);
@@ -27,8 +27,6 @@ const GroupMatchEntry = (props) => {
             )
             .catch(err => {
                 likeTextHandler("Error");
-
-                console.log(props.group.groupID);
                 console.log(err);
             });
     }

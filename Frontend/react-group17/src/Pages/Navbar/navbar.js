@@ -19,6 +19,9 @@ const Navbar = () => {
   //   })
   // })
   const navbar = () => {
+    const handleSignOut = () => {
+      localStorage.removeItem("USER_KEY");
+    }
     return(
         <Layout>
       <Header
@@ -70,7 +73,7 @@ const Navbar = () => {
                 Profile
             </NavLink>
             
-            <NavLink to="/profilepage">
+            <NavLink onClick={handleSignOut} to="/login">
                 Sign Out
             </NavLink>
         </Menu>

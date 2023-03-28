@@ -7,7 +7,7 @@ export const getToken=()=>{
 export const likeGroup=(data)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/`,
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/groupmatch`,
         'data':data,
         'headers':{
             'Authorization':'Bearer '+getToken()

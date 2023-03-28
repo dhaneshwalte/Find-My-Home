@@ -8,44 +8,6 @@ const GroupMatch = () => {
 
     // const [isLoading, setLoading] = useState(true);
     const [groups, setGroups] = useState([]);
-    // const groups = [
-    //     {
-    //         "groupID": 1,
-    //         "avgSimilarity": 0.21739130434782608,
-    //         "users": [
-    //         {
-    //             "userID": 25,
-    //             "firstName": "Dan",
-    //             "lastName": "w",
-    //             "similarity": 0.08695652173913043
-    //         },
-    //         {
-    //             "UserID": 23,
-    //             "firstName": "Bil",
-    //             "lastName": "b",
-    //             "similarity": 0.34782608695652173
-    //         }   
-    //         ]
-    //     },
-    //     {
-    //         "groupID": 2,
-    //         "avgsimilarity" : 0.5652173913043479,
-    //         "users": [
-    //             {
-    //                 "userID": 37,
-    //                 "firstName": "Naveen",
-    //                 "lastName": "K",
-    //                 "similarity": 0.5217391304347826
-    //             },
-    //             {
-    //                 "userID": 32,
-    //                 "firstName": "NIV",
-    //                 "lastName": "KI",
-    //                 "similarity": 0.5217391304347826
-    //             }
-    //         ]
-    //     }
-    // ]
 
     useEffect(() => {
         // console.log(getGroupsList());
@@ -64,10 +26,8 @@ const GroupMatch = () => {
     }, []);
 
 
-    const deleteGroup = id => {
-        const filtered = groups.filter(group => group.id !== id);
-        console.log(groups.group.id);
-        console.log(id);
+    const deleteGroup = groupID => {
+        const filtered = groups.filter(group => group.groupID !== groupID);
         setGroups(filtered);
     };
 
