@@ -51,4 +51,25 @@ public class GroupMatchController {
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(userList));
     }
 
+    @RequestMapping(value = "/request-approval", method = RequestMethod.POST)
+    public @ResponseBody void approveUserRequest(@RequestBody GroupMatchPojo userID) {
+        //logged in user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //user whom we have approved
+        long userId = userID.getUserId();
+        long index = groupMatchRepository.getIndexByUserId(userId);
+        groupMatchRepository.deleteById(index);
+//        System.out.println(groupMatchRepository.deleteById(index));
+        //add this user to the group
+        Optional<User> optionalUser =  userRepository.findById((int) userID.getUserId());
+        User newGroupMember = new User();
+        if(optionalUser.isPresent()){
+            newGroupMember = optionalUser.get();
+        }
+        GroupEntity groupEntity = new GroupEntity();
+        groupEntity.setGroupId(groupRepository.getGroupId(user.getId()));
+        groupEntity.setUser(newGroupMember);
+        groupEntity.setTotal_groups(groupRepository.getMaxGroupCount());
+        groupRepository.save(groupEntity);
+    }
 }
