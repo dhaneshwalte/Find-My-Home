@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GroupPrefEntry from "../../components/GroupPrefEntry/GroupPrefEntry";
+import { getGroupUserList } from "../../services/GroupService";
 
 
 const GroupPref = () => {
@@ -8,10 +9,9 @@ const GroupPref = () => {
     const [groupUserDetails, setGroupUserDetails] = useState();
 
     useEffect(() => {
-        getRoommateList()
+        getGroupUserList
             .then(
                 (response) => {
-                    response.data.sort((a,b) => b.SimilarityScore - a.SimilarityScore);
                     console.log(response);
                     setGroupUserDetails(response.data);
                     setLoading(false);

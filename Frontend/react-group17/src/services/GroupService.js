@@ -24,3 +24,13 @@ export const getGroupsList=()=>{
         }
     })
 }
+
+export const getGroupUserList=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/`,
+        'headers':{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
