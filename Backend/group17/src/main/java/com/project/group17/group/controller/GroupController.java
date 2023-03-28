@@ -1,19 +1,19 @@
 package com.project.group17.group.controller;
 
+import com.project.group17.group.entity.GroupDetailPojo;
 import com.project.group17.group.repository.GroupRepository;
 import com.project.group17.match.service.MatchService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
 import org.springframework.aop.AopInvocationException;
 
-import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.entity.GroupPojo;
 import com.project.group17.group.service.GroupService;
-import com.project.group17.prefValues.service.PrefValuesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,5 +56,11 @@ public class GroupController {
     public ResponseEntity<List<GroupPojo>> getGroups() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(service.getAllGroups(user));
+    }
+
+    @GetMapping("/get-group")
+    public ResponseEntity<List<Map<String, String>>> getGroup(@RequestBody GroupDetailPojo groupDetailPojo) {
+        List<Map<String, String>> users = service.getGroupUsers(groupDetailPojo.getGroupId());
+        return ResponseEntity.ok(users);
     }
 }
