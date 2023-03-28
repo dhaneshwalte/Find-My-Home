@@ -27,6 +27,7 @@ public class MatchService {
     private PrefValuesService prefValuesService;
 
     public Map<User, Map<String, String>> getUserPreferences() {
+//        locationService.addDefaultLocations();
         List<PrefValuesEntity> prefValuesEntities = prefValuesService.findAll();
         Map<User, Map<String, String>> userPreferences = new HashMap<>();
         for (PrefValuesEntity prefValueEntity : prefValuesEntities) {

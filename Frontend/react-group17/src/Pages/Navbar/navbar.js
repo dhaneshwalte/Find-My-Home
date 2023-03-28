@@ -1,24 +1,18 @@
 import { Layout, Menu } from 'antd';
-// import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 // import {checkUserLogin} from '../../services/AuthenticationService';
 const { Header } = Layout;
 const Navbar = () => {
   console.log(window.location.pathname);
 
-  // const {
-  //   token: { colorBgContainer },
-  // } = theme.useToken();
-//  const [loading, setloading] = useState(true);
-  // useEffect(() => {
-  //   checkUserLogin()
-  //   .then(response => {
-  //       setloading(false);
-  //   })
-  //   .catch(reponse => {
-  //   })
-  // })
+  const location = useLocation();
+
   const navbar = () => {
+    const handleSignOut = () => {
+      localStorage.removeItem("USER_KEY");
+      location.reload()
+      // eslint-disable-next-line no-restricted-globals
+    }
     return(
         <Layout>
       <Header
@@ -70,7 +64,7 @@ const Navbar = () => {
                 Profile
             </NavLink>
             
-            <NavLink to="/profilepage">
+            <NavLink onClick={handleSignOut} to="/login">
                 Sign Out
             </NavLink>
         </Menu>
@@ -79,7 +73,7 @@ const Navbar = () => {
   );
   }
 
-  const checkRoutes = ["/","/login","/register"];
+  const checkRoutes = ["/login","/register"];
   const result = window.location.pathname;
   console.log(checkRoutes.includes(result));
   return (
