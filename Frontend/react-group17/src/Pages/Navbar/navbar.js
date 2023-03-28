@@ -1,5 +1,4 @@
 import { Layout, Menu } from 'antd';
-import { location, localStorage } from 'react';
 import { NavLink } from 'react-router-dom';
 // import {checkUserLogin} from '../../services/AuthenticationService';
 const { Header } = Layout;

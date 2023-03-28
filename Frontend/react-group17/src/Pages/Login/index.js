@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, location } from "react";
+import { useState } from "react";
 import { userLogin } from "../../services/AuthenticationService";
 import { useNavigate } from 'react-router-dom'
 import { fetchUserPrefences } from "../../services/UserPrefrenceService";
