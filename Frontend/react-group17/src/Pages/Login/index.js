@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, location } from "react";
+import { useState, location } from "react";
 import { userLogin } from "../../services/AuthenticationService";
 import { useNavigate } from 'react-router-dom'
 import { fetchUserPrefences } from "../../services/UserPrefrenceService";
@@ -13,43 +13,8 @@ const Login = () => {
     const handleRegister = () => {
         navigate("/register");
     }
-    // const checkUser = () => {
-    //     // const usercheck = users.find(user => (user.username === data.username && user.password === data.password));
-    //     const usercheck = 
-        
-    //     if(usercheck) {
-    //       console.log("Login successful");
-    //     }else {
-    //       console.log("Wrong password or username");
-    //     }
-    //     // console.log(uname);
-    //     console.log(usercheck);
-    //   }
-
-    //   useEffect(() => {
-    //     checkUser(users)
-    //       }, [data.username, data.password])
-
-    // const submit = (e) => {
-    //     e.preventDefault();
-    //     userLogin({ "email": email, "password": password })
-    //         .then(async (response) => {
-    //             localStorage.setItem('USER_KEY', response.data.token);
-    //             const res = await fetchUserPrefences()
-
-    //             if (res.data.length === 0) {
-    //                 navigate("/user-preference");
-    //             }
-    //             else {
-    //                 navigate("/");
-    //             }
-
-    //         })
-    //         .catch(err => console.log(err));
-    // }
 
     const onFinish = (values) => {
-        // values.profilePicBase64 = profilePicBase64;
         console.log('Received values of form: ', values);
         userLogin(values)
             .then( async (response) => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useState, setLoading } from "react";
+import { useState } from "react";
 import { getGroupsList } from "../../services/GroupService";
 import GroupMatchEntry from "../../components/GroupMatchEntry/GroupMatchEntry";
 import './group.css'

@@ -5,7 +5,7 @@ import { getGroupUserList } from "../../services/GroupService";
 
 const GroupPref = () => {
 
-    const [isLoading, setLoading] = useState(true);
+    // const [isLoading, setLoading] = useState(true);
     const [groupUserDetails, setGroupUserDetails] = useState();
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const GroupPref = () => {
                 (response) => {
                     console.log(response);
                     setGroupUserDetails(response.data);
-                    setLoading(false);
+                    // setLoading(false);
                 }
             )
             .catch(
@@ -22,13 +22,6 @@ const GroupPref = () => {
             )
     }, []);
 
-    const users = [
-        {
-            "id": 4,
-            "firstname": "Naveen",
-            "lastname": "K"
-        }
-    ]
 
     const renderGroupPref = () =>{
         return(
