@@ -1,26 +1,17 @@
 import { Layout, Menu } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 // import {checkUserLogin} from '../../services/AuthenticationService';
 const { Header } = Layout;
 const Navbar = () => {
   console.log(window.location.pathname);
 
-  // const {
-  //   token: { colorBgContainer },
-  // } = theme.useToken();
-//  const [loading, setloading] = useState(true);
-  // useEffect(() => {
-  //   checkUserLogin()
-  //   .then(response => {
-  //       setloading(false);
-  //   })
-  //   .catch(reponse => {
-  //   })
-  // })
+  const location = useLocation();
+
   const navbar = () => {
     const handleSignOut = () => {
       localStorage.removeItem("USER_KEY");
       location.reload()
+      // eslint-disable-next-line no-restricted-globals
     }
     return(
         <Layout>

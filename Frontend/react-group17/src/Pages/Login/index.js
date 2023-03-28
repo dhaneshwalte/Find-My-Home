@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { fetchUserPrefences } from "../../services/UserPrefrenceService";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Space, Form, Input, Card, Alert } from 'antd';
+import { useLocation } from 'react-router-dom';
 
 const Login = () => {
     const [error, setError] = useState(false);
@@ -13,6 +14,8 @@ const Login = () => {
     const handleRegister = () => {
         navigate("/register");
     }
+
+    const location = useLocation();
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
