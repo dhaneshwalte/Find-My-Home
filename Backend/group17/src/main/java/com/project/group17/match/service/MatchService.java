@@ -111,26 +111,6 @@ public class MatchService {
         return userInfoAndPreferences;
     }
 
-    public Map<String, String> getUserInfoAndPreferences(User user) {
-        Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
-        Map<String, String> principalPrefs = null;
-        for (Map.Entry<User, Map<String, String>> entry : userPrefs.entrySet()) {
-            if (user.getId().equals(entry.getKey().getId())) {
-                principalPrefs = entry.getValue();
-            }
-        }
-        if (principalPrefs == null) {
-            System.out.println("User not found");
-            return null;
-        }
-        principalPrefs.put("id", user.getId() + "");
-        principalPrefs.put("firstName", user.getFirstname());
-        principalPrefs.put("lastName", user.getLastname());
-        principalPrefs.put("city", user.getCity());
-        principalPrefs.put("province", user.getProvince());
-        principalPrefs.put("profilePicBase64", user.getProfilePicBase64());
-        return principalPrefs;
-    }
 
     public List<Map<String, String>> getAllUserInfoAndPreferences(List<User> users) {
         List<Map<String, String>> allUserInfoAndPreferences = new ArrayList<>();
