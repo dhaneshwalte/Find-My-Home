@@ -3,9 +3,7 @@ import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.entity.GroupPojo;
 import com.project.group17.group.entity.UserPojo;
 import com.project.group17.group.repository.GroupRepository;
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefOptions.repository.PrefOptionsRepository;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
+import com.project.group17.match.service.MatchService;
 import com.project.group17.prefValues.model.PrefValueSaveReq;
 import com.project.group17.prefValues.service.PrefValuesService;
 import com.project.group17.user.entity.User;
@@ -21,6 +19,9 @@ public class GroupService {
 
     @Autowired
     PrefValuesService prefValuesService;
+
+    @Autowired
+    MatchService matchService;
 
     public void saveGroup(User user1ID, User user2ID){
 
@@ -52,7 +53,14 @@ public class GroupService {
 
         }
     }
-
+    public List<Map<String, String>> getGroupUsers(Long groupID){
+        List<GroupEntity> groupEntities = groupRepository.findGroupEntitiesBy(groupID);
+        List<User> groupUsers = new ArrayList<>();
+        for (GroupEntity groupEntity: groupEntities){
+            groupUsers.add(groupEntity.getUser());
+        }
+        return matchService.getAllUserInfoAndPreferences(groupUsers);
+    }
     public List<GroupPojo> getAllGroups(User user) {
 
         List<GroupEntity> groupEntities = groupRepository.findAll();
@@ -69,6 +77,14 @@ public class GroupService {
             userPojo.setUserID(groupEntity.getUser().getId());
             userPojo.setFirstName(groupEntity.getUser().getFirstname());
             userPojo.setLastName(groupEntity.getUser().getLastname());
+            userPojo.setEmail(groupEntity.getUser().getEmail());
+            userPojo.setAge(groupEntity.getUser().getAge());
+            userPojo.setCity(groupEntity.getUser().getCity());
+            userPojo.setProvince(groupEntity.getUser().getProvince());
+            userPojo.setStreetAddress(groupEntity.getUser().getStreetAddress());
+            userPojo.setProfilePicBase64(groupEntity.getUser().getProfilePicBase64());
+            userPojo.setGender(groupEntity.getUser().getGender());
+            userPojo.setPhoneNumber(groupEntity.getUser().getPhoneNumber());
 
             if(groupedUsers.containsKey(groupEntity.getGroupId()))
             {

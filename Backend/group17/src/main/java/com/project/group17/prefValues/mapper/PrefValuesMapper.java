@@ -28,7 +28,7 @@ public class PrefValuesMapper {
         return prefValuesEntity;
     }
 
-    public static PrefValueSaveReq entittyToGetPrefCRes(PrefValuesEntity prefValuesEntity) {
+    public static PrefValueSaveReq entityToGetPrefCRes(PrefValuesEntity prefValuesEntity) {
         PrefValueSaveReq prefValueSaveReq = new PrefValueSaveReq();
         prefValueSaveReq.setPrefNameId(prefValuesEntity.getPrefName().getPrefId());
         if (ObjectUtils.isEmpty(prefValuesEntity.getPrefOption()) || prefValuesEntity.getPrefOption().getPrefId() == null) {

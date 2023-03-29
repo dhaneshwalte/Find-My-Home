@@ -38,7 +38,7 @@ public class PrefValuesService {
             if (!prefDB.isEmpty())
                 for (Optional<PrefValuesEntity> pref : prefDB) {
                     if (pref.isPresent())
-                        prefRes.add(PrefValuesMapper.entittyToGetPrefCRes(pref.get()));
+                        prefRes.add(PrefValuesMapper.entityToGetPrefCRes(pref.get()));
                 }
             return prefRes;
         } catch (Exception e) {
