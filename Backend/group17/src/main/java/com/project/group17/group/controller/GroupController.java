@@ -2,6 +2,8 @@ package com.project.group17.group.controller;
 
 import com.project.group17.group.entity.GroupDetailPojo;
 import com.project.group17.group.repository.GroupRepository;
+import com.project.group17.match.entity.MatchEntity;
+import com.project.group17.match.repository.MatchRepository;
 import com.project.group17.match.service.MatchService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
@@ -34,11 +36,15 @@ public class GroupController {
     @Autowired
     MatchService matchService;
     @Autowired
+    MatchRepository matchRepository;
+    @Autowired
     GroupService service;
+
+    @CrossOrigin
     @GetMapping("/my-group")
     public ResponseEntity<List<Map<String, String>>> getGroupMembers(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Integer> groupMembers = null;
+        List<Integer> groupMembers;
         try{
             groupMembers = groupRepository.getUsersByGroupId(groupRepository.getGroupId(user.getId()));
         }catch (AopInvocationException aopInvocationException){
@@ -53,12 +59,37 @@ public class GroupController {
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(myGroupMembers));
     }
 
+    @CrossOrigin
+    @GetMapping("/my-roommate-request")
+    public ResponseEntity<List<Map<String, String>>> getRoommateRequest(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try{
+            Integer myGroupId = groupRepository.getGroupId(user.getId());
+            return null;
+        }catch (AopInvocationException aopInvocationException){
+            List<MatchEntity> matches;
+            List<User> myLikers = new ArrayList<>();
+            try{
+                matches = matchRepository.findByUser2(user);
+                for(int i = 0; i<matches.size();i++){
+                    myLikers.add(matches.get(i).getUser1());
+                }
+            }catch (NullPointerException e){
+                return null;
+            }
+            return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(myLikers));
+        }
+
+    }
+
+    @CrossOrigin
     @GetMapping("/get-all-groups")
     public ResponseEntity<List<GroupPojo>> getGroups() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(service.getAllGroups(user));
     }
 
+    @CrossOrigin
     @GetMapping("/get-group")
     public ResponseEntity<List<Map<String, String>>> getGroup(@RequestBody GroupDetailPojo groupDetailPojo) {
         List<Map<String, String>> users = service.getGroupUsers(groupDetailPojo.getGroupId());
