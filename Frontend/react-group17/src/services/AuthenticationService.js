@@ -30,3 +30,14 @@ export const fetchUserData=()=>{
         }
     })
 }
+
+export const checkUserLogin = () => {
+    return axios({
+        method:'GET',
+        url:`${process.env.hostUrl||'http://localhost:8080'}/api/v1/auth/demo`,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+
+    })
+}

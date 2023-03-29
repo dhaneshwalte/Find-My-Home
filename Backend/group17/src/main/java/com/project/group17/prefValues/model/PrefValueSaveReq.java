@@ -20,4 +20,12 @@ public class PrefValueSaveReq {
     public void setPrefOptionId(Long prefOptionId) {
         this.prefOptionId = prefOptionId;
     }
+
+    @Override
+    public String toString() {
+        return "PrefValueSaveReq{" +
+                "prefNameId=" + prefNameId +
+                ", prefOptionId=" + prefOptionId +
+                '}';
+    }
 }

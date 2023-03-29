@@ -21,3 +21,13 @@ export const saveUserPrefrences=(preferences)=>{
         }
     })
 }
+
+export const fetchUserPrefences=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/preferences/getUserPrefValues`,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
