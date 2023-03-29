@@ -35,6 +35,7 @@ public class GroupMatchController {
         groupMatchRepository.save(entity);
     }
 
+    @CrossOrigin
     @GetMapping("/group-requests")
     public ResponseEntity<List<Map<String, String>>> groupRequests() {
         //find by passing user object > groups table
@@ -51,6 +52,7 @@ public class GroupMatchController {
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(userList));
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/request-approval", method = RequestMethod.POST)
     public @ResponseBody void approveUserRequest(@RequestBody GroupMatchPojo userID) {
         //logged in user

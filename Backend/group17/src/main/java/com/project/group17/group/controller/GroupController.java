@@ -9,6 +9,7 @@ import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,8 @@ public class GroupController {
     MatchService matchService;
     @Autowired
     MatchRepository matchRepository;
+
+    @CrossOrigin
     @GetMapping("/my-group")
     public ResponseEntity<List<Map<String, String>>> getGroupMembers(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -48,6 +51,7 @@ public class GroupController {
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(myGroupMembers));
     }
 
+    @CrossOrigin
     @GetMapping("/my-roommate-request")
     public ResponseEntity<List<Map<String, String>>> getRoommateRequest(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
