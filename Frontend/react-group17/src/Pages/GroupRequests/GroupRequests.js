@@ -3,6 +3,9 @@ import { useState } from "react";
 import GroupRequestEntry from "../../components//GroupRequestEntry/GroupRequestEntry";
 import { getGroupRequests } from "../../services/MatchService";
 
+/**
+ * Display users who have requested to join the group
+ */
 const GroupRequests = () => {
 
     const [isLoading, setLoading] = useState(true);
@@ -22,6 +25,11 @@ const GroupRequests = () => {
             )
     }, []);
 
+    const deleteUser = id => {
+        const filtered = users.filter(user => user.id !== id);
+        setUsers(filtered);
+    };
+
     const renderMatchList = () => {
         console.log(users);
         return (
@@ -30,6 +38,7 @@ const GroupRequests = () => {
                     <GroupRequestEntry
                         user={user}
                         key={user.id}
+                        onDelete={deleteUser}
                     />
                 ))}
             </div>

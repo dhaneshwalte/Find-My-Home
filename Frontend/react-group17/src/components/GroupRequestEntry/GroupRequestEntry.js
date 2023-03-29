@@ -13,7 +13,7 @@ const MatchEntry = (props) => {
     const approveButtonHandler = () => {
         approveTextHandler("Processing..")
         const matchObject = {
-            "userID": props.user.id
+            "userId": props.user.id
         }
         approveUser(matchObject)
             .then(response => {

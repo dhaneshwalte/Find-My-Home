@@ -8,9 +8,6 @@ import Match from './Pages/Match/Match';
 import { MyLikes } from './Pages/MyLikes/MyLikes';
 import RoommateRequests from './Pages/RoommateRequests/RoommateRequests';
 import { MyGroup } from './Pages/MyGroup/MyGroup';
-import ProfilePage from './Pages/Profile/profile';
-import Navbar from './Pages/Navbar/navbar';
-import GroupMatch from './Pages/Group/group';
 import GroupRequests from './Pages/GroupRequests/GroupRequests';
 
 function App() {
@@ -27,8 +24,6 @@ function App() {
           <Route path="/roommate-requests" element={<RoommateRequests />} />
           <Route path="/my-group" element={<MyGroup />} />
           <Route path="/edit-user-preference" element={<UserPreference />} />
-          <Route path="/profilepage" element={<ProfilePage />} />
-          <Route path="/groups" element={<GroupMatch />} />
           <Route path="/group-requests" element={<GroupRequests />} />
         </Routes>
       </BrowserRouter>
