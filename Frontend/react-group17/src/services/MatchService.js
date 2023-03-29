@@ -55,3 +55,23 @@ export const getMyGroupMembers=()=>{
         }
     })
 }
+
+export const getGroupRequests=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-my-group`,
+        'headers':{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
+
+export const approveUser=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-my-group`,
+        'headers':{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
