@@ -20,14 +20,14 @@ const GroupPref = () => {
                 (response) => {
                     console.log(response);
                     setGroupUserDetails(response.data);
-                    console.log(code);
                     setLoading(false);
                 }
             )
             .catch(
                 err => console.log(err)
             )
-    }, []);
+            // eslint-disable-next-line
+    }, [code]);
 
 
     const renderGroupPref = () =>{
