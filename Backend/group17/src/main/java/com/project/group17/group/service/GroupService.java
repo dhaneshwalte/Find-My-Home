@@ -54,7 +54,7 @@ public class GroupService {
         }
     }
     public List<Map<String, String>> getGroupUsers(Long groupID){
-        List<GroupEntity> groupEntities = groupRepository.findGroupEntitiesBy(groupID);
+        List<GroupEntity> groupEntities = groupRepository.findByGroupId(groupID);
         List<User> groupUsers = new ArrayList<>();
         for (GroupEntity groupEntity: groupEntities){
             groupUsers.add(groupEntity.getUser());
@@ -132,7 +132,7 @@ public class GroupService {
 
             groupPojo.add(currentGroupPojo);
         }
-        System.out.println(groupPojo);
+        //System.out.println(groupPojo);
 
         return groupPojo;
     }

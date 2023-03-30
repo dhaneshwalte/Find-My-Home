@@ -14,11 +14,7 @@ import com.project.group17.group.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +36,8 @@ public class GroupController {
     @Autowired
     GroupService service;
 
-    @CrossOrigin
     @GetMapping("/my-group")
+    @CrossOrigin
     public ResponseEntity<List<Map<String, String>>> getGroupMembers(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Integer> groupMembers;
@@ -82,15 +78,16 @@ public class GroupController {
 
     }
 
-    @CrossOrigin
+
     @GetMapping("/get-all-groups")
+    @CrossOrigin
     public ResponseEntity<List<GroupPojo>> getGroups() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(service.getAllGroups(user));
     }
 
+    @PostMapping("/get-group")
     @CrossOrigin
-    @GetMapping("/get-group")
     public ResponseEntity<List<Map<String, String>>> getGroup(@RequestBody GroupDetailPojo groupDetailPojo) {
         List<Map<String, String>> users = service.getGroupUsers(groupDetailPojo.getGroupId());
         return ResponseEntity.ok(users);
