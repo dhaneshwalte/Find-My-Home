@@ -33,7 +33,8 @@ const GroupMatchEntry = (props) => {
     const navigate = useNavigate();
     const redirectUserDetailsButton = () => {
         redirectUserDetailsHandler("Processing..");
-        navigate('/groupuserspref');
+        navigate(`/groupuserspref?groupID=${props.group.groupID}`,
+     );
     }
 
     return(

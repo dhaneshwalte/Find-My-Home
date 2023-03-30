@@ -18,17 +18,29 @@ export const likeGroup=(data)=>{
 export const getGroupsList=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/Groups/getAll`,
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-all-groups`,
         'headers':{
             'Authorization':'Bearer '+getToken()
         }
     })
 }
 
-export const getGroupUserList=()=>{
+// export const getGroupUserList=()=>{
+//     return axios({
+//         'method':'GET',
+//         'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-group`,
+//         'headers':{
+//             'Authorization':'Bearer '+getToken()
+//         }
+//     })
+// }
+
+export const getGroupUserList=(data)=>{
+    console.log(data);
     return axios({
-        'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/`,
+        'method':'POST',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-group`,
+        'data':data,
         'headers':{
             'Authorization':'Bearer '+getToken()
         }

@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import GroupPrefEntry from "../../components/GroupPrefEntry/GroupPrefEntry";
 import { getGroupUserList } from "../../services/GroupService";
 
-
 const GroupPref = () => {
 
-    // const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(true);
     const [groupUserDetails, setGroupUserDetails] = useState();
+    const [searchParams] = useSearchParams();
+    const code = searchParams.get('groupID'); 
+    //console.log(code);
 
     useEffect(() => {
-        getGroupUserList
+        const data = {
+            "groupId": code
+        }
+        getGroupUserList(data)
             .then(
                 (response) => {
                     console.log(response);
                     setGroupUserDetails(response.data);
-                    // setLoading(false);
+                    console.log(code);
+                    setLoading(false);
                 }
             )
             .catch(
@@ -25,6 +32,7 @@ const GroupPref = () => {
 
     const renderGroupPref = () =>{
         return(
+            
             <div className="matchList">
             {groupUserDetails.map(user => (
                 <GroupPrefEntry
@@ -40,8 +48,8 @@ const GroupPref = () => {
 
     return(
         <div className="">
-            {/* { isLoading ? null : renderGroupPref() }  */}
-            {renderGroupPref()}
+            { isLoading ? null : renderGroupPref() } 
+            {/* {renderGroupPref()} */}
         </div>
     );
 }

@@ -8,18 +8,17 @@ import './group.css'
 
 const GroupMatch = () => {
 
-    // const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(true);
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        // console.log(getGroupsList());
         getGroupsList()
             .then(
                 (response) => {
                     response.data.sort((a,b) => b.SimilarityScore - a.SimilarityScore);
                     console.log(response);
                     setGroups(response.data);
-                    // setLoading(false);
+                    setLoading(false);
                 }
             )
             .catch(
@@ -49,8 +48,8 @@ const GroupMatch = () => {
 
     return (
         <div className="">
-            {/* { isLoading ? null : renderGroupMatchList() } */}
-            {renderGroupMatchList()}
+            { isLoading ? null : renderGroupMatchList() }
+            {/* {renderGroupMatchList()} */}
         </div>
     );
 }
