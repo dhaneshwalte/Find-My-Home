@@ -8,15 +8,17 @@ const Match = () => {
 
     const [isLoading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
-    
+
     useEffect(() => {
         getRoommateList()
             .then(
                 (response) => {
+                    if(Object.keys(response.data).length !== 0){
                     response.data.sort((a,b) => b.SimilarityScore - a.SimilarityScore);
                     console.log(response);
                     setUsers(response.data);
                     setLoading(false);
+                    }
                 }
             )
             .catch(
@@ -32,6 +34,8 @@ const Match = () => {
 
     const renderMatchList = () => {
         console.log(users);
+        if(users.length === 0){
+        }
         return (
             <div className="matchList">
                 {users.map(user => (
@@ -45,9 +49,17 @@ const Match = () => {
         )
     }
 
+    const renderEmptyUsers = () => {
+        return(
+            <p>NO users found</p>
+        )
+    }
+    
+
     return (
         <div className="">
-            { isLoading ? null : renderMatchList() }
+            {/* { groupFlag ? null : renderMatchList() } */}
+            { isLoading ? renderEmptyUsers() : renderMatchList() }
         </div>
     );
 }

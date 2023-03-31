@@ -7,7 +7,7 @@ export const getToken=()=>{
 export const likeGroup=(data)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/groupmatch`,
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/request-group`,
         'data':data,
         'headers':{
             'Authorization':'Bearer '+getToken()
@@ -24,16 +24,6 @@ export const getGroupsList=()=>{
         }
     })
 }
-
-// export const getGroupUserList=()=>{
-//     return axios({
-//         'method':'GET',
-//         'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-group`,
-//         'headers':{
-//             'Authorization':'Bearer '+getToken()
-//         }
-//     })
-// }
 
 export const getGroupUserList=(data)=>{
     console.log(data);

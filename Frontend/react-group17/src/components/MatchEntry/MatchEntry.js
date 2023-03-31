@@ -127,6 +127,7 @@ const MatchEntry = (props) => {
                             value={props['user']['Cooking']}
                         />
                         <div className="likeButton">
+                            {props.user.groupID}
                             <button className="button-23" onClick={e => likeButtonHandler()}>{likeText}</button>
                         </div>
                     </div>
