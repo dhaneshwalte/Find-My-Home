@@ -36,4 +36,14 @@ public class GroupEntity {
     public void setTotal_groups(int total_groups) {
         this.total_groups = total_groups;
     }
+
+    @Override
+    public String toString() {
+        return "GroupEntity{" +
+                "index=" + index +
+                ", groupId=" + groupId +
+                ", user=" + user +
+                ", total_groups=" + total_groups +
+                '}';
+    }
 }

@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.project.group17.group.entity.GroupEntity;
+import com.project.group17.group.repository.GroupRepository;
+import com.project.group17.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.project.group17.location.service.LocationService;
@@ -25,6 +29,8 @@ public class MatchService {
 
     @Autowired
     private PrefValuesService prefValuesService;
+    @Autowired
+    private GroupRepository groupRepository;
 
     public Map<User, Map<String, String>> getUserPreferences() {
 //        locationService.addDefaultLocations();
@@ -46,8 +52,8 @@ public class MatchService {
             }
         }
         for (Map.Entry<User, Map<String, String>> entry : userPreferences.entrySet()) {
-            System.out.println(entry.getKey().getFirstname() + " " + entry.getKey().getId());
-            entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
+//            System.out.println(entry.getKey().getFirstname() + " " + entry.getKey().getId());
+//            entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
         }
         return userPreferences;
     }
@@ -80,36 +86,45 @@ public class MatchService {
     }
     
     public List<Map<String, String>> getRoommateList(User user){
-        Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
-        Map<User, Map<String, String>> userPrefsExludePrincipal = new HashMap<>();
-        Map<String, String> principalPrefs = null;
-        System.out.println("-----------------------------");
-        for (Map.Entry<User, Map<String, String>> entry : userPrefs.entrySet()) {
-            // .equals() wont work for custom objects, using ID comparison
-            if (user.getId().equals(entry.getKey().getId())) {
-                principalPrefs = entry.getValue();
-            } else {
-                userPrefsExludePrincipal.put(entry.getKey(), entry.getValue());
+        User liker = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<GroupEntity> groups = groupRepository.findByUser(user);
+        System.out.println("Print Line 91: "+groups.toString());
+        if(groups.size() != 0){
+            return null;
+        } else{
+            Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
+            Map<User, Map<String, String>> userPrefsExludePrincipal = new HashMap<>();
+            Map<String, String> principalPrefs = null;
+            System.out.println("-----------------------------");
+
+            for (Map.Entry<User, Map<String, String>> entry : userPrefs.entrySet()) {
+                // .equals() wont work for custom objects, using ID comparison
+                if (user.getId().equals(entry.getKey().getId())) {
+                    principalPrefs = entry.getValue();
+                } else {
+                    userPrefsExludePrincipal.put(entry.getKey(), entry.getValue());
+                }
             }
+            for (Map.Entry<User, Map<String, String>> entry : userPrefsExludePrincipal.entrySet()) {
+//                System.out.println(entry.getKey().getFirstname() + " " + entry.getKey().getId());
+                entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
+            }
+//            System.out.println(principalPrefs);
+            List<Map<String, String>> userInfoAndPreferences = new ArrayList<>();
+            for (Map.Entry<User, Map<String, String>> entry : userPrefsExludePrincipal.entrySet()) {
+                User u = entry.getKey();
+                entry.getValue().put("SimilarityScore", "" + getSimilarityScore(principalPrefs, entry.getValue()));
+                entry.getValue().put("id", u.getId() + "");
+                entry.getValue().put("firstName", u.getFirstname());
+                entry.getValue().put("lastName", u.getLastname());
+                entry.getValue().put("city", u.getCity());
+                entry.getValue().put("province", u.getProvince());
+                entry.getValue().put("profilePicBase64", u.getProfilePicBase64());
+                userInfoAndPreferences.add(entry.getValue());
+            }
+
+            return userInfoAndPreferences;
         }
-        for (Map.Entry<User, Map<String, String>> entry : userPrefsExludePrincipal.entrySet()) {
-            System.out.println(entry.getKey().getFirstname() + " " + entry.getKey().getId());
-            entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
-        }
-        System.out.println(principalPrefs);
-        List<Map<String, String>> userInfoAndPreferences = new ArrayList<>();
-        for (Map.Entry<User, Map<String, String>> entry : userPrefsExludePrincipal.entrySet()) {
-            User u = entry.getKey();
-            entry.getValue().put("SimilarityScore", "" + getSimilarityScore(principalPrefs, entry.getValue()));
-            entry.getValue().put("id", u.getId() + "");
-            entry.getValue().put("firstName", u.getFirstname());
-            entry.getValue().put("lastName", u.getLastname());
-            entry.getValue().put("city", u.getCity());
-            entry.getValue().put("province", u.getProvince());
-            entry.getValue().put("profilePicBase64", u.getProfilePicBase64());
-            userInfoAndPreferences.add(entry.getValue());
-        }
-        return userInfoAndPreferences;
     }
 
 
@@ -181,9 +196,9 @@ public class MatchService {
         nominalScore /= nominalKeys.length;
         double distance = getDistance(User1.get("Location"), User2.get("Location"));
         double locationScore = getLocationScore(distance);
-        System.out.println("Ordinal Score: " + ordinalScore);
-        System.out.println("Nominal Score: " + nominalScore);
-        System.out.println("Location Score: " + locationScore);
+//        System.out.println("Ordinal Score: " + ordinalScore);
+//        System.out.println("Nominal Score: " + nominalScore);
+//        System.out.println("Location Score: " + locationScore);
         return (nominalScore + ordinalScore + locationScore) / 3;
     }
 
