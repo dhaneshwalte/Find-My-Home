@@ -11,16 +11,16 @@ import java.util.List;
 @Repository
 public interface GroupRepository extends JpaRepository<GroupEntity, Long> {
 
-    List<GroupEntity> findByUserId(Long userID);
+    List<GroupEntity> findByUser(User user);
 
     List<GroupEntity> findByGroupId(Long groupID);
+
 
     @Query(value = "SELECT max(total_groups) FROM groups", nativeQuery = true)
     int getMaxGroupCount();
 
     @Query(value = "SELECT group_id FROM groups WHERE user = ?1", nativeQuery = true)
     int getGroupId(int user);
-
 
     @Query(value = "SELECT user FROM groups WHERE group_id = ?1", nativeQuery = true)
     List<Integer> getUsersByGroupId(int group_id);

@@ -52,6 +52,10 @@ const Navbar = () => {
                 Requests
             </NavLink>
 
+            <NavLink to="/match">
+                People You May Know
+            </NavLink>
+
             <NavLink to="/groups">
                 Groups
             </NavLink>
