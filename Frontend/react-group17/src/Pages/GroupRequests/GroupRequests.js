@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import GroupRequestEntry from "../../components//GroupRequestEntry/GroupRequestEntry";
 import { getGroupRequests } from "../../services/MatchService";
+import EmptyData from '../../components/EmptyData/EmptyData';
 
 /**
  * Display users who have requested to join the group

@@ -36,28 +36,28 @@ const roommatePrefButton = () =>{
     navigate('/edit-user-preference');
 }
 
-const propertyPrefButton = () =>{
-  navigate('/edit-user-preference');
+const createListingButton = () =>{
+  navigate('/listing');
 }
 
 // const userDetailsPrefButton = () =>{
 //   navigate('/user-preference');
 // }
 
-const housesPrefButton = () =>{
-  navigate('/user-preference');
+const roommateRequest = () =>{
+  navigate('/roommate-requests');
+} 
+const userLikesButton = () =>{
+  navigate('/my-likes');
 }
 
-const likesPrefButton = () =>{
-  navigate('/user-preference');
-}
 
-const groupsPrefButton = () =>{
-  navigate('/user-preference');
+const userGroupsButton = () =>{
+  navigate('/my-group');
 }
 
 const fullPrefListButton = () =>{
-  navigate('/user-preference');
+  navigate('/edit-user-preference');
 }
 
 const [editFlag, setEditFlag] = useState(false);
@@ -148,19 +148,29 @@ const renderprofilePage = () => {
 
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
-                <p className="text-muted mb-4">{userDetails.username} Groups</p>
+                <p className="text-muted mb-4">{userDetails.username} My Groups</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Button onClick={groupsPrefButton}
-                  >Show Groups</Button>
+                  <Button onClick={userGroupsButton}
+                  >My Groups</Button>
                 </div>
               </MDBCardBody>
-
-            </MDBCard>
+              </MDBCard>
+            
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
-                <p className="text-muted mb-4">{userDetails.username} Likes</p>
+                <p className="text-muted mb-4">{userDetails.username}Create Listing</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Button onClick={likesPrefButton}
+                  <Button onClick={createListingButton}
+                  >Create</Button>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <p className="text-muted mb-4">{userDetails.username} My Likes</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <Button onClick={userLikesButton}
                   >Show Likes</Button>
                 </div>
               </MDBCardBody>
@@ -168,10 +178,10 @@ const renderprofilePage = () => {
 
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
-                <p className="text-muted mb-4">{userDetails.username} Houses </p>
+                <p className="text-muted mb-4">{userDetails.username} Like Requests </p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Button onClick={housesPrefButton}
-                  >Show Houses</Button>
+                  <Button onClick={roommateRequest}
+                  >Users Liked Me</Button>
                 </div>
               </MDBCardBody>
             </MDBCard>
@@ -416,7 +426,7 @@ const renderprofilePage = () => {
                       </MDBCol>
                     </MDBRow>
                     <hr/>
-                    <Button onClick={propertyPrefButton}>edit</Button>
+                    <Button onClick={fullPrefListButton}>edit</Button>
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -509,7 +519,7 @@ const renderprofilePage = () => {
                       </MDBCol>
                     </MDBRow>
                     <hr/>
-                    <Button onClick={roommatePrefButton}>edit</Button>
+                    <Button onClick={fullPrefListButton}>edit</Button>
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
