@@ -1,4 +1,5 @@
 package com.project.group17.listings.entity;
+import com.project.group17.user.entity.User;
 import jakarta.persistence.*;
 
 
@@ -13,6 +14,11 @@ public class ListingsEntity {
     private String utilities;
     private float rent;
     private String details;
+
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
+
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "file64", columnDefinition = "LONGBLOB")
@@ -22,6 +28,14 @@ public class ListingsEntity {
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "sfile64", columnDefinition = "LONGBLOB")
     private String secondProfilePicBase64;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public ListingsEntity() {
 
