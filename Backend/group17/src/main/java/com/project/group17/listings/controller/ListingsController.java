@@ -1,4 +1,5 @@
 package com.project.group17.listings.controller;
+
 import com.project.group17.LikeListing.entity.LikeListingEntity;
 import com.project.group17.LikeListing.repository.LikeListingRepository;
 import com.project.group17.listings.repository.ListingsRepository;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.group17.listings.entity.ListingsEntity;
 import com.project.group17.listings.service.ListingsService;
 
-
 @RestController
 @RequestMapping("/api/v1")
 
@@ -30,52 +30,45 @@ public class ListingsController {
 
     @Autowired
     private ListingsRepository listingsRepository;
+
     @CrossOrigin
     @PostMapping("/listing")
-    public String add(@RequestBody ListingsEntity listing)
-    {
+    public String add(@RequestBody ListingsEntity listing) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        listing.setUser(user);
         listingsService.saveListings(listing);
         return "New listing is added";
 
     }
 
-
     @CrossOrigin
     @GetMapping("/getAll")
-    public List<ListingsEntity> list()
-    {
+    public List<ListingsEntity> list() {
 
         return listingsService.getAllListings();
     }
-//    @CrossOrigin
-//    @PostMapping("/likeListing")
-//    public String addLikeListing(@RequestBody LikeEntity liked)
-//    {
-//        listingsService.addLike(liked);
-//        return "current listing is liked";
-//
-//    }
+
     @CrossOrigin
     @GetMapping("/get-my-listings")
     public List<ListingsEntity> getMyListings() {
-        //returns the listings posted by the user
-        //find by passing user object > groups table
+        // returns the listings posted by the user
+        // find by passing user object > groups table
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //TODO this returns entity including "user"
+        // TODO this returns entity including "user"
         return listingsRepository.getListingEntity(user);
     }
+
     @CrossOrigin
     @GetMapping("/get-liked-listings")
     public List<ListingsEntity> getLikedListings() {
-        //find by passing user object > groups table
+        // find by passing user object > groups table
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<LikeListingEntity> likeListingEntities = likeListingRepository.findByUser(user);
         List<ListingsEntity> listingsEntities = new ArrayList<>();
-        for(int i = 0; i<likeListingEntities.size(); i++){
+        for (int i = 0; i < likeListingEntities.size(); i++) {
             listingsEntities.add(likeListingEntities.get(i).getListingsEntity());
         }
         return listingsEntities;
     }
-
 
 }
