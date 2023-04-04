@@ -55,7 +55,15 @@ public class ListingsController {
 //        return "current listing is liked";
 //
 //    }
-
+    @CrossOrigin
+    @GetMapping("/get-my-listings")
+    public List<ListingsEntity> getMyListings() {
+        //returns the listings posted by the user
+        //find by passing user object > groups table
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //TODO this returns entity including "user"
+        return listingsRepository.getListingEntity(user);
+    }
     @CrossOrigin
     @GetMapping("/get-liked-listings")
     public List<ListingsEntity> getLikedListings() {
