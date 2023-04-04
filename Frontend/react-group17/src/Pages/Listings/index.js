@@ -18,6 +18,7 @@ import {
   Row
 
 } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const formItemLayout = {
     labelCol: {
@@ -45,6 +46,7 @@ const tailFormItemLayout = {
 
 
 const Listing = () => {
+    let navigate = useNavigate();
     const[type,setType] = useState('');
     const[address,setAddress] = useState('');
     const[utilities,setUtilities] = useState([]);
@@ -88,6 +90,7 @@ const Listing = () => {
         saveListing({"type": type, "address": address, "utilities": JSON.stringify(utilities), "rent": rent, "details": otherDetails, "profilePicBase64":pic1Base64, "secondProfilePicBase64":pic2Base64})
         .then((response)=>{
             console.log(response);
+            navigate("/my-listings")
         })
         .catch(err => console.log(err));
   };

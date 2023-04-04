@@ -23,10 +23,11 @@ export const showListing=()=>{
     })
 }
 
-export const likeListing=()=>{
+export const likeListing=(data)=>{
     return axios({
-        'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/likeListing`,
+        'method':'POST',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/like-listing`,
+        'data': data,
         headers:{
             'Authorization':'Bearer '+getToken()
         }
