@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import GroupPrefEntry from "../../components/GroupPrefEntry/GroupPrefEntry";
 import { getGroupUserList } from "../../services/GroupService";
+import EmptyData from '../../components/EmptyData/EmptyData';
 
 const GroupPref = () => {
 
@@ -18,10 +19,12 @@ const GroupPref = () => {
         getGroupUserList(data)
             .then(
                 (response) => {
+                    if(Object.keys(response.data).length !== 0){
                     console.log(response);
                     setGroupUserDetails(response.data);
                     setLoading(false);
                 }
+            }
             )
             .catch(
                 err => console.log(err)
@@ -45,11 +48,33 @@ const GroupPref = () => {
   )
 }
 
+const renderEmptyGroupsPref = () => {
+    return(   
+        <div
+            style={{
+            display: "table",
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            top: 0,
+            left: 0}}>
+                <div
+                style={{
+                display: "table-cell",
+                verticalAlign: "middle",
+                textAlign: "center"}}>
+                    <EmptyData />
+            </div>
+            
+        </div>
+        
+    )
+}
+
 
     return(
         <div className="">
-            { isLoading ? null : renderGroupPref() } 
-            {/* {renderGroupPref()} */}
+            { isLoading ? renderEmptyGroupsPref() : renderGroupPref() } 
         </div>
     );
 }

@@ -4,7 +4,8 @@ import { getGroupsList } from "../../services/GroupService";
 // import { useState } from "react";
 // import { getRoommateList } from "../../services/MatchService";
 import GroupMatchEntry from "../../components/GroupMatchEntry/GroupMatchEntry";
-import './group.css'
+import './group.css';
+import EmptyData from '../../components/EmptyData/EmptyData';
 
 const GroupMatch = () => {
 
@@ -15,10 +16,12 @@ const GroupMatch = () => {
         getGroupsList()
             .then(
                 (response) => {
+                    if(Object.keys(response.data).length !== 0){
                     response.data.sort((a,b) => b.SimilarityScore - a.SimilarityScore);
                     console.log(response);
                     setGroups(response.data);
                     setLoading(false);
+                    }
                 }
             )
             .catch(
@@ -46,10 +49,33 @@ const GroupMatch = () => {
         )
     }
 
+
+    const renderEmptyGroupData = () => {
+        return(   
+            <div
+                style={{
+                display: "table",
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                top: 0,
+                left: 0}}>
+                <div
+                style={{
+                display: "table-cell",
+                verticalAlign: "middle",
+                textAlign: "center"}}>
+                        <EmptyData />
+                </div>
+                
+            </div>
+            
+        )
+    }
+
     return (
         <div className="">
-            { isLoading ? null : renderGroupMatchList() }
-            {/* {renderGroupMatchList()} */}
+            { isLoading ? renderEmptyGroupData() : renderGroupMatchList() }
         </div>
     );
 }

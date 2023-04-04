@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import MatchEntry from "../../components/MatchEntry/MatchEntry";
 import { getRoommateRequests } from "../../services/MatchService";
+import EmptyData from '../../components/EmptyData/EmptyData';
 
 const RoommateRequests = () => {
 
@@ -12,9 +13,11 @@ const RoommateRequests = () => {
         getRoommateRequests()
             .then(
                 (response) => {
+                    if(Object.keys(response.data).length !== 0){
                     console.log(response);
                     setUsers(response.data);
                     setLoading(false);
+                    }
                 }
             )
             .catch(
@@ -43,9 +46,31 @@ const RoommateRequests = () => {
         )
     }
 
+    const renderEmptyLikeRequests = () => {
+        return(   
+            <div
+                style={{
+                display: "table",
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                top: 0,
+                left: 0}}>
+                <div
+                style={{
+                display: "table-cell",
+                verticalAlign: "middle",
+                textAlign: "center"}}>
+                        <EmptyData />
+                </div>
+                
+            </div>
+            
+        )
+    }
     return (
         <div className="">
-            { isLoading ? null : renderMatchList() }
+            { isLoading ? renderEmptyLikeRequests() : renderMatchList() }
         </div>
     );
 }

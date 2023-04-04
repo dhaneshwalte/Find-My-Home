@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { UserPrefEntry } from '../../components/UserPrefEntry/UserPrefEntry';
 import { getMyGroupMembers } from "../../services/MatchService";
+import EmptyData from '../../components/EmptyData/EmptyData';
 
 export const MyGroup = () => {
     const [isLoading, setLoading] = useState(true);
@@ -11,10 +12,12 @@ export const MyGroup = () => {
         getMyGroupMembers()
             .then(
                 (response) => {
+                    if(Object.keys(response.data).length !== 0){
                     console.log(response);
                     setUsers(response.data);
                     setLoading(false);
                 }
+            }
             )
             .catch(
                 err => console.log(err)
@@ -35,9 +38,33 @@ export const MyGroup = () => {
         )
     }
 
+
+    const renderEmptyUserGroup = () => {
+        return(   
+            <div
+                style={{
+                display: "table",
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                top: 0,
+                left: 0}}>
+                <div
+                style={{
+                display: "table-cell",
+                verticalAlign: "middle",
+                textAlign: "center"}}>
+                        <EmptyData />
+                </div>
+                
+            </div>
+            
+        )
+    }
+
     return (
         <div className="">
-            {isLoading ? null : renderMatchList()}
+            {isLoading ? renderEmptyUserGroup() : renderMatchList()}
         </div>
     );
 }

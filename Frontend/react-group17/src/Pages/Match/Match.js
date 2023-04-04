@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import MatchEntry from "../../components/MatchEntry/MatchEntry";
 import { getRoommateList } from "../../services/MatchService";
-import './Match.css'
+import './Match.css';
+import EmptyData from "../../components/EmptyData/EmptyData";
 
 const Match = () => {
 
@@ -50,15 +51,31 @@ const Match = () => {
     }
 
     const renderEmptyUsers = () => {
-        return(
-            <p>NO users found</p>
+        return(   
+            <div
+                style={{
+                display: "table",
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                top: 0,
+                left: 0}}>
+                <div
+                style={{
+                display: "table-cell",
+                verticalAlign: "middle",
+                textAlign: "center"}}>
+                        <EmptyData />
+                </div>
+                
+            </div>
+            
         )
     }
     
 
     return (
         <div className="">
-            {/* { groupFlag ? null : renderMatchList() } */}
             { isLoading ? renderEmptyUsers() : renderMatchList() }
         </div>
     );

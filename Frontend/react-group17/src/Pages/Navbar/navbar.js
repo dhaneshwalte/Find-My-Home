@@ -44,12 +44,8 @@ const Navbar = () => {
                 Home
             </NavLink>
 
-            <NavLink to="/likes">
+            <NavLink to="/my-likes">
                 Likes
-            </NavLink>
-
-            <NavLink to="/requests">
-                Requests
             </NavLink>
 
             <NavLink to="/match">
@@ -62,6 +58,10 @@ const Navbar = () => {
 
             <NavLink to="/edit-user-preference">
                 Preferences
+            </NavLink>
+
+            <NavLink to="/showListings">
+                Listings
             </NavLink>
 
             <NavLink to="/profilepage">
