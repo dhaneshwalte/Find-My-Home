@@ -15,6 +15,7 @@ import GroupMatch from './Pages/Group/group';
 import GroupPref from './Pages/GroupPref/GroupPref';
 import Listings from './Pages/Listings';
 import ShowListings from './Pages/ShowListings';
+import ShowListing from './Pages/ShowListing';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
           <Route path="/groups" element={<GroupMatch />} />
           <Route path="/groupuserspref" element={<GroupPref />} />
           <Route path="/listing" element={<Listings />} />
-          <Route path="/showListings" element={<ShowListings />} />
+          <Route path="/show-listings" element={<ShowListings />} />
+          <Route path="/show-listing" element={<ShowListing />} />
         </Routes>
       </BrowserRouter>
     </div>
