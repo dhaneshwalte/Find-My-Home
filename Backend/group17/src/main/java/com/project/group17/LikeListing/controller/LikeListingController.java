@@ -20,11 +20,12 @@ public class LikeListingController {
 
     @CrossOrigin
     @RequestMapping(value = "/like-listing", method = RequestMethod.POST)
-    public void likeListing(@RequestBody long listingId){
+    public void likeListing(@RequestBody LikeListingPojo likeListingPojo){
+        System.out.println("asdf" + likeListingPojo.getListingId());
         LikeListingEntity entity = new LikeListingEntity();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         entity.setUser(user);
-        entity.setListingsEntity(listingsRepository.findByListingId(listingId));
+        entity.setListingsEntity(listingsRepository.findByListingId(likeListingPojo.getListingId()));
         likeListingRepository.save(entity);
     }
 

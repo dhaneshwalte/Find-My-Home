@@ -1,20 +1,23 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Carousel } from 'antd';
 import { Card } from 'antd';
 import { Button } from 'antd';
 import { likeListing } from "../../services/ListingsService";
 
 function ListingDetail() {
+  // const {listingId} = useParams()
+  // console.log(listingId)
   const location = useLocation();
   let navigate = useNavigate();
   console.log(location.state)
 
   const applyListing = (listing) => {
     const data = { "listingID": listing.listingId }
+    console.log(data);
     likeListing(data)
       .then((response) => {
-        navigate("/profilepage")
+        //navigate("/profilepage")
       }
       )
       .catch(err => console.log(err))

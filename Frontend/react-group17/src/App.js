@@ -39,6 +39,7 @@ function App() {
           <Route path="/groupuserspref" element={<GroupPref />} />
           <Route path="/listing" element={<Listings />} />
           <Route path="/show-listings" element={<ShowListings />} />
+          {/* <Route path="/show-listing/:listingId" element={<ShowListing />} /> */}
           <Route path="/show-listing" element={<ShowListing />} />
         </Routes>
       </BrowserRouter>
