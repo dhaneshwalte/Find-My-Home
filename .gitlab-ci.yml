@@ -10,6 +10,7 @@ backend-build:
   script: 
     - cd Backend/group17
     - mvn clean
+    - mvn test
   tags:
     - ugrad
 
@@ -23,4 +24,6 @@ frontend-build:
     - npm run build 
   tags:
     - ugrad
+
+
 
