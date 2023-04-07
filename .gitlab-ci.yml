@@ -1,6 +1,7 @@
 stages:
   - front-end
   - back-end
+  - testing
   
 
 backend-build:
@@ -23,6 +24,15 @@ frontend-build:
     # - npm cache clean  
     - npm install
     - npm run build 
+  tags:
+    - ugrad
+
+testing-build:
+  stage: testing
+  image: maven:3-jdk-17
+  script:
+    - cd Backend/group17
+    - mvn clean test
   tags:
     - ugrad
 
