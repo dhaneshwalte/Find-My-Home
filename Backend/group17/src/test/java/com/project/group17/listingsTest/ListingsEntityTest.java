@@ -18,12 +18,23 @@ public class ListingsEntityTest {
         Mockito.when(user.getUsername()).thenReturn("testUser");
         listingsEntity = new ListingsEntity();
         listingsEntity.setListingId(1L);
-
+        listingsEntity.setType("3BHK Apartment");
+        listingsEntity.setAddress("123 Tobin St");
     }
 
     @Test
     public void testListingId() {
         assertEquals(1L, listingsEntity.getListingId());
     }
+    @Test
+    public void testType() {
+        assertEquals("3BHK Apartment", listingsEntity.getType());
+    }
+
+    @Test
+    public void testAddress() {
+        assertEquals("123 Tobin St", listingsEntity.getAddress());
+    }
+
 
 }
