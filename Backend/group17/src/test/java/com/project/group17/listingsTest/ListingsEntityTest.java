@@ -22,6 +22,8 @@ public class ListingsEntityTest {
         listingsEntity.setAddress("123 Tobin St");
         listingsEntity.setUtilities("Hydro, Heat");
         listingsEntity.setRent(3000.0f);
+        listingsEntity.setDetails("coin operated laundry");
+        listingsEntity.setUser(user);
 
     }
 
@@ -48,5 +50,17 @@ public class ListingsEntityTest {
     public void testRent() {
         assertEquals(3000.0f, listingsEntity.getRent());
     }
+    @Test
+    public void testDetails() {
+        assertEquals("coin operated laundry", listingsEntity.getDetails());
+    }
+    @Test
+    public void testUser() {
+        assertEquals(user, listingsEntity.getUser());
+        assertEquals(Integer.valueOf(1), user.getId());
+        assertEquals("testUser", user.getUsername());
+    }
+
+
 
 }
