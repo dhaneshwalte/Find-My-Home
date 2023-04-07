@@ -1,5 +1,5 @@
 stages:
-  - front-end
+  # - front-end
   - back-end
   - testing
   
@@ -16,16 +16,16 @@ backend-build:
   # only:
   #   - ci
 
-frontend-build:
-  stage: front-end
-  script:
-    - cd Frontend/react-group17
-    - ls
-    # - npm cache clean  
-    - npm install
-    - npm run build 
-  tags:
-    - ugrad
+# frontend-build:
+#   stage: front-end
+#   script:
+#     - cd Frontend/react-group17
+#     - ls
+#     # - npm cache clean  
+#     - npm install
+#     - npm run build 
+#   tags:
+#     - ugrad
 
 testing-build:
   stage: testing
