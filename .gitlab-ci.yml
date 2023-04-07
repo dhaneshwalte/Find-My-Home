@@ -48,7 +48,7 @@ build-affordability-api:
     - cd Backend/group17
     - mvn clean
   tags:
-     - dalfcs_gitlab_docker_ci
+     - ugrad
 
 
 test-affordability-api:
@@ -58,5 +58,5 @@ test-affordability-api:
     - echo "Pipeline test started"
     - mvn verify
   tags:
-     - dalfcs_gitlab_docker_ci
+     - ugrad
 
