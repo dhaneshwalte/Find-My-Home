@@ -25,6 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ListingsController.class)
 @Import(TestConfig.class)
+
+@SpringBootTest
 public class ListingsControllerTest
 {
 
