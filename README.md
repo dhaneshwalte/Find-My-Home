@@ -27,6 +27,9 @@ User Scenarios:
 A college student who is moving to a new country would want to use the home finder application to search for affordable apartments or roommates near their university. They can open the application and enter property or roommate preferences, such as the number of roommates,pets, rent contribution.
 The application presents them with a list of available housing options, and they are able to view photos and read details. If they find a property that they are interested in, they are able to like it. 
 
+Login Page:
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/blob/listingSmells/Login_Page.png)
+
 
 
 
