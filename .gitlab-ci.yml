@@ -10,7 +10,7 @@ backend-build:
   script: 
     - cd Backend/group17
     - mvn clean
-    - mvn test
+    - mvn test -Dmaven.compiler.release=17
   tags:
     - ugrad
 
