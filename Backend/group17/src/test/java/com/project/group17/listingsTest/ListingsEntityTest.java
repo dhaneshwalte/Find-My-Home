@@ -20,6 +20,9 @@ public class ListingsEntityTest {
         listingsEntity.setListingId(1L);
         listingsEntity.setType("3BHK Apartment");
         listingsEntity.setAddress("123 Tobin St");
+        listingsEntity.setUtilities("Hydro, Heat");
+        listingsEntity.setRent(3000.0f);
+
     }
 
     @Test
@@ -36,5 +39,14 @@ public class ListingsEntityTest {
         assertEquals("123 Tobin St", listingsEntity.getAddress());
     }
 
+    @Test
+    public void testUtilities() {
+        assertEquals("Hydro, Heat", listingsEntity.getUtilities());
+    }
+
+    @Test
+    public void testRent() {
+        assertEquals(3000.0f, listingsEntity.getRent());
+    }
 
 }
