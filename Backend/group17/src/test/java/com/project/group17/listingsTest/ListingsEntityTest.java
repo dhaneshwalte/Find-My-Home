@@ -24,6 +24,8 @@ public class ListingsEntityTest {
         listingsEntity.setRent(3000.0f);
         listingsEntity.setDetails("coin operated laundry");
         listingsEntity.setUser(user);
+        listingsEntity.setProfilePicBase64("base64EncodedString1");
+        listingsEntity.setSecondProfilePicBase64("base64EncodedString2");
 
     }
 
@@ -60,7 +62,15 @@ public class ListingsEntityTest {
         assertEquals(Integer.valueOf(1), user.getId());
         assertEquals("testUser", user.getUsername());
     }
+    @Test
+    public void testProfilePicBase64() {
+        assertEquals("base64EncodedString1", listingsEntity.getProfilePicBase64());
+    }
 
+    @Test
+    public void testSecondProfilePicBase64() {
+        assertEquals("base64EncodedString2", listingsEntity.getSecondProfilePicBase64());
+    }
 
 
 }
