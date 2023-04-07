@@ -1,38 +1,62 @@
-stages:
-  # - front-end
-  - back-end
-  - testing
+# stages:
+#   # - front-end
+#   - back-end
+#   - testing
   
 
-backend-build:
-  stage: back-end
-  image: maven:3-jdk-11
+# backend-build:
+#   stage: back-end
+#   image: maven:3-jdk-11
 
-  script: 
-    - cd Backend/group17
-    - mvn clean
-  tags:
-    - ugrad
-  # only:
-  #   - ci
+#   script: 
+#     - cd Backend/group17
+#     - mvn clean
+#   tags:
+#     - ugrad
+#   # only:
+#   #   - ci
 
-# frontend-build:
-#   stage: front-end
+# # frontend-build:
+# #   stage: front-end
+# #   script:
+# #     - cd Frontend/react-group17
+# #     - ls
+# #     # - npm cache clean  
+# #     - npm install
+# #     - npm run build 
+# #   tags:
+# #     - ugrad
+
+# testing-build:
+#   stage: testing
+#   image: maven:3-jdk-11
 #   script:
-#     - cd Frontend/react-group17
-#     - ls
-#     # - npm cache clean  
-#     - npm install
-#     - npm run build 
+#     - cd Backend/group17
+#     - mvn clean test
 #   tags:
 #     - ugrad
 
-testing-build:
-  stage: testing
-  image: maven:3-jdk-11
+image: maven:latest
+
+stages:
+  - build
+  - test
+
+build-affordability-api:
+  stage: build
   script:
     - cd Backend/group17
-    - mvn clean test
+    - mvn clean
   tags:
-    - ugrad
+     - dalfcs_gitlab_docker_ci
+
+
+test-affordability-api:
+  stage: test
+  script:
+    - cd Backend/group17
+    - echo "Pipeline test started"
+    - mvn verify
+  tags:
+     - dalfcs_gitlab_docker_ci
 
