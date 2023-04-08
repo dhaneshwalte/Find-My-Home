@@ -23,27 +23,28 @@ public class ListingsService
         return listingsRepository.save(listing);
     }
 
-    public List<ListingsEntity> getAllListings()
-    {
-        List<ListingsEntity> listingsEntities;
-        List<ListingsEntity> listingsLiked = new ArrayList<>();
-
+    public List<ListingsEntity> getAllListings() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        listing likes of the user have
         List<LikeListingEntity> likeListingEntities = likeListingRepository.findByUser(user);
-        for(int i =0 ; i<likeListingEntities.size();i++){
-            listingsLiked.add(likeListingEntities.get(i).getListingsEntity());
-        }
-        //all the listings
-        listingsEntities = listingsRepository.getAllListings();
+        List<ListingsEntity> allListings = listingsRepository.getAllListings();
+        List<ListingsEntity> unlikedListings = new ArrayList<>();
 
-        for(int i = 0; i<listingsLiked.size();i++){
-            if(listingsEntities.contains(listingsLiked.get(i))){
-                listingsEntities.remove(listingsLiked.get(i));
+        for (ListingsEntity listing : allListings) {
+            boolean liked = false;
+            for (LikeListingEntity like : likeListingEntities) {
+                if (listing.equals(like.getListingsEntity())) {
+                    liked = true;
+                    break;
+                }
+            }
+            if (!liked) {
+                unlikedListings.add(listing);
             }
         }
-        return listingsEntities;
+
+        return unlikedListings;
     }
+
 
     public List<ListingsEntity> getMyListings() {
         // returns the listings posted by the user
