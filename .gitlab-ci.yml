@@ -1,6 +1,7 @@
 stages:
   - front-end
   - back-end
+  # - smells
   
 
 backend-build:
@@ -9,11 +10,10 @@ backend-build:
 
   script: 
     - cd Backend/group17
+    - mvn -version
     - mvn clean
   tags:
     - ugrad
-  # only:
-  #   - ci
 
 frontend-build:
   stage: front-end
@@ -25,4 +25,17 @@ frontend-build:
     - npm run build 
   tags:
     - ugrad
+
+# backend-smells-job:
+#     stage: smells
+#     image: openjdk:11
+#     script:
+#       - java -jar $CI_PROJECT_DIR/DesignateJava/DesigniteJava.jar -i $CI_PROJECT_DIR/group17/Backend/group17 -o back_end_smells/
+#     tags:
+#       - ugrad
+#     artifacts:
+#       paths:
+#         - back_end_smells/
+
+
 
