@@ -1,9 +1,9 @@
-package com.project.group17.group_match.service;
+package com.project.group17.group.service;
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.repository.GroupRepository;
-import com.project.group17.group_match.entity.GroupMatchEntity;
-import com.project.group17.group_match.entity.GroupMatchPojo;
-import com.project.group17.group_match.repository.GroupMatchRepository;
+import com.project.group17.group.entity.GroupMatchEntity;
+import com.project.group17.group.entity.GroupMatchPojo;
+import com.project.group17.group.repository.GroupMatchRepository;
 import com.project.group17.match.service.MatchService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;

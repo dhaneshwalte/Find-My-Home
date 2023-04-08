@@ -1,5 +1,5 @@
-package com.project.group17.LikeListing.repository;
-import com.project.group17.LikeListing.entity.LikeListingEntity;
+package com.project.group17.listings.repository;
+import com.project.group17.listings.entity.LikeListingEntity;
 import com.project.group17.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

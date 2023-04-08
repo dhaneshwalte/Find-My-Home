@@ -1,6 +1,6 @@
-package com.project.group17.LikeListing.controller;
-import com.project.group17.LikeListing.entity.LikeListingPojo;
-import com.project.group17.LikeListing.service.LikeListingService;
+package com.project.group17.listings.controller;
+import com.project.group17.listings.entity.LikeListingPojo;
+import com.project.group17.listings.service.LikeListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

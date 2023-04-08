@@ -1,6 +1,6 @@
 package com.project.group17.listings.service;
-import com.project.group17.LikeListing.entity.LikeListingEntity;
-import com.project.group17.LikeListing.repository.LikeListingRepository;
+import com.project.group17.listings.entity.LikeListingEntity;
+import com.project.group17.listings.repository.LikeListingRepository;
 import com.project.group17.listings.entity.ListingsEntity;
 import com.project.group17.listings.repository.ListingsRepository;
 import com.project.group17.user.entity.User;

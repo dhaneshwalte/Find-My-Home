@@ -1,6 +1,6 @@
-package com.project.group17.group_match.controller;
-import com.project.group17.group_match.entity.GroupMatchPojo;
-import com.project.group17.group_match.service.GroupMatchService;
+package com.project.group17.group.controller;
+import com.project.group17.group.entity.GroupMatchPojo;
+import com.project.group17.group.service.GroupMatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
