@@ -28,7 +28,7 @@ A college student who is moving to a new country would want to use the home find
 The application presents them with a list of available housing options, and they are able to view photos and read details. If they find a property that they are interested in, they are able to like it. 
 
 Login Page:
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/blob/listingSmells/Login_Page.png)
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/listingSmells/Login_Page.png)
 
 
 
