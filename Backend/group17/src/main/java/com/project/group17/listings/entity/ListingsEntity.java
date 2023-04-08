@@ -1,8 +1,11 @@
 package com.project.group17.listings.entity;
 import com.project.group17.user.entity.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "listings")
 public class ListingsEntity {
@@ -37,18 +40,18 @@ public class ListingsEntity {
         this.user = user;
     }
 
-    public ListingsEntity() {
-
-    }
-    public ListingsEntity(String type, String address, String utilities, float rent, String details, String profilePicBase64, String secondProfilePicBase64) {
-        this.type = type;
-        this.address = address;
-        this.utilities = utilities;
-        this.rent = rent;
-        this.details = details;
-        this.profilePicBase64 = profilePicBase64;
-        this.secondProfilePicBase64 = secondProfilePicBase64;
-    }
+//    public ListingsEntity() {
+//
+//    }
+//    public ListingsEntity(String type, String address, String utilities, float rent, String details, String profilePicBase64, String secondProfilePicBase64) {
+//        this.type = type;
+//        this.address = address;
+//        this.utilities = utilities;
+//        this.rent = rent;
+//        this.details = details;
+//        this.profilePicBase64 = profilePicBase64;
+//        this.secondProfilePicBase64 = secondProfilePicBase64;
+//    }
 
     public long getListingId() {
         return listingId;

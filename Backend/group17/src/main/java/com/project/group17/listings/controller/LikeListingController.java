@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 public class LikeListingController {
     @Autowired
+    public
     LikeListingService likeListingService;
 
     @CrossOrigin

@@ -4,7 +4,7 @@ import { saveListing } from "../../services/ListingsService";
 import { fetchUserData } from "../../services/AuthenticationService";
 import CircleUpload from '../../components/CircleUpload';
 import CircleUploadListing from '../../components/CircleUploadListing';
-
+import { useNavigate } from 'react-router-dom';
 import {
   Button,
   Form,
@@ -18,7 +18,7 @@ import {
   Row
 
 } from 'antd';
-import { useNavigate } from 'react-router-dom';
+
 
 const formItemLayout = {
     labelCol: {
@@ -90,7 +90,7 @@ const Listing = () => {
         saveListing({"type": type, "address": address, "utilities": JSON.stringify(utilities), "rent": rent, "details": otherDetails, "profilePicBase64":pic1Base64, "secondProfilePicBase64":pic2Base64})
         .then((response)=>{
             console.log(response);
-            navigate("/my-listings")
+            navigate("/profilepage")
         })
         .catch(err => console.log(err));
   };

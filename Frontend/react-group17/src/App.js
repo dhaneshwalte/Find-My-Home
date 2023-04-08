@@ -23,7 +23,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          {/* <Route path="/" exact element={<Home />} /> */}
+          <Route path='/' element={<ShowListings/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" exact element={<Register />} />
           <Route path="/user-preference" element={<UserPreference />} />
