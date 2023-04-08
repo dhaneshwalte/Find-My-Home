@@ -40,7 +40,7 @@ const Navbar = () => {
           style={{
             gap: '50px'}}
         >
-            <NavLink to="/profilepage">
+            <NavLink to="/show-listings">
                 Home
             </NavLink>
 
@@ -60,7 +60,7 @@ const Navbar = () => {
                 Preferences
             </NavLink>
 
-            <NavLink to="/showListings">
+            <NavLink to="/show-listings">
                 Listings
             </NavLink>
 
