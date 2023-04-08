@@ -1,4 +1,4 @@
-package com.project.group17.group.entity;
+package com.project.group17.user.entity;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

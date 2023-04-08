@@ -1,14 +1,21 @@
 package com.project.group17.group.service;
+import com.project.group17.group.entity.GroupDetailPojo;
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.entity.GroupPojo;
-import com.project.group17.group.entity.UserPojo;
+import com.project.group17.match.entity.MatchEntity;
+import com.project.group17.match.repository.MatchRepository;
+import com.project.group17.user.entity.UserPojo;
 import com.project.group17.group.repository.GroupRepository;
-import com.project.group17.match.service.MatchService;
 import com.project.group17.prefValues.model.PrefValueSaveReq;
 import com.project.group17.prefValues.service.PrefValuesService;
 import com.project.group17.user.entity.User;
+import com.project.group17.user.repository.UserRepository;
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 
 import java.util.*;
 
@@ -21,7 +28,10 @@ public class GroupService {
     PrefValuesService prefValuesService;
 
     @Autowired
-    MatchService matchService;
+    MatchRepository matchRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     public void saveGroup(User user1ID, User user2ID){
 
@@ -53,13 +63,13 @@ public class GroupService {
 
         }
     }
-    public List<Map<String, String>> getGroupUsers(Long groupID){
+    public List<User> getGroupUsers(Long groupID){
         List<GroupEntity> groupEntities = groupRepository.findByGroupId(groupID);
         List<User> groupUsers = new ArrayList<>();
         for (GroupEntity groupEntity: groupEntities){
             groupUsers.add(groupEntity.getUser());
         }
-        return matchService.getAllUserInfoAndPreferences(groupUsers);
+        return groupUsers;
     }
     public List<GroupPojo> getAllGroups(User user) {
 
@@ -135,5 +145,48 @@ public class GroupService {
         //System.out.println(groupPojo);
 
         return groupPojo;
+    }
+
+    public List<User> getRoommateRequest(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try{
+            Integer myGroupId = groupRepository.getGroupId(user.getId());
+            return null;
+        }catch (AopInvocationException aopInvocationException){
+            List<MatchEntity> matches;
+            List<User> myLikers = new ArrayList<>();
+            try{
+                matches = matchRepository.findByUser2(user);
+                for(int i = 0; i<matches.size();i++){
+                    myLikers.add(matches.get(i).getUser1());
+                }
+            }catch (NullPointerException e){
+                return null;
+            }
+            return myLikers;
+        }
+
+    }
+
+    public ResponseEntity<List<GroupPojo>> getGroups() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(getAllGroups(user));
+    }
+
+    public List<User> getGroupMembers(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Integer> groupMembers;
+        try{
+            groupMembers = groupRepository.getUsersByGroupId(groupRepository.getGroupId(user.getId()));
+        }catch (AopInvocationException aopInvocationException){
+            return null;
+        }
+        groupMembers.remove(user.getId());
+        List<User> myGroupMembers = new ArrayList<>();
+        for(int i = 0; i<groupMembers.size(); i++){
+            Optional<User> optionalUser =  userRepository.findById(groupMembers.get(i));
+            optionalUser.ifPresent(myGroupMembers::add);
+        }
+        return myGroupMembers;
     }
 }

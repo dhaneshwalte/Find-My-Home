@@ -1,12 +1,13 @@
 package com.project.group17.LikeListing.repository;
 import com.project.group17.LikeListing.entity.LikeListingEntity;
-import com.project.group17.listings.entity.ListingsEntity;
 import com.project.group17.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface LikeListingRepository extends JpaRepository<LikeListingEntity, Long> {
 
     void deleteById(long id);
@@ -15,8 +16,5 @@ public interface LikeListingRepository extends JpaRepository<LikeListingEntity, 
     long getId(long user_id, long listingsId);
 
     List<LikeListingEntity> findByUser(User user);
-
-//    @Query(value = "SELECT listings FROM liked_listings WHERE user = ?1", nativeQuery = true)
-//    Integer getLikedListings(User user);
 
 }
