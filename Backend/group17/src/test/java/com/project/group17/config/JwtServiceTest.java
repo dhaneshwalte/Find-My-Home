@@ -43,13 +43,6 @@ public class JwtServiceTest {
         assertEquals(USERNAME, jwtService.extractUsername(token));
     }
 
-//    @Test
-//    void testExtractClaim() {
-//        final Claims claims = jwtService.extractAllClaims(token);
-//        String token = jwtService.generateToken(userDetails);
-//        assertEquals(USERNAME, jwtService.extractClaim(token, Claims::getSubject));
-//    }
-
     @Test
     void testGenerateToken() {
         String token = jwtService.generateToken(userDetails);
@@ -77,22 +70,6 @@ public class JwtServiceTest {
         assertFalse(jwtService.isTokenValid(token, userDetails));
     }
 
-//    @Test
-//    void testIsTokenExpired() {
-//        String expiredToken = Jwts
-//                .builder()
-//                .setSubject(USERNAME)
-//                .setIssuedAt(new Date(System.currentTimeMillis() - 1000 * 60 * 30))
-//                .setExpiration(new Date(System.currentTimeMillis() - 1000 * 60 * 15))
-//                .signWith(jwtService.getSignInKey(), SignatureAlgorithm.HS256)
-//                .compact();
-//        assertTrue(jwtService.isTokenExpired(expiredToken));
-//    }
-//
-//    @Test
-//    void testGetSignInKey() {
-//        Key key = jwtService.getSignInKey();
-//        assertNotNull(key);}
 
 }
 
