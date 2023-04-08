@@ -108,6 +108,7 @@ public class GroupService {
 
             List<PrefValueSaveReq> prefValueSaveReqs1;
             prefValueSaveReqs1 = prefValuesService.getUserPrefValuesById(groupEntity.getUser().getId());
+            int numPrefValues = prefValueSaveReqsCurrentUser.size();
 
             int count = 0;
             for(PrefValueSaveReq prefValueSaveReq: prefValueSaveReqs1)
@@ -118,7 +119,7 @@ public class GroupService {
                 count++;
             }
 
-            userPojo.setSimilarity(similarity/23.0);
+            userPojo.setSimilarity(similarity/(double) numPrefValues);
 
         }
 

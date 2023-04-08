@@ -20,7 +20,10 @@ public class PrefValuesService {
         List<PrefValuesEntity> prefValuesEntities = new ArrayList<>();
         for(PrefValueSaveReq userPref: userPrefs){
             PrefValuesEntity prefValuesEntity = PrefValuesMapper.saveReqToEntityMapper(userPref, userId);
-            Optional<PrefValuesEntity> dataFromDB = repository.findByUserAndPrefName(prefValuesEntity.getUser().getId(), prefValuesEntity.getPrefValueId());
+            int uId = prefValuesEntity.getUser().getId();
+            Long prefValId = prefValuesEntity.getPrefValueId();
+            Optional<PrefValuesEntity> dataFromDB = repository.findByUserAndPrefName(uId, prefValId);
+
 
             if(dataFromDB.isPresent()){
                 prefValuesEntity.setPrefValueId(dataFromDB.get().getPrefValueId());
