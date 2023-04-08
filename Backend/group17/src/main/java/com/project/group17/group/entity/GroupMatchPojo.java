@@ -1,4 +1,4 @@
-package com.project.group17.group_match.entity;
+package com.project.group17.group.entity;
 
 public class GroupMatchPojo {
 

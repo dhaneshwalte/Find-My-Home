@@ -1,27 +1,21 @@
-package com.project.group17.LikeListing.controller;
-import com.project.group17.LikeListing.entity.LikeListingEntity;
-import com.project.group17.LikeListing.repository.LikeListingRepository;
+package com.project.group17.listings.service;
+import com.project.group17.listings.entity.LikeListingEntity;
+import com.project.group17.listings.entity.LikeListingPojo;
+import com.project.group17.listings.repository.LikeListingRepository;
 import com.project.group17.listings.repository.ListingsRepository;
 import com.project.group17.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/v1")
-public class LikeListingController {
+@Service
+public class LikeListingService {
     @Autowired
     ListingsRepository listingsRepository;
     @Autowired
     LikeListingRepository likeListingRepository;
-
-    @CrossOrigin
-    @RequestMapping(value = "/like-listing", method = RequestMethod.POST)
-    public void likeListing(@RequestBody LikeListingPojo likeListingPojo){
-        System.out.println("asdf" + likeListingPojo.getListingId());
+    public void likeListing(LikeListingPojo likeListingPojo){
         LikeListingEntity entity = new LikeListingEntity();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         entity.setUser(user);
@@ -29,11 +23,8 @@ public class LikeListingController {
         likeListingRepository.save(entity);
     }
 
-    @CrossOrigin
-    @RequestMapping(value = "/unlike-listing", method = RequestMethod.POST)
-    public void unlikeListing(@RequestBody long listingId){
+    public void unlikeListing(long listingId){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println( "line 39" +likeListingRepository.getId(user.getId(), listingId));
         likeListingRepository.deleteById(likeListingRepository.getId(user.getId(), listingId));
     }
 }

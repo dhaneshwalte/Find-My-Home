@@ -1,24 +1,20 @@
 package com.project.group17.match.service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import java.util.*;
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.repository.GroupRepository;
+import com.project.group17.group.service.GroupService;
+import com.project.group17.match.entity.MatchEntity;
+import com.project.group17.match.entity.MatchPojo;
+import com.project.group17.match.repository.MatchRepository;
 import com.project.group17.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import com.project.group17.location.service.LocationService;
 import com.project.group17.prefValues.entity.PrefValuesEntity;
 import com.project.group17.prefValues.service.PrefValuesService;
 import com.project.group17.location.entity.LocationEntity;
-
 import com.project.group17.user.entity.User;
 
 @Service
@@ -32,8 +28,16 @@ public class MatchService {
     @Autowired
     private GroupRepository groupRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    GroupService groupService;
+
+    @Autowired
+    MatchRepository matchRepository;
+
     public Map<User, Map<String, String>> getUserPreferences() {
-//        locationService.addDefaultLocations();
         List<PrefValuesEntity> prefValuesEntities = prefValuesService.findAll();
         Map<User, Map<String, String>> userPreferences = new HashMap<>();
         for (PrefValuesEntity prefValueEntity : prefValuesEntities) {
@@ -50,10 +54,6 @@ public class MatchService {
                 mp.put(prefName, prefValue);
                 userPreferences.put(user, mp);
             }
-        }
-        for (Map.Entry<User, Map<String, String>> entry : userPreferences.entrySet()) {
-//            System.out.println(entry.getKey().getFirstname() + " " + entry.getKey().getId());
-//            entry.getValue().forEach((pref, option) -> System.out.println(pref + " - " + option));
         }
         return userPreferences;
     }
@@ -86,9 +86,7 @@ public class MatchService {
     }
     
     public List<Map<String, String>> getRoommateList(User user){
-        User liker = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<GroupEntity> groups = groupRepository.findByUser(user);
-        System.out.println("Print Line 91: "+groups.toString());
         if(groups.size() != 0){
             return null;
         } else{
@@ -183,8 +181,6 @@ public class MatchService {
             int rank1 = ordinalValues.get(ordinalKey).get(User1.get(ordinalKey));
             int rank2 = ordinalValues.get(ordinalKey).get(User2.get(ordinalKey));
             ordinalScore += getOrdinalScore(rank1, rank2, maxRankOrdinalValues.get(ordinalKey));
-            // System.out.println("Ordinal Key: " + ordinalKey + " " + rank1 + " " + rank2 +
-            // " " + getOrdinalScore(rank1, rank2, maxRankOrdinalValues.get(ordinalKey)));
         }
         ordinalScore /= ordinalKeys.length; // Get Average Ordinal Score.
         double nominalScore = 0;
@@ -196,9 +192,6 @@ public class MatchService {
         nominalScore /= nominalKeys.length;
         double distance = getDistance(User1.get("Location"), User2.get("Location"));
         double locationScore = getLocationScore(distance);
-//        System.out.println("Ordinal Score: " + ordinalScore);
-//        System.out.println("Nominal Score: " + nominalScore);
-//        System.out.println("Location Score: " + locationScore);
         return (nominalScore + ordinalScore + locationScore) / 3;
     }
 
@@ -255,7 +248,6 @@ public class MatchService {
         user1.put("Furnished", "Yes");
         user1.put("Lease Length", "Short-Term");
         user1.put("Move-in Date", "ASAP");
-        user1.put("Lease Length", "Short Term");
         user1.put("Overall Rent", "4000-5000/month");
         user1.put("Parking", "No Parking");
         user1.put("Gender", "Male");
@@ -281,6 +273,34 @@ public class MatchService {
         user2.put("Max Roommates", "4");
         user2.put("Drinker", "Yes");
         user2.put("Smoker", "No");
+    }
+    public void getUserId(MatchPojo user2) {
+        MatchEntity entity = new MatchEntity();
+        User liker = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> optionalLikee = userRepository.findById(user2.getUser2ID());
+        User likee = optionalLikee.get();
+        entity.setUser1(liker);
+        entity.setUser2(likee);
+        matchRepository.save(entity);
+        List<MatchEntity> matches;
+        matches = matchRepository.findByUser1(likee);
+        for (int i = 0; i < matches.size(); i++) {
+            if (matches.get(i).getUser2().getId().equals(liker.getId())){
+                groupService.saveGroup(liker, likee);
+                break;
+            }
+        }
+    }
+
+    public ResponseEntity<List<Map<String, String>>> likes() {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<MatchEntity> entities = null;
+        entities = matchRepository.findByUser1(currentUser);
+        List<User> likes = new ArrayList<>();
+        for (int i = 0; i < entities.size(); i++) {
+            likes.add(entities.get(i).getUser2());
+        }
+        return ResponseEntity.ok(getAllUserInfoAndPreferences(likes));
     }
 
 }

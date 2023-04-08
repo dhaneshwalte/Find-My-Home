@@ -1,5 +1,7 @@
 package com.project.group17.group.entity;
 
+import com.project.group17.user.entity.UserPojo;
+
 import java.util.List;
 
 public class GroupPojo {

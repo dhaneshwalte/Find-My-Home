@@ -1,4 +1,4 @@
-package com.project.group17.LikeListing.entity;
+package com.project.group17.listings.entity;
 import com.project.group17.listings.entity.ListingsEntity;
 import com.project.group17.user.entity.User;
 import jakarta.persistence.*;

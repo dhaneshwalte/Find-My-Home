@@ -1,12 +1,9 @@
-package com.project.group17.group_match.repository;
-import com.project.group17.group_match.entity.GroupMatchEntity;
-import com.project.group17.user.entity.User;
-import jakarta.persistence.criteria.CriteriaBuilder;
+package com.project.group17.group.repository;
+import com.project.group17.group.entity.GroupMatchEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Scanner;
 
 public interface GroupMatchRepository extends JpaRepository<GroupMatchEntity, Long> {
     void deleteById(long requestId);

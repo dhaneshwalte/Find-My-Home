@@ -1,33 +1,33 @@
-package com.project.group17.group_match.controller;
+package com.project.group17.group.service;
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.repository.GroupRepository;
-import com.project.group17.group_match.entity.GroupMatchEntity;
-import com.project.group17.group_match.entity.GroupMatchPojo;
-import com.project.group17.group_match.repository.GroupMatchRepository;
+import com.project.group17.group.entity.GroupMatchEntity;
+import com.project.group17.group.entity.GroupMatchPojo;
+import com.project.group17.group.repository.GroupMatchRepository;
 import com.project.group17.match.service.MatchService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
-import java.util.*;
+import org.springframework.stereotype.Service;
 
-@RestController
-@RequestMapping("/api/v1")
-public class GroupMatchController {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+@Service
+public class GroupMatchService {
     @Autowired
     GroupMatchRepository groupMatchRepository;
     @Autowired
     GroupRepository groupRepository;
     @Autowired
-    MatchService matchService;
-    @Autowired
     UserRepository userRepository;
-
-    @CrossOrigin
-    @RequestMapping(value = "/request-group", method = RequestMethod.POST)
-    public @ResponseBody void addUserRequest(@RequestBody GroupMatchPojo groupId) {
+    @Autowired
+    MatchService matchService;
+    public void addUserRequest(GroupMatchPojo groupId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         GroupMatchEntity entity = new GroupMatchEntity();
         entity.setUser(user);
@@ -35,8 +35,6 @@ public class GroupMatchController {
         groupMatchRepository.save(entity);
     }
 
-    @CrossOrigin
-    @GetMapping("/group-requests")
     public ResponseEntity<List<Map<String, String>>> groupRequests() {
         //find by passing user object > groups table
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -51,10 +49,7 @@ public class GroupMatchController {
         System.out.println(matchService.getAllUserInfoAndPreferences(userList));
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(userList));
     }
-
-    @CrossOrigin
-    @RequestMapping(value = "/request-approval", method = RequestMethod.POST)
-    public @ResponseBody void approveUserRequest(@RequestBody GroupMatchPojo userID) {
+    public void approveUserRequest(GroupMatchPojo userID) {
         //logged in user
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //user whom we have approved

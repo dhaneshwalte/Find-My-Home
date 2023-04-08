@@ -1,4 +1,4 @@
-package com.project.group17.LikeListing.controller;
+package com.project.group17.listings.entity;
 
 public class LikeListingPojo {
     long listingID;

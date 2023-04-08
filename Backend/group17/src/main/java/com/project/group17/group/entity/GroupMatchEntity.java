@@ -1,4 +1,4 @@
-package com.project.group17.group_match.entity;
+package com.project.group17.group.entity;
 
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.user.entity.User;
