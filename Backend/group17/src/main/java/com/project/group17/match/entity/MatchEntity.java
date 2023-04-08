@@ -3,7 +3,7 @@ package com.project.group17.match.entity;
 import com.project.group17.user.entity.User;
 import jakarta.persistence.*;
 
-//TODO : this is a temporary table
+
 
 @Entity
 @IdClass(MatchId.class)
