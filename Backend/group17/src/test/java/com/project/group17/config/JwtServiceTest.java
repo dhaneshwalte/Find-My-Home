@@ -1,5 +1,6 @@
 package com.project.group17.config;
 
+import com.project.group17.config.Service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

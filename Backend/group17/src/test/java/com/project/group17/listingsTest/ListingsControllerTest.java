@@ -1,7 +1,7 @@
 package com.project.group17.listingsTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.group17.config.JwtService;
+import com.project.group17.config.Service.JwtService;
 import com.project.group17.listings.controller.ListingsController;
 import com.project.group17.listings.entity.ListingsEntity;
 import com.project.group17.listings.service.ListingsService;
