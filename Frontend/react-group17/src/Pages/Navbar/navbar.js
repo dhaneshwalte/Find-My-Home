@@ -60,7 +60,7 @@ const Navbar = () => {
                 Preferences
             </NavLink>
 
-            <NavLink to="/showListings">
+            <NavLink to="/show-listings">
                 Listings
             </NavLink>
 

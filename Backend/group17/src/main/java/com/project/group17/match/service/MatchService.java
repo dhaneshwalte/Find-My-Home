@@ -242,6 +242,7 @@ public class MatchService {
         return similarity;
     }
 
+
     public void tempUserPref() {
         Map<String, String> user1 = new HashMap<>();
         user1.put("Location", "Halifax North End");
@@ -302,5 +303,39 @@ public class MatchService {
         }
         return ResponseEntity.ok(getAllUserInfoAndPreferences(likes));
     }
+
+//    public void tempUserPref() {
+//        Map<String, String> user1 = new HashMap<>();
+//        user1.put("Location", "Halifax North End");
+//        user1.put("Furnished", "Yes");
+//        user1.put("Lease Length", "Short-Term");
+//        user1.put("Move-in Date", "ASAP");
+//        user1.put("Lease Length", "Short Term");
+//        user1.put("Overall Rent", "4000-5000/month");
+//        user1.put("Parking", "No Parking");
+//        user1.put("Gender", "Male");
+//        user1.put("Pets Policy", "Cats Only");
+//        user1.put("Meal", "Vegan");
+//        user1.put("Rent Contribution", "$500-$1000/month");
+//        user1.put("Max Roommates", "4");
+//        user1.put("Drinker", "Yes");
+//        user1.put("Smoker", "No");
+//
+//        Map<String, String> user2 = new HashMap<>();
+//        user2.put("Location", "Halifax North End");
+//        user2.put("Furnished", "Yes");
+//        user2.put("Lease Length", "Long-term");
+//        user2.put("Move-in Date", "ASAP");
+//        user2.put("Lease Length", "Short Term");
+//        user2.put("Overall Rent", "Less than 1500/month");
+//        user2.put("Parking", "No Parking");
+//        user2.put("Gender", "Male");
+//        user2.put("Pets Policy", "Cats Only");
+//        user2.put("Meal", "Vegan");
+//        user2.put("Rent Contribution", "$500-$1000/month");
+//        user2.put("Max Roommates", "4");
+//        user2.put("Drinker", "Yes");
+//        user2.put("Smoker", "No");
+//    }
 
 }

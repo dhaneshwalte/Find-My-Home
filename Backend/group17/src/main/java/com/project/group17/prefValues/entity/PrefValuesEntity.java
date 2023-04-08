@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "pref_value")
 public class PrefValuesEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
