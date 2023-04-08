@@ -1,5 +1,6 @@
 package com.project.group17.location.repository;
 
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -23,5 +24,10 @@ public class LocationRepository {
     public LocationEntity findByCity(String city) {
         return entityManager.find(LocationEntity.class, city);
     }
-    
+
+    @Transactional
+    public void deleteAll(){
+        Query query = entityManager.createQuery("DELETE FROM LocationEntity");
+        query.executeUpdate();
+    }
 }
