@@ -19,27 +19,57 @@ public class PrefOptionsEntity {
     @Column(nullable = false)
     private String option_name;
 
+    /**
+     * Returns the ID of the preference option.
+     *
+     * @return Long - the ID of the preference option
+     */
     public Long getPrefId() {
         return prefId;
     }
 
+    /**
+     * Sets the ID of the preference option.
+     *
+     * @param prefId - the ID of the preference option
+     */
     public void setPrefId(Long prefId) {
         this.prefId = prefId;
     }
 
+    /**
+     * Returns the preference name of the preference option.
+     *
+     * @return PrefNamesEntity - the preference name of the preference option
+     */
     @JsonBackReference
     public PrefNamesEntity getPrefName() {
         return prefName;
     }
 
+    /**
+     * Sets the preference name of the preference option.
+     *
+     * @param prefName - the preference name of the preference option
+     */
     public void setPrefName(PrefNamesEntity prefName) {
         this.prefName = prefName;
     }
 
+    /**
+     * Returns the name of the preference option.
+     *
+     * @return String - the name of the preference option
+     */
     public String getOption() {
         return option_name;
     }
 
+    /**
+     * Sets the name of the preference option.
+     *
+     * @param option - the name of the preference option
+     */
     public void setOption(String option) {
         this.option_name = option;
     }

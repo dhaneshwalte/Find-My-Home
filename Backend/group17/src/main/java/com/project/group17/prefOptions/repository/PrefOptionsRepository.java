@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PrefOptionsRepository extends JpaRepository<PrefOptionsEntity, Integer> {
+
+    // This repository interface inherits all the methods of the JpaRepository interface
 }

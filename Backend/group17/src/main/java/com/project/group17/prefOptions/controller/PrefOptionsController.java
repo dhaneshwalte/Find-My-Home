@@ -11,11 +11,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/pref-option")
 public class PrefOptionsController {
+
     @Autowired
     PrefOptionsService service;
+
+    /**
+     * Returns a ResponseEntity object containing a list of all preference options.
+     *
+     * @return ResponseEntity<List<PrefOptionsEntity>> - a response entity containing a list of preference options
+     */
     @CrossOrigin
     @GetMapping("/all")
     public ResponseEntity<List<PrefOptionsEntity>> getAllPrefOptions(){
+        // Call the getAllPrefOptions method in the service to get all preference options
         return ResponseEntity.ok(service.getAllPrefOptions());
     }
 }
