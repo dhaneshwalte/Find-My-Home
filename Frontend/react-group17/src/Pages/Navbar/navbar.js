@@ -77,7 +77,7 @@ const Navbar = () => {
   );
   }
 
-  const checkRoutes = ["/login","/register"];
+  const checkRoutes = ["/login","/register","/"];
   const result = window.location.pathname;
   console.log(checkRoutes.includes(result));
   return (
