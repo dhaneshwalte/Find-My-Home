@@ -8,29 +8,58 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * JwtService is responsible for managing JSON Web Token (JWT) operations.
+ */
 @Service
 public class JwtService {
     private static final String SECRET_KEY = "635166546A576E5A7234743777217A25432A462D4A614E645267556B58703273";
+
+    /**
+     * Extracts the username from the given token.
+     *
+     * @param token The JWT token.
+     * @return The extracted username.
+     */
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
     }
 
+    /**
+     * Extracts a specific claim from the given token.
+     *
+     * @param token The JWT token.
+     * @param claimsResolver A function to extract a specific claim from Claims object.
+     * @return The extracted claim.
+     */
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
+    /**
+     * Generates a JWT token for the given UserDetails.
+     *
+     * @param userDetails The UserDetails object.
+     * @return The generated JWT token.
+     */
     public String generateToken(UserDetails userDetails){
         return generateToken(new HashMap<>(), userDetails);
     }
 
+    /**
+     * Generates a JWT token with extra claims for the given UserDetails.
+     *
+     * @param extraClaims A map of extra claims to be added to the JWT token.
+     * @param userDetails The UserDetails object.
+     * @return The generated JWT token.
+     */
     public String generateToken(
             Map<String, Object> extraClaims,
             UserDetails userDetails
@@ -45,6 +74,13 @@ public class JwtService {
                 .compact();
     }
 
+    /**
+     * Validates if the given JWT token is valid for the given UserDetails.
+     *
+     * @param token The JWT token.
+     * @param userDetails The UserDetails object.
+     * @return true if the token is valid, false otherwise.
+     */
     public boolean isTokenValid(String token, UserDetails userDetails){
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
@@ -58,7 +94,6 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    //TODO @walte Handle SignatureException
     private Claims extractAllClaims(String token){
         return Jwts
                 .parserBuilder()
@@ -68,6 +103,11 @@ public class JwtService {
                 .getBody();
     }
 
+    /**
+     * Generates the signing key for JWT tokens using the SECRET_KEY.
+     *
+     * @return The generated signing key.
+     */
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);

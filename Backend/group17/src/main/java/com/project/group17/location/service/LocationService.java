@@ -6,12 +6,19 @@ import org.springframework.stereotype.Service;
 import com.project.group17.location.entity.LocationEntity;
 import com.project.group17.location.repository.LocationRepository;
 
+
+/**
+ * LocationService is a service class for managing LocationEntity objects.
+ */
 @Service
 public class LocationService {
     
     @Autowired
     private LocationRepository locationRepository;
 
+    /**
+     * Adds default locations to the database.
+     */
     public void addDefaultLocations(){
 //        locationRepository.save(new LocationEntity("Halifax South End", "44.635132918937806", "-63.57985798361541"));
 //        locationRepository.save(new LocationEntity("Halifax West End", "44.65192658618188", "-63.61298862922718"));
@@ -30,6 +37,12 @@ public class LocationService {
 //        locationRepository.save(new LocationEntity("Cole Harbour", "44.6729459579599", "-63.47782982298076"));
     }
 
+    /**
+     * Retrieves a LocationEntity by its city name.
+     *
+     * @param city The city name to search for.
+     * @return The LocationEntity with the specified city name, or null if not found.
+     */
     public LocationEntity getLocationEntity(String city){
         return locationRepository.findByCity(city);
     }

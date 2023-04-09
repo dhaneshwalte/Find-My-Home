@@ -17,6 +17,10 @@ import com.project.group17.prefValues.service.PrefValuesService;
 import com.project.group17.location.entity.LocationEntity;
 import com.project.group17.user.entity.User;
 
+/**
+ * Service class for handling matching logic.
+ */
+
 @Service
 public class MatchService {
 
@@ -37,6 +41,11 @@ public class MatchService {
     @Autowired
     MatchRepository matchRepository;
 
+    /**
+     * Retrieves user preferences for all users.
+     *
+     * @return A map containing user preferences for each user.
+     */
     public Map<User, Map<String, String>> getUserPreferences() {
         List<PrefValuesEntity> prefValuesEntities = prefValuesService.findAll();
         Map<User, Map<String, String>> userPreferences = new HashMap<>();
@@ -58,7 +67,12 @@ public class MatchService {
         return userPreferences;
     }
 
-
+    /**
+     * Retrieves user information and preferences for a specific user.
+     *
+     * @param user User object for which information and preferences are retrieved.
+     * @return A map containing user information and preferences.
+     */
     public Map<String, String> getUserInfoAndPreferences(User user) {
         Map<User, Map<String, String>> userPrefs = this.getUserPreferences();
         Map<String, String> principalPrefs = null;
@@ -85,7 +99,13 @@ public class MatchService {
         principalPrefs.put("profilePicBase64", user.getProfilePicBase64());
         return principalPrefs;
     }
-    
+
+    /**
+     * Retrieves a list of potential roommates for a given user.
+     *
+     * @param user User object for which potential roommates are retrieved.
+     * @return A list of maps containing user information and preferences of potential roommates.
+     */
     public List<Map<String, String>> getRoommateList(User user){
         List<GroupEntity> groups = groupRepository.findByUser(user);
         if(groups.size() != 0){
@@ -126,7 +146,12 @@ public class MatchService {
         }
     }
 
-
+    /**
+     * Retrieves user information and preferences for all users in the provided list.
+     *
+     * @param users List of User objects for which information and preferences are retrieved.
+     * @return A list of maps containing user information and preferences for each user in the list.
+     */
     public List<Map<String, String>> getAllUserInfoAndPreferences(List<User> users) {
         List<Map<String, String>> allUserInfoAndPreferences = new ArrayList<>();
         for(User user: users){
@@ -137,7 +162,13 @@ public class MatchService {
         }
         return allUserInfoAndPreferences;
     }
-
+    /**
+     * Calculates the similarity score between two users.
+     *
+     * @param User1 A map containing user information and preferences for the first user.
+     * @param User2 A map containing user information and preferences for the second user.
+     * @return A double representing the similarity score between the two users.
+     */
     public double getSimilarityScore(Map<String, String> User1, Map<String, String> User2) {
         String[] nominalKeys = { "Furnished", "Lease Length", "Parking", "Gender", "Pets Policy", "Meal", "Drinker",
                 "Smoker" };
@@ -243,6 +274,11 @@ public class MatchService {
         return similarity;
     }
 
+    /**
+     * Saves a user's like (match) action in the database.
+     *
+     * @param user2 MatchPojo object containing the user being liked.
+     */
     public void getUserId(MatchPojo user2) {
         MatchEntity entity = new MatchEntity();
         User liker = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -260,7 +296,11 @@ public class MatchService {
             }
         }
     }
-
+    /**
+     * Get a list of users who the current user has liked.
+     *
+     * @return ResponseEntity containing a list of user information and preferences for the users the current user has liked.
+     */
     public ResponseEntity<List<Map<String, String>>> likes() {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<MatchEntity> entities = null;

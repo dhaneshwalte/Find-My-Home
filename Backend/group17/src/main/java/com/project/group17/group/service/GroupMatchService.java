@@ -1,4 +1,5 @@
 package com.project.group17.group.service;
+
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.repository.GroupRepository;
 import com.project.group17.group.entity.GroupMatchEntity;
@@ -17,6 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * GroupMatchService is a class that provides services related to group matching.
+ */
 @Service
 public class GroupMatchService {
     @Autowired
@@ -27,6 +31,12 @@ public class GroupMatchService {
     UserRepository userRepository;
     @Autowired
     MatchService matchService;
+
+    /**
+     * Adds a user request to a group.
+     *
+     * @param groupId The GroupMatchPojo object containing the groupId.
+     */
     public void addUserRequest(GroupMatchPojo groupId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         GroupMatchEntity entity = new GroupMatchEntity();
@@ -35,6 +45,11 @@ public class GroupMatchService {
         groupMatchRepository.save(entity);
     }
 
+    /**
+     * Retrieves group requests for the logged-in user.
+     *
+     * @return A ResponseEntity containing a list of maps with user information and preferences.
+     */
     public ResponseEntity<List<Map<String, String>>> groupRequests() {
         //find by passing user object > groups table
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -42,13 +57,19 @@ public class GroupMatchService {
         //from group-match table find the user's
         List<Integer> usersID = groupMatchRepository.getUsersByGroupId(groupId);
         List<User> userList = new ArrayList<>();
-        for(int i = 0; i<usersID.size(); i++){
-            Optional<User> optionalUser =  userRepository.findById(usersID.get(i));
+        for (int i = 0; i < usersID.size(); i++) {
+            Optional<User> optionalUser = userRepository.findById(usersID.get(i));
             optionalUser.ifPresent(userList::add);
         }
         System.out.println(matchService.getAllUserInfoAndPreferences(userList));
         return ResponseEntity.ok(matchService.getAllUserInfoAndPreferences(userList));
     }
+
+    /**
+     * Approves a user request to join a group.
+     *
+     * @param userID The GroupMatchPojo object containing the user ID.
+     */
     public void approveUserRequest(GroupMatchPojo userID) {
         //logged in user
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -56,11 +77,10 @@ public class GroupMatchService {
         long userId = userID.getUserId();
         long index = groupMatchRepository.getIndexByUserId(userId);
         groupMatchRepository.deleteById(index);
-//        System.out.println(groupMatchRepository.deleteById(index));
         //add this user to the group
-        Optional<User> optionalUser =  userRepository.findById((int) userID.getUserId());
+        Optional<User> optionalUser = userRepository.findById((int) userID.getUserId());
         User newGroupMember = new User();
-        if(optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             newGroupMember = optionalUser.get();
         }
         GroupEntity groupEntity = new GroupEntity();

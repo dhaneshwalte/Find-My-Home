@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.*;
-
+/**
+ * GroupService is a class that provides services related to group operations.
+ */
 @Service
 public class GroupService {
     @Autowired
@@ -32,6 +34,12 @@ public class GroupService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * Saves a group with two users.
+     *
+     * @param user1ID First user ID.
+     * @param user2ID Second user ID.
+     */
     public void saveGroup(User user1ID, User user2ID){
 
         List<GroupEntity> groups = groupRepository.findAll();
@@ -62,6 +70,13 @@ public class GroupService {
 
         }
     }
+
+    /**
+     * Retrieves a list of users in a group.
+     *
+     * @param groupID The group ID.
+     * @return A list of users in the group.
+     */
     public List<User> getGroupUsers(Long groupID){
         List<GroupEntity> groupEntities = groupRepository.findByGroupId(groupID);
         List<User> groupUsers = new ArrayList<>();
@@ -70,6 +85,13 @@ public class GroupService {
         }
         return groupUsers;
     }
+
+    /**
+     * Retrieves all groups of a user.
+     *
+     * @param user The user object.
+     * @return A list of GroupPojo objects.
+     */
     public List<GroupPojo> getAllGroups(User user) {
 
         List<GroupEntity> groupEntities = groupRepository.findAll();
@@ -142,11 +164,16 @@ public class GroupService {
 
             groupPojo.add(currentGroupPojo);
         }
-        //System.out.println(groupPojo);
 
         return groupPojo;
     }
 
+
+    /**
+     * Retrieves roommate requests for the logged-in user.
+     *
+     * @return A list of users who have sent roommate requests.
+     */
     public List<User> getRoommateRequest(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try{
@@ -168,11 +195,23 @@ public class GroupService {
 
     }
 
+
+    /**
+     * Retrieves a list of GroupPojo objects for the logged-in user.
+     *
+     * @return A ResponseEntity containing a list of GroupPojo objects.
+     */
     public ResponseEntity<List<GroupPojo>> getGroups() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(getAllGroups(user));
     }
 
+
+    /**
+     * Retrieves a list of group members for the logged-in user's group.
+     *
+     * @return A list of users in the user's group.
+     */
     public List<User> getGroupMembers(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Integer> groupMembers;
