@@ -9,11 +9,18 @@ import java.util.List;
 
 @Service
 public class PrefOptionsService {
+
     @Autowired
     PrefOptionsRepository prefOptionsRepository;
 
+    /**
+     * Returns a list of all preference options.
+     *
+     * @return List<PrefOptionsEntity> - a list of preference options
+     */
     public List<PrefOptionsEntity> getAllPrefOptions()
     {
+        // Call the findAll method in the repository to get all preference options
         return prefOptionsRepository.findAll();
     }
 }

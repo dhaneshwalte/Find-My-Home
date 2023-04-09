@@ -6,24 +6,34 @@ import com.project.group17.profilepage.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The ProfileService class provides methods to update the user details in the database.
+ */
 @Service
 public class ProfileService {
 
     @Autowired
     ProfileRepository profilerepo;
-    public void saveEditUserDetails(UserUpdateRequest updatedUser  , User principlUser) {
-        principlUser.setFirstname(updatedUser.getFirstname());
-        principlUser.setLastname(updatedUser.getLastname());
-        principlUser.setGender(updatedUser.getGender());
-        principlUser.setEmail(updatedUser.getEmail());
-        principlUser.setStreetAddress(updatedUser.getStreetAddress());
-        principlUser.setCity(updatedUser.getCity());
-        principlUser.setProvince(updatedUser.getProvince());
-        principlUser.setPhoneNumber(updatedUser.getPhoneNumber());
-        principlUser.setAge(updatedUser.getAge());
-        System.out.println(principlUser);
-        profilerepo.saveEditUserDetails(principlUser);
-    }
-    
 
+    /**
+     * Saves the updated user details to the database.
+     * @param updatedUser The updated user details sent from the client.
+     * @param principalUser The authenticated user whose details are being updated.
+     */
+    public void saveEditUserDetails(UserUpdateRequest updatedUser  , User principalUser) {
+        // Set the updated user details to the principal user object.
+        principalUser.setFirstname(updatedUser.getFirstname());
+        principalUser.setLastname(updatedUser.getLastname());
+        principalUser.setGender(updatedUser.getGender());
+        principalUser.setEmail(updatedUser.getEmail());
+        principalUser.setStreetAddress(updatedUser.getStreetAddress());
+        principalUser.setCity(updatedUser.getCity());
+        principalUser.setProvince(updatedUser.getProvince());
+        principalUser.setPhoneNumber(updatedUser.getPhoneNumber());
+        principalUser.setAge(updatedUser.getAge());
+
+        // Save the updated user details to the database.
+        profilerepo.saveEditUserDetails(principalUser);
+    }
 }
+

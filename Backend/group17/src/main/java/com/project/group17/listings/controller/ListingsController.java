@@ -66,6 +66,11 @@ public class ListingsController {
         return listingsService.getLikedListings();
     }
 
+    /**
+     * Returns a ResponseEntity object containing a list of maps representing the users who have liked the listings of the authenticated user.
+     *
+     * @return ResponseEntity<List<Map<String, String>>> - a response entity containing a list of maps of user information
+     */
     @CrossOrigin
     @GetMapping("/get-liked-listingUsers")
     public ResponseEntity<List<Map<String, String>>> getListingsLikedUsers() {

@@ -14,8 +14,12 @@ public class ProfileRepository  {
     @Autowired
     private EntityManager entityManager;
 
+    /**
+     * Saves the edited user details to the database.
+     * @param user The user object containing the edited user details.
+     */
     @Transactional
-    public  void saveEditUserDetails(User user) {
+    public void saveEditUserDetails(User user) {
         entityManager.merge(user);
     }
 }

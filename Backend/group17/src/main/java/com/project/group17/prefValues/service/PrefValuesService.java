@@ -16,6 +16,14 @@ public class PrefValuesService {
 
     @Autowired
     PrefValuesRepository repository;
+
+    /**
+     * Saves the user's preferences in the database.
+     *
+     * @param userId - the ID of the user whose preferences are being saved
+     * @param userPrefs - a list of PrefValueSaveReq objects containing the user's preferences to be saved
+     * @return String - a string indicating whether the operation was successful
+     */
     public String saveUserPreferences(int userId, List<PrefValueSaveReq> userPrefs){
         List<PrefValuesEntity> prefValuesEntities = new ArrayList<>();
         for(PrefValueSaveReq userPref: userPrefs){
@@ -23,7 +31,6 @@ public class PrefValuesService {
             int uId = prefValuesEntity.getUser().getId();
             Long prefValId = prefValuesEntity.getPrefValueId();
             Optional<PrefValuesEntity> dataFromDB = repository.findByUserAndPrefName(uId, prefValId);
-
 
             if(dataFromDB.isPresent()){
                 prefValuesEntity.setPrefValueId(dataFromDB.get().getPrefValueId());
@@ -34,6 +41,12 @@ public class PrefValuesService {
         return "Success";
     }
 
+    /**
+     * Retrieves a list of the user's preferences from the database.
+     *
+     * @param userId - the ID of the user whose preferences are being retrieved
+     * @return List<PrefValueSaveReq> - a list of PrefValueSaveReq objects containing the user's preferences
+     */
     public List<PrefValueSaveReq> getUserPrefValuesById(int userId) {
         try {
             List<PrefValueSaveReq> prefRes = new ArrayList<>();
@@ -51,6 +64,11 @@ public class PrefValuesService {
         }
     }
 
+    /**
+     * Retrieves a list of all preference values from the database.
+     *
+     * @return List<PrefValuesEntity> - a list of all PrefValuesEntity objects in the database
+     */
     public List<PrefValuesEntity> findAll(){
         return repository.findAll();
     }
