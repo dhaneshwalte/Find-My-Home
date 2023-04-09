@@ -57,6 +57,7 @@ public class LikeListingControllerTest {
         SecurityContextHolder.getContext().setAuthentication(auth);
 
         likeListingPojo = new LikeListingPojo();
+        likeListingPojo.setListingId(1L);
     }
     @Test
     @WithMockUser(roles = "USER")
@@ -79,6 +80,6 @@ public class LikeListingControllerTest {
                         .content(objectMapper.writeValueAsString(listingId)))
                 .andExpect(status().isOk());
 
-        verify(likeListingService).unlikeListing(listingId);
+        verify(likeListingService).unlikeListing(likeListingPojo);
     }
 }

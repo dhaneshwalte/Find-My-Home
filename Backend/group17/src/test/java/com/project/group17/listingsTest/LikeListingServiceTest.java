@@ -75,10 +75,10 @@ public class LikeListingServiceTest {
 
     @Test
     void testUnlikeListing() {
-        long listingId = 1L;
+        Long listingId = 1L;
         when(likeListingRepository.getId(user.getId(), listingId)).thenReturn(1L);
 
-        likeListingService.unlikeListing(listingId);
+        likeListingService.unlikeListing(likeListingPojo);
 
         verify(likeListingRepository, times(1)).deleteById(1L);
     }
