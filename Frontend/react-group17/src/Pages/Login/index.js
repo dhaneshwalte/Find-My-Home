@@ -30,7 +30,7 @@ const Login = () => {
                         navigate("/user-preference");
                     }
                     else {
-                        navigate("/");
+                        navigate("/profilepage");
                         location.reload();
                     }
                 }
