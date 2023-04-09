@@ -40,9 +40,16 @@ const createListingButton = () =>{
   navigate('/listing');
 }
 
-// const userDetailsPrefButton = () =>{
-//   navigate('/user-preference');
-// }
+const myListingLikesButton = () =>{
+  navigate('/show-liked-listings');
+}
+
+const MyListings = () =>{
+  navigate('/show-my-listings');
+}
+const pepoleLikedMyListing = () =>{
+  navigate('/liked-listing-users');
+}
 
 const roommateRequest = () =>{
   navigate('/roommate-requests');
@@ -162,6 +169,36 @@ const renderprofilePage = () => {
                 <div className="d-flex justify-content-center mb-2">
                   <Button onClick={createListingButton}
                   >Create</Button>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <p className="text-muted mb-4">{userDetails.username} Listing Likes</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <Button onClick={myListingLikesButton}
+                  >My Listing Likes</Button>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <p className="text-muted mb-4">People liked {userDetails.username} Listing</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <Button onClick={pepoleLikedMyListing}
+                  >People Liked my Listing</Button>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <p className="text-muted mb-4">{userDetails.username} Listings</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <Button onClick={MyListings}
+                  >My Listings</Button>
                 </div>
               </MDBCardBody>
             </MDBCard>
