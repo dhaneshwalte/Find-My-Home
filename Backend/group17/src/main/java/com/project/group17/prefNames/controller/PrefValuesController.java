@@ -1,7 +1,7 @@
-package com.project.group17.prefValues.controller;
+package com.project.group17.prefNames.controller;
 
-import com.project.group17.prefValues.model.PrefValueSaveReq;
-import com.project.group17.prefValues.service.PrefValuesService;
+import com.project.group17.prefNames.entity.PrefValueSaveReq;
+import com.project.group17.prefNames.service.PrefValuesService;
 import com.project.group17.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

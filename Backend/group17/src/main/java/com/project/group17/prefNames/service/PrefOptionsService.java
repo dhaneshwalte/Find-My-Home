@@ -1,7 +1,7 @@
-package com.project.group17.prefOptions.service;
+package com.project.group17.prefNames.service;
 
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefOptions.repository.PrefOptionsRepository;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.repository.PrefOptionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

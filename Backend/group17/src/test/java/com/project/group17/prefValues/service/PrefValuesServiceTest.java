@@ -1,9 +1,10 @@
 package com.project.group17.prefValues.service;
 
 import com.project.group17.prefNames.entity.PrefNamesEntity;
-import com.project.group17.prefValues.Repository.PrefValuesRepository;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
-import com.project.group17.prefValues.model.PrefValueSaveReq;
+import com.project.group17.prefNames.repository.PrefValuesRepository;
+import com.project.group17.prefNames.entity.PrefValuesEntity;
+import com.project.group17.prefNames.entity.PrefValueSaveReq;
+import com.project.group17.prefNames.service.PrefValuesService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

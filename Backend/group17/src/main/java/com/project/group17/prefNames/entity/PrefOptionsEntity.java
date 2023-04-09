@@ -1,4 +1,4 @@
-package com.project.group17.prefOptions.entity;
+package com.project.group17.prefNames.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.project.group17.prefNames.entity.PrefNamesEntity;

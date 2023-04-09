@@ -5,8 +5,8 @@ import com.project.group17.match.entity.MatchEntity;
 import com.project.group17.match.repository.MatchRepository;
 import com.project.group17.user.entity.UserPojo;
 import com.project.group17.group.repository.GroupRepository;
-import com.project.group17.prefValues.model.PrefValueSaveReq;
-import com.project.group17.prefValues.service.PrefValuesService;
+import com.project.group17.prefNames.entity.PrefValueSaveReq;
+import com.project.group17.prefNames.service.PrefValuesService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
 import org.springframework.aop.AopInvocationException;
@@ -203,7 +203,12 @@ public class GroupService {
      */
     public ResponseEntity<List<GroupPojo>> getGroups() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return ResponseEntity.ok(getAllGroups(user));
+        //check if user is in a group
+        if(groupRepository.findByUser(user).isEmpty()){
+            return ResponseEntity.ok(getAllGroups(user));
+        }else{
+            return null;
+        }
     }
 
 

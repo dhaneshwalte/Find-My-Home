@@ -1,7 +1,8 @@
 package com.project.group17.prefOptions.service;
 
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefOptions.repository.PrefOptionsRepository;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.repository.PrefOptionsRepository;
+import com.project.group17.prefNames.service.PrefOptionsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

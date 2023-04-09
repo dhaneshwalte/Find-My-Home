@@ -1,7 +1,7 @@
-package com.project.group17.prefOptions.controller;
+package com.project.group17.prefNames.controller;
 
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefOptions.service.PrefOptionsService;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.service.PrefOptionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

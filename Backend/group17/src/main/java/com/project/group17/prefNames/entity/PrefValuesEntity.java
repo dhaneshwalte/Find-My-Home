@@ -1,7 +1,7 @@
-package com.project.group17.prefValues.entity;
+package com.project.group17.prefNames.entity;
 
 import com.project.group17.prefNames.entity.PrefNamesEntity;
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
 import com.project.group17.user.entity.User;
 import jakarta.persistence.*;
 

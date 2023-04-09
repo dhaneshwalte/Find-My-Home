@@ -12,8 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import com.project.group17.location.service.LocationService;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
-import com.project.group17.prefValues.service.PrefValuesService;
+import com.project.group17.prefNames.entity.PrefValuesEntity;
+import com.project.group17.prefNames.service.PrefValuesService;
 import com.project.group17.location.entity.LocationEntity;
 import com.project.group17.user.entity.User;
 

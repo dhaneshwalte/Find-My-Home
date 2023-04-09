@@ -1,6 +1,6 @@
 package com.project.group17.prefValues.entity;
 
-import com.project.group17.prefValues.entity.PrefValuesEntity;
+import com.project.group17.prefNames.entity.PrefValuesEntity;
 import com.project.group17.user.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

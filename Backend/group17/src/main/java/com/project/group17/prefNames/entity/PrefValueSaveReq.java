@@ -1,4 +1,4 @@
-package com.project.group17.prefValues.model;
+package com.project.group17.prefNames.entity;
 
 public class PrefValueSaveReq {
     private Long prefNameId;

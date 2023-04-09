@@ -1,6 +1,6 @@
-package com.project.group17.prefOptions.repository;
+package com.project.group17.prefNames.repository;
 
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

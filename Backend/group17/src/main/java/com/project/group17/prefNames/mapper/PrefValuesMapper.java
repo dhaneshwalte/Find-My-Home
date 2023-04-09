@@ -1,9 +1,9 @@
-package com.project.group17.prefValues.mapper;
+package com.project.group17.prefNames.mapper;
 
 import com.project.group17.prefNames.entity.PrefNamesEntity;
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
-import com.project.group17.prefValues.model.PrefValueSaveReq;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.entity.PrefValuesEntity;
+import com.project.group17.prefNames.entity.PrefValueSaveReq;
 import com.project.group17.user.entity.User;
 import org.springframework.util.ObjectUtils;
 

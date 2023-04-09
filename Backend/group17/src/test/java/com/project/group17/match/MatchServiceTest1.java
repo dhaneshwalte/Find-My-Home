@@ -1,6 +1,5 @@
 package com.project.group17.match;
 
-import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.repository.GroupRepository;
 import com.project.group17.group.service.GroupService;
 import com.project.group17.location.entity.LocationEntity;
@@ -10,10 +9,7 @@ import com.project.group17.match.entity.MatchPojo;
 import com.project.group17.match.repository.MatchRepository;
 import com.project.group17.match.service.MatchService;
 
-import com.project.group17.prefNames.entity.PrefNamesEntity;
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
-import com.project.group17.prefValues.service.PrefValuesService;
+import com.project.group17.prefNames.service.PrefValuesService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
