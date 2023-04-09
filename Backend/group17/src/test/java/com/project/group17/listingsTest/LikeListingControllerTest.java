@@ -73,13 +73,13 @@ public class LikeListingControllerTest {
     @Test
     @WithMockUser(roles = "USER")
     public void unlikeListingTest() throws Exception {
-        long listingId = 1L;
+        Long listingId = 1L;
 
         mockMvc.perform(post("/api/v1/unlike-listing")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(listingId)))
+                        .content(objectMapper.writeValueAsString(likeListingPojo)))
                 .andExpect(status().isOk());
 
-        verify(likeListingService).unlikeListing(likeListingPojo);
+        verify(likeListingService).unlikeListing(any(LikeListingPojo.class));
     }
 }
