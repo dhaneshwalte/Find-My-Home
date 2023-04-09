@@ -124,37 +124,29 @@ The backend API will be available at http://localhost:8080.
 A college student who is moving to a new country would want to use the home finder application to search for affordable apartments or roommates near their university. They can open the application and enter property or roommate preferences, such as the number of roommates,pets, rent contribution. The application presents them with a list of available housing options, and they are able to view photos and read details. If they find a property that they are interested in, they are able to like it. 
 
 Login Page:
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/listingSmells/Login_Page.png)
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
 
 Register
-
-Home page
-
-Likes
+![alt text]()
 
 Preferences
+![alt text]()
 
-Listings
-
-Show Listing deatils
+All Listings
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/AllListings.png)
 
 Profilepage
+![alt text]()
 
-My Likes
-
-Users who liked me
-
-My groups
-
-My group members
-
-My group Preferences
-
-My Listings
+Groups
+![alt text]()
 
 Create Listings
+![alt text]()
 
 Signout
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
+
 ## Authors
 
 - Dhanesh Walte - B00000000 - @dal.ca
