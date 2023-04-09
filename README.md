@@ -124,48 +124,40 @@ The backend API will be available at http://localhost:8080.
 A college student who is moving to a new country would want to use the home finder application to search for affordable apartments or roommates near their university. They can open the application and enter property or roommate preferences, such as the number of roommates,pets, rent contribution. The application presents them with a list of available housing options, and they are able to view photos and read details. If they find a property that they are interested in, they are able to like it. 
 
 Login Page:
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/listingSmells/Login_Page.png)
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
 
 Register
-
-Home page
-
-Likes
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Register.png)
 
 Preferences
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Preferences.png)
 
-Listings
-
-Show Listing deatils
+All Listings
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/AllListings.png)
 
 Profilepage
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Profilepage.png)
 
-My Likes
-
-Users who liked me
-
-My groups
-
-My group members
-
-My group Preferences
-
-My Listings
+Groups
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Groups.png)
 
 Create Listings
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/CreateListing.png)
 
 Signout
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
+
 ## Authors
 
-- Dhanesh Walte - B00000000 - @dal.ca
+- Dhanesh Walte - B00934223 - dhaneshwalte@dal.ca
 
-- Maulik Gajipara - B00000000 - @dal.ca
+- Maulik Gajipara - B0034641 - ml477880@dal.ca
 
-- Muskan Vazirani - B00000000 - @dal.ca
+- Muskan Vazirani - B00912626 - muskan@dal.ca
 
-- Naveen Kunapaneni - B00000000 - nv676973@dal.ca
+- Naveen Kunapaneni - B00930132 - nv676973@dal.ca
 
-- Sreya Gajjipara - B00000000 - @dal.ca
+- Sreya Gajjipara - B00922295 - sr228618@dal.ca
 
 
 
