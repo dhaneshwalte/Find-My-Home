@@ -1,10 +1,5 @@
 package com.project.group17.user.entity;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Lob;
-
 public class UserPojo {
 
     int userID;

@@ -6,7 +6,6 @@ import com.project.group17.prefValues.entity.PrefValuesEntity;
 import com.project.group17.prefValues.model.PrefValueSaveReq;
 import com.project.group17.user.entity.User;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 public class PrefValuesMapper {
 

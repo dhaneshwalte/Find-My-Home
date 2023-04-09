@@ -1,5 +1,4 @@
 package com.project.group17.group.service;
-import com.project.group17.group.entity.GroupDetailPojo;
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.entity.GroupPojo;
 import com.project.group17.match.entity.MatchEntity;

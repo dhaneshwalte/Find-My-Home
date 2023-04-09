@@ -104,30 +104,6 @@ class MatchServiceTest {
         verify(groupService, never()).saveGroup(user1, user2);
     }
 
-//    @Test
-//    void testLikes() {
-//
-//        User currentUser = new User(); // Create a user object with the necessary fields.
-//        Mockito.when(authentication.getPrincipal()).thenReturn(currentUser);
-//
-//        List<MatchEntity> matches = Collections.singletonList(matchEntity);
-//        Mockito.when(matchRepository.findByUser1(user1)).thenReturn(matches);
-//
-//        currentUser.setId(1); // Set the user's ID.
-//        // Set other properties of the currentUser object, if necessary.
-//
-//        Mockito.when(authentication.getPrincipal()).thenReturn(currentUser);
-//
-//        // Use an argument matcher when defining your stub.
-//        Mockito.when(matchRepository.findByUser1(ArgumentMatchers.any(User.class))).thenReturn(new ArrayList<>());
-//
-//        ResponseEntity<List<Map<String, String>>> result = matchService.likes();
-//
-//        assertEquals(1, result.getBody().size());
-//        assertEquals(user2.getFirstname(), result.getBody().get(0).get("firstName"));
-//        assertEquals(user2.getLastname(), result.getBody().get(0).get("lastName"));
-//    }
-
     @Test
     void testGetUserPreferences() {
         PrefNamesEntity prefNameEntity = new PrefNamesEntity();
@@ -214,6 +190,6 @@ class MatchServiceTest {
         assertEquals(user1.getLastname(), result.get(0).get("lastName"));
         assertEquals("Yes", result.get(0).get("Furnished"));
     }
-    
+
 }
 

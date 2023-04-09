@@ -1,6 +1,5 @@
 package com.project.group17.auth.Response;
 
-import jdk.jfr.DataAmount;
 import lombok.Builder;
 
 @Builder

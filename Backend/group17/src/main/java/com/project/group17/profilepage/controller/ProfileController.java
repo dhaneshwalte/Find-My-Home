@@ -1,15 +1,13 @@
 package com.project.group17.profilepage.controller;
 
 
-import com.fasterxml.jackson.databind.deser.std.MapEntryDeserializer;
 import com.project.group17.match.service.MatchService;
 
 import com.project.group17.profilepage.service.ProfileService;
 import com.project.group17.user.entity.User;
-import com.project.group17.user.service.UserService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,6 @@
 package com.project.group17.prefOptions.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.group17.prefNames.entity.PrefNamesEntity;
 import jakarta.persistence.*;
 
