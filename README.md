@@ -127,37 +127,37 @@ Login Page:
 ![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
 
 Register
-![alt text]()
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Register.png)
 
 Preferences
-![alt text]()
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Preferences.png)
 
 All Listings
 ![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/AllListings.png)
 
 Profilepage
-![alt text]()
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Profilepage.png)
 
 Groups
-![alt text]()
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Groups.png)
 
 Create Listings
-![alt text]()
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/CreateListing.png)
 
 Signout
 ![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
 
 ## Authors
 
-- Dhanesh Walte - B00000000 - @dal.ca
+- Dhanesh Walte - B00934223 - dhaneshwalte@dal.ca
 
-- Maulik Gajipara - B00000000 - @dal.ca
+- Maulik Gajipara - B0034641 - ml477880@dal.ca
 
-- Muskan Vazirani - B00000000 - @dal.ca
+- Muskan Vazirani - B00912626 - muskan@dal.ca
 
-- Naveen Kunapaneni - B00000000 - nv676973@dal.ca
+- Naveen Kunapaneni - B00930132 - nv676973@dal.ca
 
-- Sreya Gajjipara - B00000000 - @dal.ca
+- Sreya Gajjipara - B00922295 - sr228618@dal.ca
 
 
 
