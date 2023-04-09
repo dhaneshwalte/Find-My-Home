@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { showListing } from "../../services/ListingsService";
 import { Button } from 'antd';
+import Spinner from "../../components/Spinner/Spinner";
 
-function ListingDetails() {
+function AllListings() {
   const [listing, setListing] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   let navigate = useNavigate();
 
   const fetchListings = () => {
@@ -12,6 +14,7 @@ function ListingDetails() {
       .then((response) => {
         console.log(response.data);
         setListing(response.data)
+        setLoading(false);
       })
       .catch(err => console.log(err))
   };
@@ -23,13 +26,13 @@ function ListingDetails() {
   function handleClick(e, listingId) {
     navigate("/show-listing", {
       state: {
-        listing: listing[listingId-1] //listingId indexes in the databases start from 1
+        listing: listing[listingId - 1] //listingId indexes in the databases start from 1
       }
     })
   }
 
-  return (
-    <div className="container">
+  function renderTable() {
+    return (
       <div className="py-4">
         <table className="table border shadow">
           <thead>
@@ -56,7 +59,13 @@ function ListingDetails() {
           </tbody>
         </table>
       </div>
+    )
+  }
+
+  return (
+    <div className="container">
+      {isLoading ? (<Spinner/>) : renderTable()}
     </div>
   );
 }
-export default ListingDetails;
+export default AllListings;

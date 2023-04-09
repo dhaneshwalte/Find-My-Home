@@ -24,6 +24,7 @@ public class LikeListingController {
     @CrossOrigin
     @RequestMapping(value = "/like-listing", method = RequestMethod.POST)
     public ResponseEntity likeListing(@RequestBody LikeListingPojo likeListingPojo) {
+        System.out.println(likeListingPojo.getListingId());
         likeListingService.likeListing(likeListingPojo);
         return ResponseEntity.ok().build();
     }
@@ -36,8 +37,9 @@ public class LikeListingController {
      */
     @CrossOrigin
     @RequestMapping(value = "/unlike-listing", method = RequestMethod.POST)
-    public ResponseEntity unlikeListing(@RequestBody long listingId) {
-        likeListingService.unlikeListing(listingId);
+    public ResponseEntity unlikeListing(@RequestBody LikeListingPojo likeListingPojo) {
+        System.out.println(likeListingPojo.getListingId());
+        likeListingService.unlikeListing(likeListingPojo);
         return ResponseEntity.ok().build();
     }
 }

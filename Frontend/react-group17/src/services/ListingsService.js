@@ -33,3 +33,44 @@ export const likeListing=(data)=>{
         }
     })
 }
+
+export const unlikeListing=(data)=>{
+    return axios({
+        'method':'POST',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/unlike-listing`,
+        'data': data,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
+
+export const getMyListings=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-my-listings`,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
+
+export const getLikedListings=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-liked-listings`,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}
+
+export const getLikedUsers=()=>{
+    return axios({
+        'method':'GET',
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-liked-listingUsers`,
+        headers:{
+            'Authorization':'Bearer '+getToken()
+        }
+    })
+}

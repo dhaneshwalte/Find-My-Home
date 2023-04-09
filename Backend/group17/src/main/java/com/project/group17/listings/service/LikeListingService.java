@@ -38,8 +38,8 @@ public class LikeListingService {
      *
      * @param listingId The listingId of the listing to be unliked.
      */
-    public void unlikeListing(long listingId) {
+    public void unlikeListing(LikeListingPojo likeListingPojo) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        likeListingRepository.deleteById(likeListingRepository.getId(user.getId(), listingId));
+        likeListingRepository.deleteById(likeListingRepository.getId(user.getId(), likeListingPojo.getListingId()));
     }
 }

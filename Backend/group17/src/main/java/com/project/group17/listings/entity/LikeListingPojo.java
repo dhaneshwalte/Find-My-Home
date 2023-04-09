@@ -5,14 +5,14 @@ package com.project.group17.listings.entity;
  */
 public class LikeListingPojo {
 
-    private long listingID;
+    private Long listingID;
 
     /**
      * Returns the ID of the liked listing.
      *
      * @return The ID of the liked listing.
      */
-    public long getListingId() {
+    public Long getListingId() {
         return listingID;
     }
 
@@ -21,7 +21,7 @@ public class LikeListingPojo {
      *
      * @param listingId The ID of the liked listing.
      */
-    public void setListingId(long listingId) {
+    public void setListingId(Long listingId) {
         this.listingID = listingId;
     }
 
