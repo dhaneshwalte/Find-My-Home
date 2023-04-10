@@ -58,7 +58,9 @@ const userLikesButton = () =>{
   navigate('/my-likes');
 }
 
-
+  const groupRequestButton = () => {
+  navigate('/group-requests')
+}
 const userGroupsButton = () =>{
   navigate('/my-group');
 }
@@ -159,6 +161,16 @@ const renderprofilePage = () => {
                 <div className="d-flex justify-content-center mb-2">
                   <Button onClick={userGroupsButton}
                   >My Groups</Button>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+            
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <p className="text-muted mb-4">Group Requests</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <Button onClick={groupRequestButton}
+                  >Group Requests</Button>
                 </div>
               </MDBCardBody>
               </MDBCard>

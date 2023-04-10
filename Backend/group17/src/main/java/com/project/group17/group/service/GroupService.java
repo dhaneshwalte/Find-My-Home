@@ -134,8 +134,10 @@ public class GroupService {
             int count = 0;
             for(PrefValueSaveReq prefValueSaveReq: prefValueSaveReqs1)
             {
-                if(prefValueSaveReq.getPrefOptionId() == prefValueSaveReqsCurrentUser.get(count).getPrefOptionId() ) {
-                    similarity++;
+                if(count<prefValueSaveReqsCurrentUser.size()){
+                    if(prefValueSaveReq.getPrefOptionId() == prefValueSaveReqsCurrentUser.get(count).getPrefOptionId() ) {
+                        similarity++;
+                    }
                 }
                 count++;
             }
