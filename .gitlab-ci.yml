@@ -95,7 +95,6 @@ backend-deploy:
     - group17
   only:
     - dev
-    - main
   
 frontend-deploy:
   stage: deploy
@@ -112,4 +111,3 @@ frontend-deploy:
     - group17
   only:
     - dev
-    - main
