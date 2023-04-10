@@ -2,6 +2,17 @@
 
 FindMyHome is a web based application for finding roommates and houses based on preferences set by the users. Preferences like maximum number of roommates, pets policy, rent contribution, dietary habits etc. Users are suggested with people who are similar to their preferences in an order with highest matches at the top. Once two users like each other they are fromed into a group and the users will be unable to like any other users. Users can join existing groups which are suggested to the users based on their prefereneces. The user has an option to see the details of the members in the group and if the user like the group then the user is added to the group once any of the group member approve. Users can post lisitings and view all the listings. Users can form a group to apply for the listings or an user can apply for the listings individually.
 
+## Deplloyed application link
+[Our deplloyed application link](http://csci5308vm17.research.cs.dal.ca/)
+
+## Deliverables
+
+[Presentation Document](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Documentation/Project_PPT.pptx)
+
+[Member Contribution Document](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Documentation/MemberContributionFile.xlsx)
+
+[Code smells deocument](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Documentation/Refactoring_Stats.xlsx)
+
 ## Technologies Used
 
 **Front end:** React, Java Script
@@ -191,6 +202,11 @@ From the profile page the user can create a listing and upload basic details alo
 After signing out the user is re directed to the login and register page.
 
 ![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
+
+### Code Coverage
+We have covered around 69% of the unit tests cases
+![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/CodeCoverage.png)
+
 
 ## Authors
 
