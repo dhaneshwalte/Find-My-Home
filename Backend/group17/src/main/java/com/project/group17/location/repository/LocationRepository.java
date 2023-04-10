@@ -38,10 +38,10 @@ public class LocationRepository {
     /**
      * Deletes all LocationEntity objects from the database.
      */
-    @Transactional
-    public void deleteAll() {
-        Query query = entityManager.createQuery("DELETE FROM LocationEntity");
-        query.executeUpdate();
-    }
+    // @Transactional
+    // public void deleteAll() {
+    //     Query query = entityManager.createQuery("DELETE FROM LocationEntity");
+    //     query.executeUpdate();
+    // }
 }
 
