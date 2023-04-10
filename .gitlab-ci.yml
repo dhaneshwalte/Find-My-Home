@@ -58,7 +58,7 @@ backend-build:
   tags:
     - group17
 
-build-frontend:
+frontend-build:
   stage: build
   image: node:latest
   script:
@@ -73,7 +73,7 @@ build-frontend:
   tags:
     - group17
   
-deploy-backend:
+backend-deploy:
   stage: deploy
   image: docker:latest
   before_script:
@@ -94,9 +94,10 @@ deploy-backend:
   tags:
     - group17
   only:
-  # - dev
+    - dev
+    - main
   
-deploy-frontend:
+frontend-deploy:
   stage: deploy
   image: docker:latest
   before_script:
@@ -110,4 +111,5 @@ deploy-frontend:
   tags:
     - group17
   only:
-    # - dev
+    - dev
+    - main
