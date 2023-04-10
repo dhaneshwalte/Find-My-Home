@@ -39,7 +39,7 @@ export const getMyLikes=()=>{
 export const getRoommateRequests=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-roommate-requests`,
+        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/my-roommate-request`,
         'headers':{
             'Authorization':'Bearer '+getToken()
         }
