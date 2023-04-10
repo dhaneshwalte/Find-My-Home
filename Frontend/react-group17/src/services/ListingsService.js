@@ -4,7 +4,7 @@ import { getToken } from './AuthenticationService';
 export const saveListing=(Listing)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/listing`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/listing`,
         'data':Listing,
         headers:{
             'Authorization':'Bearer '+getToken()
@@ -16,7 +16,7 @@ export const saveListing=(Listing)=>{
 export const showListing=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/getAll`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/getAll`,
         headers:{
             'Authorization':'Bearer '+getToken()
         }
@@ -26,7 +26,7 @@ export const showListing=()=>{
 export const likeListing=(data)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/like-listing`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/like-listing`,
         'data': data,
         headers:{
             'Authorization':'Bearer '+getToken()
@@ -37,7 +37,7 @@ export const likeListing=(data)=>{
 export const unlikeListing=(data)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/unlike-listing`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/unlike-listing`,
         'data': data,
         headers:{
             'Authorization':'Bearer '+getToken()
@@ -48,7 +48,7 @@ export const unlikeListing=(data)=>{
 export const getMyListings=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-my-listings`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/get-my-listings`,
         headers:{
             'Authorization':'Bearer '+getToken()
         }
@@ -58,7 +58,7 @@ export const getMyListings=()=>{
 export const getLikedListings=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-liked-listings`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/get-liked-listings`,
         headers:{
             'Authorization':'Bearer '+getToken()
         }
@@ -68,7 +68,7 @@ export const getLikedListings=()=>{
 export const getLikedUsers=()=>{
     return axios({
         'method':'GET',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/get-liked-listingUsers`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/get-liked-listingUsers`,
         headers:{
             'Authorization':'Bearer '+getToken()
         }

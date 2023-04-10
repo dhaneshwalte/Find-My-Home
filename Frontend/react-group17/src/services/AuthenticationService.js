@@ -8,7 +8,7 @@ export const getToken=()=>{
 export const userLogin=(authRequest)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/auth/authenticate`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/auth/authenticate`,
         'data':authRequest
     })
 }
@@ -16,7 +16,7 @@ export const userLogin=(authRequest)=>{
 export const userRegister=(authRequest)=>{
     return axios({
         'method':'POST',
-        'url':`${process.env.hostUrl||'http://localhost:8080'}/api/v1/auth/register`,
+        'url':`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/auth/register`,
         'data':authRequest
     })
 }
@@ -24,7 +24,7 @@ export const userRegister=(authRequest)=>{
 export const fetchUserData=()=>{
     return axios({
         method:'GET',
-        url:`${process.env.hostUrl||'http://localhost:8080'}/api/v1/auth/demo`,
+        url:`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/auth/demo`,
         headers:{
             'Authorization':'Bearer '+getToken()
         }
@@ -34,7 +34,7 @@ export const fetchUserData=()=>{
 export const checkUserLogin = () => {
     return axios({
         method:'GET',
-        url:`${process.env.hostUrl||'http://localhost:8080'}/api/v1/auth/demo`,
+        url:`${process.env.REACT_APP_hostUrl||'http://localhost:8080'}/api/v1/auth/demo`,
         headers:{
             'Authorization':'Bearer '+getToken()
         }
