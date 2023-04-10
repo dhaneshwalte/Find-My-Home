@@ -13,6 +13,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * User is an entity class representing a user in the system. It implements UserDetails
+ * for Spring Security integration.
+ */
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -79,38 +83,83 @@ public class User implements UserDetails {
         return true;
     }
 
+    /**
+     * Gets the user's ID.
+     *
+     * @return the user's ID.
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Sets the user's ID.
+     *
+     * @param id the user's ID.
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * Gets the user's first name.
+     *
+     * @return the user's first name.
+     */
     public String getFirstname() {
         return firstname;
     }
 
+    /**
+     * Sets the user's first name.
+     *
+     * @param firstname the user's first name.
+     */
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
+    /**
+     * Gets the user's last name.
+     *
+     * @return the user's last name.
+     */
     public String getLastname() {
         return lastname;
     }
 
+    /**
+     * Sets the user's last name.
+     *
+     * @param lastname the user's last name.
+     */
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
+    /**
+     * Gets the user's email.
+     *
+     * @return the user's email.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets the user's email.
+     *
+     * @param email the user's email.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Generates a string representation of the user object.
+     *
+     * @return the string representation of the user object.
+     */
     @Override
     public String toString() {
         return "User{" +
@@ -128,65 +177,127 @@ public class User implements UserDetails {
                 ", role=" + role +
                 '}';
     }
-
+    /**
+     * Sets the user's password.
+     *
+     * @param password the user's password.
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    
-
+    /**
+     * Gets the user's age.
+     *
+     * @return the user's age.
+     */
     public String getAge() {
         return age;
     }
 
+    /**
+     * Sets the user's age.
+     *
+     * @param age the user's age.
+     */
     public void setAge(String age) {
         this.age = age;
     }
 
+    /**
+     * Gets the user's street address.
+     *
+     * @return the user's street address.
+     */
     public String getStreetAddress() {
         return streetAddress;
     }
 
+    /**
+     * Sets the user's street address.
+     *
+     * @param address the user's street address.
+     */
     public void setStreetAddress(String address) {
         this.streetAddress = address;
     }
-
+    /**
+     * Gets the user's profile picture as a base64-encoded string.
+     *
+     * @return the user's profile picture as a base64-encoded string.
+     */
     public String getProfilePicBase64() {
         return profilePicBase64;
     }
-
+    /**
+     * Sets the user's profile picture as a base64-encoded string.
+     *
+     * @param profilePicBase64 the user's profile picture as a base64-encoded string.
+     */
     public void setProfilePicBase64(String profilePicBase64) {
         this.profilePicBase64 = profilePicBase64;
     }
-
+    /**
+     * Gets the user's gender.
+     *
+     * @return the user's gender.
+     */
     public String getGender() {
         return gender;
     }
-
+    /**
+     * Sets the user's gender.
+     *
+     * @param gender the user's gender.
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
-
+    /**
+     * Gets the user's phone number.
+     *
+     * @return the user's phone number.
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
+    /**
+     * Sets the user's phone number.
+     *
+     * @param phoneNumber the user's phone number.
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
+    /**
+     * Gets the user's city.
+     *
+     * @return the user's city.
+     */
     public String getCity() {
         return city;
     }
-
+    /**
+     * Sets the user's city.
+     *
+     * @param city the user's city.
+     */
     public void setCity(String city) {
         this.city = city;
     }
-
+    /**
+     * Gets the user's province.
+     *
+     * @return the user's province.
+     */
     public String getProvince() {
         return province;
     }
-
+    /**
+     * Sets the user's province.
+     *
+     * @param province the user's province.
+     */
     public void setProvince(String province) {
         this.province = province;
     }

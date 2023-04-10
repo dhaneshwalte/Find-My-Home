@@ -3,17 +3,14 @@ package com.project.group17.match;
 import com.project.group17.group.entity.GroupEntity;
 import com.project.group17.group.repository.GroupRepository;
 import com.project.group17.group.service.GroupService;
-import com.project.group17.location.entity.LocationEntity;
 import com.project.group17.location.service.LocationService;
-import com.project.group17.location.service.LocationServiceTest;
 import com.project.group17.match.entity.*;
 import com.project.group17.match.repository.*;
 import com.project.group17.match.service.MatchService;
 import com.project.group17.prefNames.entity.PrefNamesEntity;
-import com.project.group17.prefOptions.controller.PrefOptionsController;
-import com.project.group17.prefOptions.entity.PrefOptionsEntity;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
-import com.project.group17.prefValues.service.PrefValuesService;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
+import com.project.group17.prefNames.entity.PrefValuesEntity;
+import com.project.group17.prefNames.service.PrefValuesService;
 import com.project.group17.user.entity.User;
 import com.project.group17.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,11 +18,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
-import org.mockito.ArgumentMatchers;
 
 import java.util.*;
 
@@ -103,30 +97,6 @@ class MatchServiceTest {
         verify(matchRepository, times(1)).save(any(MatchEntity.class));
         verify(groupService, never()).saveGroup(user1, user2);
     }
-
-//    @Test
-//    void testLikes() {
-//
-//        User currentUser = new User(); // Create a user object with the necessary fields.
-//        Mockito.when(authentication.getPrincipal()).thenReturn(currentUser);
-//
-//        List<MatchEntity> matches = Collections.singletonList(matchEntity);
-//        Mockito.when(matchRepository.findByUser1(user1)).thenReturn(matches);
-//
-//        currentUser.setId(1); // Set the user's ID.
-//        // Set other properties of the currentUser object, if necessary.
-//
-//        Mockito.when(authentication.getPrincipal()).thenReturn(currentUser);
-//
-//        // Use an argument matcher when defining your stub.
-//        Mockito.when(matchRepository.findByUser1(ArgumentMatchers.any(User.class))).thenReturn(new ArrayList<>());
-//
-//        ResponseEntity<List<Map<String, String>>> result = matchService.likes();
-//
-//        assertEquals(1, result.getBody().size());
-//        assertEquals(user2.getFirstname(), result.getBody().get(0).get("firstName"));
-//        assertEquals(user2.getLastname(), result.getBody().get(0).get("lastName"));
-//    }
 
     @Test
     void testGetUserPreferences() {
@@ -214,6 +184,6 @@ class MatchServiceTest {
         assertEquals(user1.getLastname(), result.get(0).get("lastName"));
         assertEquals("Yes", result.get(0).get("Furnished"));
     }
-    
+
 }
 

@@ -1,5 +1,9 @@
 package com.project.group17.auth.Request;
 
+/**
+ * This class represents a registration request containing the user's information.
+ * It is used to register a new user in the system.
+ */
 public class RegisterRequest {
     private String firstName;
     private String lastName;
@@ -13,8 +17,23 @@ public class RegisterRequest {
     private String gender;
     private String phoneNumber;
 
+    /**
+     * Constructs a RegisterRequest with the specified user information.
+     *
+     * @param firstName      The user's first name.
+     * @param lastName       The user's last name.
+     * @param email          The user's email address.
+     * @param password       The user's password.
+     * @param age            The user's age.
+     * @param city           The user's city.
+     * @param province       The user's province.
+     * @param streetAddress  The user's street address.
+     * @param profilePicBase64 The user's profile picture encoded in Base64.
+     * @param gender         The user's gender.
+     * @param phoneNumber    The user's phone number.
+     */
     public RegisterRequest(String firstName, String lastName, String email, String password, String age, String city,
-            String province, String streetAddress, String profilePicBase64, String gender, String phoneNumber) {
+                           String province, String streetAddress, String profilePicBase64, String gender, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

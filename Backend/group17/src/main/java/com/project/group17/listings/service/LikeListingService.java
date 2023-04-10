@@ -8,14 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * LikeListingService is a service class for managing and processing like/unlike actions on {@link LikeListingEntity} objects.
+ */
 @Service
 public class LikeListingService {
+
     @Autowired
     ListingsRepository listingsRepository;
+
     @Autowired
     LikeListingRepository likeListingRepository;
-    public void likeListing(LikeListingPojo likeListingPojo){
+
+    /**
+     * Adds a like to the specified listing.
+     *
+     * @param likeListingPojo The LikeListingPojo object containing the listingId to be liked.
+     */
+    public void likeListing(LikeListingPojo likeListingPojo) {
         LikeListingEntity entity = new LikeListingEntity();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         entity.setUser(user);
@@ -23,8 +33,13 @@ public class LikeListingService {
         likeListingRepository.save(entity);
     }
 
-    public void unlikeListing(long listingId){
+    /**
+     * Removes a like from the specified listing.
+     *
+     * @param listingId The listingId of the listing to be unliked.
+     */
+    public void unlikeListing(LikeListingPojo likeListingPojo) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        likeListingRepository.deleteById(likeListingRepository.getId(user.getId(), listingId));
+        likeListingRepository.deleteById(likeListingRepository.getId(user.getId(), likeListingPojo.getListingId()));
     }
 }

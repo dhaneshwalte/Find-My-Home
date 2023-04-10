@@ -1,6 +1,6 @@
 package com.project.group17.prefValues.model;
 
-import com.project.group17.prefValues.model.PrefValueSaveReq;
+import com.project.group17.prefNames.entity.PrefValueSaveReq;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

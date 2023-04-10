@@ -12,6 +12,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class provides services for user registration and authentication.
+ * It handles user registration, password encoding, and JWT token generation.
+ */
 @Service
 public class AuthenticationService {
 
@@ -20,6 +24,14 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    /**
+     * Constructs an AuthenticationService with the specified repository, password encoder, JWT service, and authentication manager.
+     *
+     * @param repository           The user repository.
+     * @param passwordEncoder      The password encoder.
+     * @param jwtService           The JWT service.
+     * @param authenticationManager The authentication manager.
+     */
     public AuthenticationService(UserRepository repository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
@@ -27,6 +39,12 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
     }
 
+    /**
+     * Registers a new user with the provided registration request data.
+     *
+     * @param request The registration request containing the user's information.
+     * @return An authentication response containing the JWT token for the registered user.
+     */
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .firstname(request.getFirstName())
@@ -49,8 +67,13 @@ public class AuthenticationService {
                 .build();
     }
 
+    /**
+     * Authenticates a user with the provided authentication request data.
+     *
+     * @param request The authentication request containing the user's email and password.
+     * @return An authentication response containing the JWT token for the authenticated user.
+     */
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        System.out.println(request.getEmail() + " " + request.getPassword());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -59,7 +82,6 @@ public class AuthenticationService {
         );
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
-        System.out.println(user.getEmail());
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

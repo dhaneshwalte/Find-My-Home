@@ -14,8 +14,13 @@ import Navbar from './Pages/Navbar/navbar';
 import GroupMatch from './Pages/Group/group';
 import GroupPref from './Pages/GroupPref/GroupPref';
 import Listings from './Pages/Listings';
-import ShowListings from './Pages/ShowListings';
-import ShowListing from './Pages/ShowListing';
+import AllListings from './Pages/AllListings';
+import AllListingDetail from './Pages/AllListingDetail';
+import MyListings from './Pages/MyListings';
+import MyListingDetail from './Pages/MyListingDetail';
+import { LikedListingUsers } from './Pages/LikedListingUsers/LikedListingUsers';
+import LikedListings from './Pages/LikedListings';
+import LikedListingDetail from './Pages/LikedListingDetail';
 
 function App() {
   return (
@@ -23,7 +28,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          {/* <Route path="/" exact element={<Home />} /> */}
+          <Route path='/' element={<Login/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" exact element={<Register />} />
           <Route path="/user-preference" element={<UserPreference />} />
@@ -38,9 +44,13 @@ function App() {
           <Route path="/groups" element={<GroupMatch />} />
           <Route path="/groupuserspref" element={<GroupPref />} />
           <Route path="/listing" element={<Listings />} />
-          <Route path="/show-listings" element={<ShowListings />} />
-          {/* <Route path="/show-listing/:listingId" element={<ShowListing />} /> */}
-          <Route path="/show-listing" element={<ShowListing />} />
+          <Route path="/show-all-listings" element={<AllListings />} />
+          <Route path="/show-listing" element={<AllListingDetail />} />
+          <Route path="/show-liked-listings" element={<LikedListings />} />
+          <Route path="/show-liked-listing" element={<LikedListingDetail />} />
+          <Route path="/show-my-listings" element={<MyListings />} />
+          <Route path="/show-my-listing" element={<MyListingDetail />} />
+          <Route path="/liked-listing-users" element={<LikedListingUsers />} />
         </Routes>
       </BrowserRouter>
     </div>

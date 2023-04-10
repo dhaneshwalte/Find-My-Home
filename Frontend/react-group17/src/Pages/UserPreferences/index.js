@@ -1,5 +1,6 @@
 import { Form, Select, Divider, Button, message } from "antd";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import {
   fetchUserPrefences,
@@ -9,6 +10,8 @@ import {
 import "./style.css";
 
 const UserPreference = () => {
+
+  const navigate = useNavigate();
   const [preferencesOptions, setPreferencesOption] = useState([]);
   const [storedUserPref, setStoredUserPref] = useState({});
   const location = useLocation();
@@ -69,12 +72,19 @@ const UserPreference = () => {
     });
   };
 
+
+
   const onFormFinish = (values) => {
     const reqData = [];
     for (const key in values) {
       reqData.push({ prefNameId: key, prefOptionId: values[key] || null });
     }
-    saveUserPrefrences(reqData);
+    saveUserPrefrences(reqData)
+    .then(
+        () => {
+          navigate('/profilepage')
+        }
+    )
     message.success("Preferences saved successfully");
   };
 

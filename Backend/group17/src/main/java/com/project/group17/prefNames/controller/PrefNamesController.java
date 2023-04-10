@@ -11,16 +11,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * PrefNamesController is a REST controller that handles requests related to preference names.
+ */
 @RestController
 @RequestMapping("/api/preferences")
 public class PrefNamesController {
 
+    // Autowire the PrefNamesService to handle preference name related operations
     @Autowired
     PrefNamesService service;
+
+    /**
+     * Get all preference names in the system.
+     *
+     * @return ResponseEntity containing a list of all PrefNamesEntity objects.
+     */
     @CrossOrigin
     @GetMapping("/all")
-    public ResponseEntity<List<PrefNamesEntity>> getAllPrefOptions(){
+    public ResponseEntity<List<PrefNamesEntity>> getAllPrefOptions() {
         return ResponseEntity.ok(service.getAllPrefOptions());
     }
-
 }

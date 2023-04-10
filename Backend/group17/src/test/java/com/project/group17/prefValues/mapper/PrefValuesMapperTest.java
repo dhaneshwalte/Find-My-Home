@@ -1,9 +1,9 @@
 package com.project.group17.prefValues.mapper;
 
 import com.project.group17.prefNames.entity.PrefNamesEntity;
-import com.project.group17.prefValues.entity.PrefValuesEntity;
-import com.project.group17.prefValues.mapper.PrefValuesMapper;
-import com.project.group17.prefValues.model.PrefValueSaveReq;
+import com.project.group17.prefNames.entity.PrefValuesEntity;
+import com.project.group17.prefNames.mapper.PrefValuesMapper;
+import com.project.group17.prefNames.entity.PrefValueSaveReq;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

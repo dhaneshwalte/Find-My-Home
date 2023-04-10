@@ -1,6 +1,7 @@
 package com.project.group17.prefOptions.entity;
 
 import com.project.group17.prefNames.entity.PrefNamesEntity;
+import com.project.group17.prefNames.entity.PrefOptionsEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
