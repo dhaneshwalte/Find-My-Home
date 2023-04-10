@@ -20,10 +20,10 @@ function MyListings() {
     fetchListings();
   }, [])
 
-  function handleClick(e, listingId) {
+  function handleClick(index, listingId) {
     navigate("/show-my-listing", {
       state: {
-        listing: listing[listingId-1] //listingId indexes in the databases start from 1
+        listing: listing[index] //listingId indexes in the databases start from 1
       }
     })
   }
@@ -49,7 +49,7 @@ function MyListings() {
                 <td>{listi.address}</td>
                 <td>{listi.rent}</td>
                 <td>
-                  <Button onClick={() => handleClick(listi.listingId, listi.listingId)}>Show details</Button>
+                  <Button onClick={() => handleClick(index, listi.listingId)}>Show details</Button>
                 </td>
               </tr>
             ))}

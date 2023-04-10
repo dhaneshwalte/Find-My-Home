@@ -17,7 +17,7 @@ function LikedListingDetail() {
     console.log(data);
     unlikeListing(data)
       .then((response) => {
-          navigate("/show-all-listings")
+          navigate("/show-liked-listings")
         }
       )
       .catch(err => console.log(err))
