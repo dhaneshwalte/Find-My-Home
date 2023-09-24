@@ -161,53 +161,53 @@ A college student who is moving to a new country would want to use the home find
 
 The application starts with the login page. It also provides an option to Register if the user has not already registered.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/AllListings.png)
 
 ### Register:
 
 The registration page provides an option to the user to register by providing basic personal information.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Register.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/Register.png)
 
 ### Preferences:
 
 The user can add property preferences and the roommate preferences. Property preference refers to the kind of property they are looking for and roommate preferences refer to the basic habits that would prefer in their roommates.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Preferences.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/Preferences.png)
 
 ### All Listings
 
 This page shows all the listings as per the preference of the user. To view the images of the listing the user can click on show details.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/AllListings.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/AllListings.png)
 
 ### Profile Page
 
 Profile page provides an option to the user to edit their information and to view their group members, view the users they have liked, create a listing, view groups, edit preferences and view their like requests.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Profilepage.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/Profilepage.png)
 
 ### Groups
 
 If the user is not in a group then it shows the recommended groups to the user. If the user is already in a group then it won't recommend any group to the user.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/Groups.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/Groups.png)
 
 ### Create Listings
 
 From the profile page the user can create a listing and upload basic details along with the pictures.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/CreateListing.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/CreateListing.png)
 
 ### Signout
 
 After signing out the user is re directed to the login and register page.
 
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/LoginPage.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/LoginPage.png)
 
 ### Code Coverage
 We have covered around 69% of the unit tests cases
-![alt text](https://git.cs.dal.ca/courses/2023-winter/csci-5308/group17/-/raw/dev/Images/CodeCoverage.png)
+![alt text](https://github.com/dhaneshwalte/Find-My-Home/blob/main/Images/CodeCoverage.png)
 
 
 ## Authors
